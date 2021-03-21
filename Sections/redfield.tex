@@ -1,0 +1,27 @@
+
+\subsection{}
+TODO-BACKGROUND INTRODUCTION , ASSUMPTIONS
+
+\subsection{}
+starting from the redfield equation
+\begin{equation}
+    \dot{\hat{\rho}}_S(t) =
+    - \int_0^{\infty} ds
+    Tr_{E}[\hat{H}_{int}(t),
+            [\hat{H}_{int}(s-t),
+                    \hat{\rho}_S(t) \otimes \hat{\rho}_E(t)]]
+\end{equation}
+where \(\hat{\rho}_S(t)\) is the
+density matrix of the hydrogen system
+and \(\hat{\rho}_E(t)\) is the density
+matrix of the electron system.
+
+We can separate the interaction
+hamiltonian (\cref{eqn:interaction hamiltonian in k})
+into a system and environment contribution.
+\begin{eqnarray}
+    \hat{H}_{int} &=& \sum_{i,j} \hat{a}^\dagger_{i}\hat{a}_{j}
+    \sum_{k,s,k',s'} {\tilde{V}_{eff}(\vec{q})}_{i,j}
+    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}\\
+    &=& \sum_{i,j} \hat{S}_{i,j} \hat{E}_{i,j}
+\end{eqnarray}

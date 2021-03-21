@@ -1,0 +1,93 @@
+\subsection{The Hamiltonian}
+The \ldots was modeled using a simple
+hamiltonian, assuming
+
+\ldots system of electrons interacting with
+a single hydrogen atom which would lie at
+either a low or a high energy site
+\begin{equation}
+    \hat{H} = \hat{H}_{free} + \hat{H}_{int}
+\end{equation}
+where the free hamiltonian is given by
+\begin{eqnarray}
+    \hat{H}_{free} &=& \hat{H}_{e^-} + \hat{H}_{h}\\
+    \hat{H}_{e^-} &=& \sum_{k, s}
+    \frac{\hbar^2 k^2}{2m_e} \hat{b}^\dagger_{k, s} \hat{b}_{k, s}\\
+    \hat{H}_{h} &=&
+    E_0 \hat{a}^\dagger_0 \hat{a}_0
+    + E_1 \hat{a}^\dagger_1 \hat{a}_1
+\end{eqnarray}
+\(\hat{a}^\dagger_i\) is the hydrogen creation
+operator for the site i, and satisfies the standard commutation
+relations for a boson \(\left[ \hat{a}_i, \hat{a}^\dagger_j \right] = \delta_{ij}\),
+and \(\hat{b}^\dagger_{k, s}\) is the electron creation operator
+with spin \(s\) and wavevector \(k\) satisfying the standard
+fermion anti-commutation relations
+\( \{ \hat{b}_{k, s}, \hat{b}^\dagger_{k', s'} \} = \delta_{k k'} \delta_{s s'}\).
+
+TODO- SHOW THIS
+\ldots giving us the
+\begin{equation}
+    \hat{H}_{int} = \frac{1}{L^3}\sum_{k,s,k',s'}\hat{b}^\dagger_{k',s'}\hat{b}_{k,s}\tilde{V}(\vec{q})\int{d\vec{r}
+    \hat{\psi}_h^{\dagger}\hat{\psi}_h \exp(i\vec{q}.\vec{r})}
+\end{equation}
+We then gather the q dependant terms into
+an effective potential
+\begin{equation}
+    \hat{H}_{int} = \sum_{k,s,k',s',i,j}
+    {\tilde{V}_{eff}(\vec{q})}_{i,j}
+    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+    \hat{a}^\dagger_{i}\hat{a}_{j}
+    \label{eqn:interaction hamiltonian in k}
+\end{equation}
+
+\subsection{The Electron Hydrogen Potential}
+
+The electron surrounding the hydrogen was assumed
+to lie in the 1s orbital
+TODO-SHOW ENERGY TO DISSOCIATE IS TOO LARGE
+
+The potential is then given by the equation
+\begin{equation}
+    V(\vec{r}) = \frac{e^2}{4 \pi \epsilon_0}(
+    -\frac{1}{r}
+    + \int{\frac{\abs{\phi(\vec{r}')}^2}{
+            \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
+\end{equation}
+where
+\begin{equation}
+    \phi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
+\end{equation}
+is the 1s hydrogen orbital, and \(a_0\) is
+the bohr radius. We then fourier
+transform this expression
+(see \cref{app:interaction potential calculation})
+to find
+\begin{eqnarray}
+    V(\vec{q}) &=& \frac{e^2}{\epsilon_0 q^2}(
+    \frac{\alpha^4}{{(\alpha^2 + q^2)}^2} - 1
+    )
+\end{eqnarray}
+with \(\alpha = \frac{2}{a_0}\). If we assume scattering
+occurs between states separated by at most
+twice the fermi energy \(q \leq 2k_f\) we find
+TODO- JUSTIFY Q=0
+
+\subsection{The Hydrogen Wavefunction}
+TODO-
+The form of the hydrogen wavefunctions were
+known from previous
+
+\ldots using these
+
+To produce a localised wavepacket several of these
+sates are chosen around \(q=0\)
+
+It was then possible to calculate the fourier
+transform directly
+
+The calculation gave
+
+Although the fourier transform varied was not constant
+the rate
+TODO-JUSTIFY

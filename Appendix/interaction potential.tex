@@ -1,0 +1,27 @@
+We start from the expression for the
+hydrogen potential in position basis.
+TODO-Derive??
+\begin{equation}
+    V(\vec{r}) = \frac{e^2}{4 \pi \epsilon_0}(
+    -\frac{1}{r}
+    + \pi a_0^3\int{\frac{e^{-\frac{2r}{a_0}}}{
+            \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
+\end{equation}
+using two standard results
+\begin{eqnarray}
+    \int{\frac{1}{r} e^{i\vec{q}.\vec{r}} d^3\vec{r}}
+    &=& \frac{4 \pi}{q^2}\\
+    \int{e^{-\alpha r} e^{i\vec{q}.\vec{r}} d^3\vec{r}}
+    &=& \frac{8 \pi \alpha}{{(\alpha^2 + q^2)}^2}\\
+\end{eqnarray}
+with \(\alpha = \frac{2}{a_0}\) we end up
+with
+\begin{eqnarray}
+    V(\vec{q}) &=& \frac{e^2}{4 \pi \epsilon_0}(
+    - \frac{4\pi}{q^2}
+    + \frac{\pi a_0^3}{q^2}
+    \frac{8 \pi \alpha}{{(\alpha^2 + q^2)}^2})\\
+    &=& \frac{e^2}{\epsilon_0 q^2}(
+    \frac{ \alpha^4}{{(\alpha^2 + q^2)}^2} - 1
+    )
+\end{eqnarray}
