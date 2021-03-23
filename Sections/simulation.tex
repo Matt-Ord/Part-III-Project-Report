@@ -7,16 +7,63 @@ integration of the schrodinger equation
 
 TODO-WHY NOT SCHRODINGER
 
-The
+Although in general \ldots hard to write
+a hamiltonian for fermions \ldots
+since our hamiltonian was formed from only
+pairs of creation and antihalation
+operators.
 
-\subsection{Fixing the energy of electrons}
+Once the eigenvalues and eigenvectors of the
+matrix were found an arbitrary state could
+be evolved in time by decomposing into by the hamiltonian
 
-To ensure the correct distribution of electrons
-within the simulation we also need to.
+\subsection{}
+Since the Hamiltonian conserved particle number
+it was possible to restrict the electron basis
+to states for which the total number of electrons
+was constant.
+\ldots electrons are fermions we either had 1 or
+0 electrons
+\ldots table of number of states
+However in practise much of the cost
+is associated with the time evolution of
+the eigenstates, and as such we were limited
+to around \(130\) electron states.
+
+\subsection{Setting up the Simulation}
+
+\subsubsection{Choosing the Initial States}
+The average occupancy of the electron states
+were used to select the point along the fermi
+dirac distribution,
+TODO- must be fermi distributed initial state
+if large energy differences.
+TODO- must be random initial state
+
+and to properly match
+the electron distribution within these states
+at \(t=0\) the initial occupancy was therefore weighted
+by the boltzmann distribution.
+TODO-CODE SNIPPET
+This weighting however had very little
+effect when the electron states were chosen
+to be very close in energy \(\Delta E \ll K_b T\)
+\ldots The Temperature
+at later times could then be inferred from
+the distribution of electrons.
 
 TODO- plot of electron energies at various occupation
 
 Full code is available in the appendix TODO-
+
+
+\subsection{Reducing Periodic Behaviour}
+Using electrons at evenly spaced energies \ldots which lead to Rabi oscillations.
+
+To prevent these oscillations random offsets were introduced
+into the electron energy distribution, and after
+averaging over several runs almost all of the
+noise could be eliminated from the plot.
 
 \subsection{}
 
@@ -25,20 +72,74 @@ Full code is available in the appendix TODO-
 . Since tunnelling occurs between sates which are
 degenerate in energy \ldots we don't see any tunnelling
 
+Using the energy time uncertainty principle
+\(\Delta{}E\Delta{}T \geq \frac{\hbar}{2}\), and
+using a tunnelling time of \(\sim 10^{-9}s\) TODO-CITE
+we are able to identify that no significant tunnelling
+can occur between states separated by more than
+\(\Delta{}E \sim 5\times{}10^{-26} J\). This is
+much smaller than the range of energies for
+which the electrons are able to undergo
+transitions about the fermi surface
+(\(K_b T \sim 2 \times 10^{-21}J\) at \(150K\)).
 
-\ldots We will only see scattering between
-states separated by at most \ldots
+
+\ldots when choosing states evenly in this
+range we only see degenerate tunnelling
 
 \subsection{Multi Band Approach}
 To resolve both these issues we instead simulate a system
-taking the basis of electrons placed in two bands.
+taking the basis of electrons placed in two bands, with
+the states in each band separated by at most \ldots.
 
-\ldots lowers the Temperature of the electrons within
-the hcp states. THis means that no net tunnelling is seen
+
+When applying this approach however very
+little tunnelling of the hydrogen is seen at all timescales.
+Look at the energy distribution almost all
+of the HCP electrons lie in the lowest energy band.
+This corresponds to a system with a much lower
+temperature than the initial condition.
+The lack of tunnelling can therefore be explained
+\ldots and if
+the final states were to lie in a boltzmann  distribution
+this would explain the lack of tunnelling
+
+Running the simulation
+in reverse (from HCP to FCC) the electrons
+distribution \ldots population inversion.
+The heat bath is therefore much to small
+to accommodate the energy difference of
+the two hydrogen sites.
+
 TODO- fermi distribution
 TODO- tunnelling curve
 ..It is therefore impossible to measure a tunnelling
 rate.
 
+TODO- The rate of tunnelling might also
+be much different at such a low temperature,
+and as such it is impossible to say if
+any of these results would be valid
+for the real system.
+
 \subsection{Degenerate Correction Approach}
+From the previous investigation it is clear
+that it is not possible to incorporate the
+hydrogen energy directly \ldots. In the
+real system the electrons would move
+between states at a much shorter time
+period than that of hydrogen tunnelling.
+After an electron transitions to a lower
+band the fermi distribution should therefore
+be recovered almost instantaneously. We
+therefore `fix' the behaviour by
+ignoring the fact the electron
+has moved to a lower band at all,
+allowing tunnelling of the hydrogen
+which leaves the electron distribution
+untouched. This is exactly what
+we see in a system when we ignore
+the hydrogen energy difference.
+
+
 The Approach used to simulate the system is as follows

@@ -10,6 +10,10 @@
 % abs symbol
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 
+%biblatex %cspell:disable-line
+\usepackage{biblatex}
+\addbibresource{main.bib}
+
 \title{TODO Name Project}
 \author{Matthew Ord}
 \date{}
@@ -46,6 +50,10 @@ Explain what the equations mean
 \section{Results Of The Simulation}
 Graphs should show units, and figure captions should explain other variable values such as Temperature, B
 field etc
+\input{Sections/simulation results.tex}
+\section{Simulation Improvements}
+\input{Sections/simulation improvements.tex}
+
 
 \section{The Redfield Equation}
 \input{Sections/redfield.tex}
@@ -63,6 +71,8 @@ How do your results fit in with existing knowledge
 
 \section{Conclusion}
 What did you discover, what does it imply and what would you do next as a result of your work
+
+\printbibliography{}
 
 \begin{appendix}
     This is the appendix

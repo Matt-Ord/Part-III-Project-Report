@@ -76,18 +76,36 @@ TODO- JUSTIFY Q=0
 \subsection{The Hydrogen Wavefunction}
 TODO-
 The form of the hydrogen wavefunctions were
-known from previous
+known from previous \ldots DFT Calculations from Jianding's thesis \ldots
+
 
 \ldots using these
 
-To produce a localised wavepacket several of these
-sates are chosen around \(q=0\)
+The wavefunctions provided by this software however
+were expressed in terms of bloch wavefunctions spread
+through the whole material. To recover a localised
+wavepacket several of these states were chosen
+centered about \(q=0\). Given these wavefunctions
+it was then possible to calculate the fourier
+transform products directly. As there was a fixed
+distance between the \(FCC\) and \(HCP\) lattice
+sites however the fourier transform was seen to
+oscillate, with a frequency proportional to
+\(\frac{2\pi}{a}\) where \(a\) is the lattice
+constant of \(Ni\). The value of this constant
+is around \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753}
+corresponding to oscillations at
+\(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\).
 
-It was then possible to calculate the fourier
-transform directly
+In theory this should have a noticeable
+effect on the matrix element, with the
+fermi wavevector
+and the fermi wavevector is \(1.175\times{}10^{10}\) TODO- ADD FERMI K CALCULATION
+TODO- ADD PLOTS
+However since the overall wavepacket decays over a region
+of around \(\frac{100\pi}{a}\) we should be
+able to average over the rapid oscillations of
+\(V(\vec{q})\) to obtain an effective constant
+potential required for the simulation.
 
-The calculation gave
-
-Although the fourier transform varied was not constant
-the rate
-TODO-JUSTIFY
+TODO- The calculated values of the integrals!
