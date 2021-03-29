@@ -1,0 +1,81 @@
+
+Suppose we have a system with two states
+\(x_1, x_2\)
+with a forward and backwards
+tunnelling rate \(\gamma_1, \gamma_2\).
+We can express the equations of motion
+in matrix form
+\begin{align}
+    \begin{pmatrix}
+        \dot{x}_1 \\
+        \dot{x}_2
+    \end{pmatrix} = \begin{pmatrix}
+        -\gamma_1 & \gamma_2   \\
+        \gamma_1  & - \gamma_2
+    \end{pmatrix}\begin{pmatrix}
+        x_1 \\
+        x_2
+    \end{pmatrix}
+\end{align}
+from here we find the eigenvalues
+and eigenvectors of the matrix.
+\begin{alignat}{3}
+    \lambda_1  = & -\gamma_1 - \gamma_2
+                 & \Rightarrow V_1  = a\begin{pmatrix}
+        1 \\
+        -1
+    \end{pmatrix} \\
+    \lambda_2  = & 0
+                 & \Rightarrow V_1  =a\begin{pmatrix}
+        \frac{\gamma_2}{\gamma_1} \\
+        1
+    \end{pmatrix}
+\end{alignat}
+
+Given a state initially in 1
+we can decompose it into these
+eigenstates to find the behaviour
+at a later time
+
+\begin{alignat}{2}
+    \begin{pmatrix}
+        x_1(0) \\
+        x_2(0)
+    \end{pmatrix}              & =\begin{pmatrix}
+        1 \\
+        0
+    \end{pmatrix} \\
+                                           & =
+    \frac{1}{1 + \frac{\gamma_2}{\gamma_1}}(\begin{pmatrix}
+        \frac{\gamma_2}{\gamma_1} \\
+        1
+    \end{pmatrix} +
+    \begin{pmatrix}
+        1 \\
+        -1
+    \end{pmatrix})                                          \\
+    \Rightarrow \begin{pmatrix}
+        x_1(t) \\
+        x_2(t)
+    \end{pmatrix} & =
+    \frac{1}{1 + \frac{\gamma_2}{\gamma_1}}(\begin{pmatrix}
+        \frac{\gamma_2}{\gamma_1} \\
+        1
+    \end{pmatrix} +
+    \begin{pmatrix}
+        1 \\
+        -1
+    \end{pmatrix}\exp{(-(\gamma_1 + \gamma_2)t)})
+\end{alignat}
+The system therefore decays at a rate
+proportional to \(\gamma_1 + \gamma_2\)
+and reaches an equilibrium at
+\begin{equation}
+    \begin{pmatrix}
+        x_1(\infty) \\
+        x_2(\infty)
+    \end{pmatrix}  =\frac{1}{\gamma_1 + \gamma_2} \begin{pmatrix}
+        \gamma_2 \\
+        \gamma_1
+    \end{pmatrix}
+\end{equation}

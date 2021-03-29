@@ -5,27 +5,88 @@ TODO-BACKGROUND INTRODUCTION, ASSUMPTIONS
 \subsection{}
 starting from the redfield equation
 \begin{equation}
-    \dot{\hat{\rho}}_S(t) =
-    - \int_0^{\infty} ds
-    Tr_{E}[\hat{H}_{int}(t),
-            [\hat{H}_{int}(s-t),
-                    \hat{\rho}_S(t) \otimes \hat{\rho}_E(t)]]
+  \dot{\hat{\rho}}_S(t) =
+  - \int_0^{\infty} ds
+  Tr_{E}[\hat{H}_{int}(t),
+      [\hat{H}_{int}(s-t),
+          \hat{\rho}_S(t) \otimes \hat{\rho}_E(t)]]
 \end{equation}
 where \(\hat{\rho}_S(t)\) is the
 density matrix of the hydrogen system
 and \(\hat{\rho}_E(t)\) is the density
 matrix of the electron system.
 
-We can separate the interaction
-hamiltonian (\cref{eqn:interaction hamiltonian in k})
-into a system and environment contribution.
-\begin{eqnarray}
-    \hat{H}_{int} &=& \sum_{i,j} \hat{a}^\dagger_{i}\hat{a}_{j}
-    \sum_{k,s,k',s'} {\tilde{V}_{eff}(\vec{q})}_{i,j}
-    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}\\
-    &=& \sum_{i,j} \hat{S}_{i,j} \hat{E}_{i,j}
-\end{eqnarray}
+TODO-system and environment
 
-\section{Calculating \(\Gamma \)}
+\subsection{Calculating \(\Gamma \)}
 Using expression \ldots gamma could then
 be calculated.
+
+\subsection{Plotting }
+Under the rotating wave
+
+the
+
+\subsection{}
+If we relax the rotating wave approximation
+we find the diagonal terms evolve as
+\begin{equation}
+  \dot{P(t)}_{\mu, \mu} = \begin{aligned}[t]
+      & \Gamma_{\mu, \nu; \mu, \nu}(\omega_l)
+    (P_{\nu, \nu}(t) + P_{\nu, \nu}(t))       \\
+    + & \exp{(i(\omega_{\nu \mu})t)}
+    \Gamma_{\mu, \mu; \mu, \nu}(\omega_l)
+    (P_{\mu, \nu}(t) + P_{\nu, \mu}(t))       \\
+    - & \exp{(i(\omega_{\mu \nu})t)}
+    \Gamma_{\nu, \nu; \nu, \mu}(\omega_l)
+    (P_{\nu, \mu}(t) + P_{\mu, \nu}(t))       \\
+    - & \Gamma_{\nu, \mu; \nu, \mu}(\omega_l)
+    (P_{\mu, \mu}(t) + P_{\mu, \mu}(t))
+  \end{aligned}
+\end{equation}
+and the cross terms evolve as
+\begin{equation}
+  \dot{P(t)}_{\mu, \nu}= \begin{aligned}[t]
+    [ & P_{\nu, \nu}(t)(
+      \exp{(i(\omega_{\mu \nu})t)}
+    (- \Gamma_{\nu, \nu; \nu, \mu}(\omega_l))                                                   \\
+    + & \exp{(i(\omega_{\nu \mu})t)}
+    \Gamma_{\nu, \nu; \mu, \nu}(\omega_l) )                                                     \\
+    + & P_{\mu, \nu}(t)(
+    - \Gamma_{\mu, \nu; \mu, \nu}(\omega_l) - \Gamma_{\nu, \mu; \nu, \mu}(\omega_l))            \\
+    + & P_{\nu, \mu}(t)(
+    \exp{(2i(\omega_{\nu \mu})t)}\Gamma_{\nu, \mu; \mu, \nu}(\omega_l)                          \\
+      & +                   \exp{(2i(\omega_{\mu \nu})t)}\Gamma_{\mu, \nu; \nu, \mu}(\omega_l)) \\
+    + & P_{\mu, \mu}(t) (
+    \exp{(i(\omega_{\mu \nu})t)}\Gamma_{\mu, \mu; \nu, \mu}(\omega_l)                           \\
+      & + \exp{(i(\omega_{\nu \mu})t)}[
+        - \Gamma_{\mu, \mu; \mu, \nu}(\omega_l)])]
+  \end{aligned}
+\end{equation}
+Although it is not possible to solve
+this analytically, when plotting the
+equation numerically we see
+exactly the same same long-timescale
+behaviour as that predicted by the
+rotating wave approximation. Although the density
+matrix could be seen to oscillate at a timescale of
+\(10^{-13}s\) this had no effect on the macroscopic
+behaviour of the density matrix.
+
+TODO-plots and proof??
+\subsection{}
+
+One issue with the \ldots approach is that it failed to
+incorporate behaviour key to incoherent tunnelling.
+In the simulation the tunnelling process was dominated by
+transitions between two states with the same energy,
+rather than two states with the same electron configuration.
+To have any hope of recovering this behaviour we therefore need
+to modify the approach to take this into account.
+
+
+
+
+
+
+

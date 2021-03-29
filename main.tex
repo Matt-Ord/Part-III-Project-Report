@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{mathtools}
+\usepackage{braket}
 
 \usepackage{cleveref}
 
@@ -69,6 +70,10 @@ field etc
 \section{Discussion}
 How do your results fit in with existing knowledge
 
+Improvements
+-Electron electron interaction (change \(V(0)\))
+
+
 \section{Conclusion}
 What did you discover, what does it imply and what would you do next as a result of your work
 
@@ -78,6 +83,17 @@ What did you discover, what does it imply and what would you do next as a result
     This is the appendix
     \section{Calculating The Potential}\label{app:interaction potential calculation}
     \input{Appendix/interaction potential.tex}
+
+    \section{Combined Tunnelling Rates}\label{app:combined tunnelling rates}
+    \input{Appendix/combined tunnelling rate.tex}
+
+    \section{Calculating \(\dot{\rho}\)}
+    \input{Appendix/lindblad evolution.tex}
+
+    \section{Calculating Gamma For The Lindblad Equation}
+    \input{Appendix/lindblad gamma.tex}
+
+
 \end{appendix}
 
 \end{document}

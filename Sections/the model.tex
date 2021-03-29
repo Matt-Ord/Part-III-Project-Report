@@ -1,4 +1,8 @@
 \subsection{The Hamiltonian}
+the\ldots, and contains interactions between
+electrons, nickel atoms and
+
+
 The \ldots was modeled using a simple
 hamiltonian, assuming
 
@@ -43,9 +47,14 @@ an effective potential
 
 \subsection{The Electron Hydrogen Potential}
 
-The electron surrounding the hydrogen was assumed
-to lie in the 1s orbital
-TODO-SHOW ENERGY TO DISSOCIATE IS TOO LARGE
+The electrons surrounding the hydrogen
+atom have energies \(E_n = -\frac{13.6}{n^2} eV\) TODO-Cite.
+Since the energy required to excite the electron
+to the \(n=2\) energy level is much greater
+than the fermi energy of \(Ni\)
+(\(7.76eV\)~\cite{PhysRev.131.2469}) we can
+make the approximation that the electron surrounding
+the hydrogen lie close to the 1s groundstate.
 
 The potential is then given by the equation
 \begin{equation}
@@ -68,10 +77,19 @@ to find
     \frac{\alpha^4}{{(\alpha^2 + q^2)}^2} - 1
     )
 \end{eqnarray}
-with \(\alpha = \frac{2}{a_0}\). If we assume scattering
-occurs between states separated by at most
-twice the fermi energy \(q \leq 2k_f\) we find
-TODO- JUSTIFY Q=0
+with \(\alpha = \frac{2}{a_0}\). If we expand
+about \(q=0\) we find
+\begin{eqnarray}
+    V(q) &\sim&\frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)\\
+    {} &=& -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
+\end{eqnarray}
+taking \(q = k_f = 1.175\times{}10^{10}\) TODO- ADD FERMI K CALCULATION
+and \(\alpha = 3.79\times{}10^{10}\) we see the second
+order correction only contributes to a variation
+of around \(14.5\% \) to the overall potential.
+We therefore assume that for the relevant scattering
+of electrons the potential takes a constant
+value \(V(q) \sim -\frac{2e^2}{\epsilon_0 \alpha^2}\).
 
 \subsection{The Hydrogen Wavefunction}
 TODO-
@@ -109,3 +127,14 @@ able to average over the rapid oscillations of
 potential required for the simulation.
 
 TODO- The calculated values of the integrals!
+
+\section{}
+It is often beneficial to separate the interaction
+hamiltonian (\cref{eqn:interaction hamiltonian in k})
+into a system and environment contribution.
+\begin{align}
+    \hat{H}_{int} & = \sum_{i,j} \hat{a}^\dagger_{i}\hat{a}_{j}
+    \sum_{k,s,k',s'} {\tilde{V}_{eff}(\vec{q})}_{i,j}
+    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}                                                              \\
+                  & = \sum_{i,j} \hat{S}_{i,j} \hat{E}_{i,j}\label{eqn:split interaction hamiltonian}
+\end{align}

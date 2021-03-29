@@ -14,6 +14,20 @@ to the expression, giving us
 \begin{equation}
     R = \frac{N(N-1) R_0}{\cosh{(B(N - 0.5))}}
 \end{equation}
+To see the effect of this factor
+states with only
+one electron or one hole must be included.
+In this
+case the previous
+oscillatory behaviour is replaced
+by a more steady decay, which was fitted to
+\(\exp{(-at^2)}\). TODO-justify in figure Due to this new
+method of fitting the data the
+single particle rates appeared
+offset from the rest of the data,
+however their rates were consistent
+with the \(N(N-1)\) factor TODO-fig.
+
 Although this has \ldots little effect in exp \ldots
 when plotting \(\ln{R}\) against \(N\) we can see a
 clear reduction in the rate, consistent with this factor
@@ -27,6 +41,49 @@ The degenerate tunnelling rates
 To recover the tunnelling rate for hydrogen of different
 energy we need to transform the rate equation
 into the form
+
+Due to the arguments outlined in
+\cref{app:combined tunnelling rates}
+a general system with two tunnelling
+rates has a combined rate
+\begin{equation}
+    R_{tot}(N\rightarrow{}N') = R(N\rightarrow{}N') + R_{tot}(N'\rightarrow{}N)
+\end{equation}
+therefore any guess at the corrected rate
+must be written in this form, where the
+behaviour of \(R(N\rightarrow{}N')\)
+should match up with \(0.5 R_{tot}(N\rightarrow{}N)\)
+at \(N' = N\).
+
+\section{Temperature Dependance}
+The correction should also be well behaved
+at all temperatures. As we reduce the
+temperature the hydrogen
+energy becomes much greater than the
+range of electrons exited above the fermi
+surface, and we therefore expect the tunnelling
+rate to be `frozen out' as \(T\rightarrow{}0\).
+TODO-THis is not seen\ldots
+
+Two other possible forms for the
+tunnelling rate were suggested
+\begin{alignat}{2}
+    R(N\rightarrow{}N') & = 0.5\frac{\sqrt{N(N-1)N'(N'-1)} R_0}{\cosh{(B(N - 0.5))}} \\
+    R(N\rightarrow{}N') & = 0.5\frac{4N(N-1)N'(N'-1) R_0}{\cosh{(B(N - 0.5))}}
+\end{alignat}
+
+We could also consider the corrected rate
+\ldots two processes. We should therefore
+have a rate dependent
+Both of these had very little
+effect on the tunnelling rate
+at \(150K\).
+
+\section{Corrected Results}
+Overall we see the corrected results
+have very little
+
+
 
 \ldots Discussion of different ways to transform
 

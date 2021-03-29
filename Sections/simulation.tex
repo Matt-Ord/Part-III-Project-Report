@@ -4,8 +4,23 @@
 Although it is theoretically possible
 to evolve the system through direct
 integration of the schrodinger equation
+since eigenstates evolve
+as \(\exp(i\frac{Ht}{\hbar})\)
+if we were to choose states
+spaced \(\pm kT\) the integrand
+would oscillate over a timescale
+of \(t \sim \frac{\hbar}{2K_b T} \sim 2\times{}10^{-14}s\).
+For a decay lasting \(\sim 10^{-9}\)
+seconds we would require more than \(10^{6}\)
+time-steps, which was found \ldots to be too much \ldots
 
-TODO-WHY NOT SCHRODINGER
+\ldots allowed us to calculate
+the behaviour at any later time
+at no extra cost.
+
+storing the eigenstates, however
+\ldots the cost of
+
 
 Although in general \ldots hard to write
 a hamiltonian for fermions \ldots
@@ -53,6 +68,7 @@ at later times could then be inferred from
 the distribution of electrons.
 
 TODO- plot of electron energies at various occupation
+TODO- justification over why we don't se fd dist, why that is ok
 
 Full code is available in the appendix TODO-
 
