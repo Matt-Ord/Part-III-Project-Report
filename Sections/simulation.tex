@@ -1,32 +1,48 @@
 
 \subsection{Setting up the Simulation}
 
-Although it is theoretically possible
-to evolve the system through direct
-integration of the schrodinger equation
-since eigenstates evolve
-as \(\exp(i\frac{Ht}{\hbar})\)
-if we were to choose states
-spaced \(\pm kT\) the integrand
-would oscillate over a timescale
-of \(t \sim \frac{\hbar}{2K_b T} \sim 2\times{}10^{-14}s\).
-For a decay lasting \(\sim 10^{-9}\)
-seconds we would require more than \(10^{6}\)
-time-steps, which was found \ldots to be too much \ldots
+Given the Hamiltonian \ldots in \ldots it
+is possible to evolve the system
+according to the schrodinger
+equation. However since we
+are only interested in the
+evolution of the eigenstates
+at times much greater than
+the frequency of the sates
+\(\omega = \frac{E}{\hbar}\)
+it is better to first
+break up the initial
+state into the eigenstates
+of the Hamiltonian
+before applying the
+relevant phase to
+each eigenstate
+\begin{align}
+    \ket{\Psi(t)} = \exp{(-i\frac{Ht}{\hbar})} \sum_n C_n \ket{n} \\
+    = \sum_n C_n \exp{(-i\frac{E_n t}{\hbar})} \ket{n}
+\end{align}
 
-\ldots allowed us to calculate
-the behaviour at any later time
-at no extra cost.
+TODO Code Snippet
+
+
+One possible issue with this method
+is the
 
 storing the eigenstates, however
 \ldots the cost of
 
+In general it is difficult to produce
+a hamiltonian which \ldots spin
+statistics of the fermion,
+however since our Hamiltonian is
+described using only
+pairs of creation and annihilation
+operators it is relatively easy to
+cast it into matrix form
 
 Although in general \ldots hard to write
 a hamiltonian for fermions \ldots
-since our hamiltonian was formed from only
-pairs of creation and antihalation
-operators.
+since our hamiltonian was formed.
 
 Once the eigenvalues and eigenvectors of the
 matrix were found an arbitrary state could
@@ -40,50 +56,214 @@ was constant.
 \ldots electrons are fermions we either had 1 or
 0 electrons
 \ldots table of number of states
-However in practise much of the cost
-is associated with the time evolution of
-the eigenstates, and as such we were limited
-to around \(130\) electron states.
-
-\subsection{Setting up the Simulation}
-
-\subsubsection{Choosing the Initial States}
-The average occupancy of the electron states
-were used to select the point along the fermi
-dirac distribution,
-TODO- must be fermi distributed initial state
-if large energy differences.
-TODO- must be random initial state
-
-and to properly match
-the electron distribution within these states
-at \(t=0\) the initial occupancy was therefore weighted
-by the boltzmann distribution.
-TODO-CODE SNIPPET
-This weighting however had very little
-effect when the electron states were chosen
-to be very close in energy \(\Delta E \ll K_b T\)
-\ldots The Temperature
-at later times could then be inferred from
-the distribution of electrons.
-
-TODO- plot of electron energies at various occupation
-TODO- justification over why we don't se fd dist, why that is ok
-
-Full code is available in the appendix TODO-
 
 
-\subsection{Reducing Periodic Behaviour}
-Using electrons at evenly spaced energies \ldots which lead to Rabi oscillations.
+However in practise larger matrix elements
+also had a larger cost associated with
+the time evolution of
+the eigenstates, and as such we limited ourselves
+to at most \(10\) energies and \(5\) electrons,
+corresponding to \(504\) total states.
+
+\subsection{Choosing the Initial States}
+
+\subsubsection{Distribution Of Energies}
+The distribution of electron energies
 
 To prevent these oscillations random offsets were introduced
 into the electron energy distribution, and after
 averaging over several runs almost all of the
 noise could be eliminated from the plot.
 
-\subsection{}
+The spacing of electron energies is also
+important for the simulation, as it
+sets the effective volume of the Nickel
+lattice. The density of states of a free electron
+gas \(g(E)\) is given by~\cite{KittelCharles1953Itss}
+\begin{equation}
+    g(E) = \frac{V}{2\pi^2}
+    {(\frac{2m}{\hbar^2})}^{\frac{3}{2}}
+    E^{\frac{1}{2}}
+\end{equation}
+We therefore invert this expression
+to find the implied volume of the
+simulation
+\begin{equation}
+    V = 2\pi^2
+    \frac{g(E)}{E^{\frac{1}{2}}}
+    {(\frac{\hbar^2}{2m})}^{\frac{3}{2}}
+\end{equation}
+Since at large \(k\)
+(for \(k\sim k_f\))
+the density of states is roughly
+constant we make the approximation
+\begin{equation}
+    g(E) = \frac{dN}{dE} \sim \frac{1}{E_{space}}
+\end{equation}
+where \(E_{space}\) is the energy spacing
+of the simulation.
+If we look at the expression for the
+interaction hamiltonian
 
-\subsection{Adding in the energy of the hydrogen}
+
+For smaller
+energy spacing we therefore have
+a larger volume, and a smaller
+perturbation.
+
+---
+
+---
+
+It was however not possible to
+reduce the electron spacing to
+below \ldots
+TODO -BAndwidth justification.
+however as we decrease the electron
+spacing we also increase the tunnelling
+times, as we choose to sample fewer and
+fewer electrons \ldots so this is not seen.
+
+\subsubsection{Distribution Of Electrons}
+To be able to average over successive
+simulations we also need to setup the
+simulation with a somewhat random
+choice of initial states. Since the states
+are represented by vectors in a 2N dimensional
+vector state \ldots a. To start the electron
+in the \(FCC\) site we therefore set the
+amplitudes of the \(HCP\) sites to zero
+and choose the \(FCC\) aptitudes according to
+a normal distribution before normalising.
+
+In simulations for which we choose states
+with a large range of energies however
+the electron distribution should not be
+random and should follow the fermi dirac distribution.
+To match this distribution at \(T=0\) we therefore
+need to alter the averages used
+to produce the initial state vector.
+Since the amplitude corresponds to
+the square-root of the probability we
+take the average magnitude as the
+square-root of the boltzmann probability
+associated with each state.
+\begin{align}
+    P_k & = \exp(-\beta{}E_k)     \\
+    C_k & = \exp(-\beta{}E_k / 2)
+\end{align}
+If we plot the resulting
+electron distribution produced
+by this method for fixed N however
+we do not see the expected electron
+distribution for a standard electron
+gas.
+TODO-PLOT THIS
+
+This is because the
+derivation assumes a distribution
+of states at all N, weighted by the
+chemical potential. If we add back
+these states we find that the correct
+distribution is recovered.
+TODO-Plot
+In most cases we choose to
+simulate only the most
+likely configuration of electrons,
+assuming the chemical potential is large.
+This holds for all but the state at
+\(k = k_f\) where we have \(\mu = 0\)
+relative to the average energy of the
+electrons. However the number of
+states \ldots \(ACB\) big for N=2
+TODO-section correcting for this effect!!!
+
+
+This approach however does not take
+into accounts the shift in energies
+caused by the perturbation. This
+does not effect the distribution
+for a small perturbation,
+however in some cases,
+especially those for which the energy
+spacing was large this assumption
+no longer holds. In this case
+we see the electron distribution
+begin to diverge from the
+boltzmann distribution at large times.
+TODO-Plot
+
+
+Full code is available in the appendix TODO-
+
+
+
+
+
+
+\subsection{Initial Investigation}
+To obtain a rough estimate of
+the rate the system was setup
+with electrons evenly spaced
+in the region \(E_k = E_f \pm 2K_b T\)
+with degenerate hydrogen energies.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band simulation decay times.png}
+        \subcaption{Tunnelling excluding hydrogen energy}\label{fig:large band degenerate simulation}
+    \end{subfigure}
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band simulation with hydrogen energies.png}
+        \subcaption{Tunnelling including hydrogen energy}\label{fig:large band non degenerate simulation}
+    \end{subfigure}
+    \caption{Plot of the tunnelling rate taken using a
+    simple choice of electron energies,
+    taken evenly in the range \(E=E_f \pm K_b T\).
+    Simulation with a degenerate hydrogen
+    (\cref{fig:large band degenerate simulation})
+    shows tunnelling in around
+    \(3\times{}10^{-10}s\), however when the
+    hydrogen energy is included (\cref{fig:large band non degenerate simulation})
+    no tunnelling can be seen, even
+    at much larger timescales.}
+\end{figure}
+
+Since we are choosing electrons
+with a relatively large spacing
+we have large
+interaction. The diagonal terms in
+the interaction hamiltonian
+had a value of \(1.03\times{}10^{-21}J\)
+and a cross diagonal value of \(4.53\times{}10^{-23}J\)
+whereas the electron energies were separated
+by only \(2.3\times{}10^{-22}J\). This meant that
+the perturbation approximation required for
+fermi dirac distributed states is not valid TODO PLOT TEMP inversion.
+Luckily however in the region \(\pm K_b T\)
+the electron distribution is relatively flat,
+and this should therefore have very little
+effect on the tunnelling rate.
+
+\subsection{Differing Hydrogen Energy}
+If we add the hydrogen energies to the
+simulation we no longer see tunnelling
+on any timescale. This is caused by the
+principle of energy conservation --- tunnelling
+TODO-Band Diagram
+
+If we employ the uncertainty principle
+\(\Delta{}E\Delta{}T \geq \frac{\hbar}{2}\)
+we expect the total energy to be conserved
+to within
+\begin{equation}
+    \Delta{}E \sim \frac{\hbar}{2\Delta{} t}
+\end{equation}
+for a tunnelling time of \(\sim 10^{-10}s\)
+we would expect an energy fluctuation
+of \(\sim 5\times{}10^{-25} J\).
+
 
 . Since tunnelling occurs between sates which are
 degenerate in energy \ldots we don't see any tunnelling
@@ -103,9 +283,12 @@ transitions about the fermi surface
 \ldots when choosing states evenly in this
 range we only see degenerate tunnelling
 
-\subsection{Multi Band Approach}
-To resolve both these issues we instead simulate a system
-taking the basis of electrons placed in two bands, with
+\section{Multi Band Approach}
+To resolve these issues we instead simulated the system
+taking the basis of electrons placed in two bands,
+with each band separated by the hydrogen energy
+difference.
+with
 the states in each band separated by at most \ldots.
 
 
@@ -159,3 +342,5 @@ the hydrogen energy difference.
 
 
 The Approach used to simulate the system is as follows
+
+\subsection{Correcting for unfixed N}

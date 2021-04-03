@@ -295,7 +295,7 @@ zero, the normalisation of
 the density matrix is preserved.
 
 
-\subsection{Full Solution}
+\subsection{Full Solution}\label{sec:redfield equation full solution}
 The full solution to the equation is
 much more complicated. Starting from the
 previous expression for \(\rho \) we
@@ -305,22 +305,20 @@ swap \(\Gamma^*\) for \(\Gamma \) and expand
         \sum_{i,j,k, l, \alpha, \beta} &
         \exp{(-i\Delta{}E_{i,j;k,l}t)}
         \Gamma_{i,j;k, l}(\omega_{k,l})
-        \rho_{\alpha, \beta} [         &
+        \rho_{\alpha, \beta} [               \\ &
             \delta_{m, k}\delta_{l, \alpha}
-        \delta_{\beta, j}\delta_{i, n}       \\
-                                       &   &
+            \delta_{\beta, j}\delta_{i, n}
             -\delta_{m, j}\delta_{i, k}
         \delta_{l, \alpha}\delta_{\beta, n}] \\
         +                              &
         \exp{(i\Delta{}E_{i,j;k,l} t)}
         \Gamma_{i,j; k, l}(\omega_{i,j})
-        \rho_{\alpha, \beta} [         &
+        \rho_{\alpha, \beta} [               \\ &
             \delta_{m, k}\delta_{l, \alpha}
-        \delta_{\beta, j}\delta_{i, n}       \\
-                                       &   &
+            \delta_{\beta, j}\delta_{i, n}
             - \delta_{m, \alpha}\delta_{\beta, j}
             \delta_{i, k}\delta_{l, n}]
-    \end{aligned} \\
+    \end{aligned}                                   \\
                                          & = \begin{aligned}[t]
         \sum_{i,j} &
         \exp{(-i\Delta{}E_{n,j;m,i} t)}
@@ -338,9 +336,9 @@ swap \(\Gamma^*\) for \(\Gamma \) and expand
         -\exp{(i\Delta{}E_{i,j;i,n} t)}
         \Gamma_{i,j; i, n}(\omega_{i,j})
         \rho_{m, j}
-    \end{aligned}
+    \end{aligned}\label{eqn:full redfield solution}
 \end{align}
-to progress we first take the case \(m=n\)
+consider the case \(m=n\)
 \begin{align}
     \bra{m}\dot{\hat{\rho{}(t)}} \ket{m} & = \begin{aligned}[t]
         \sum_{i,j} &
@@ -408,4 +406,7 @@ terms is then
 It is clear that these terms all cancel,
 and the divergence of \(\Gamma \) at \(\omega = 0\)
 has no effect on the diagonal terms of the
-density matrix. TODO-Full expanded solution\ldots
+density matrix. By a similar process the same can
+be shown for cross diagonal terms.
+
+TODO-Full expanded solution\ldots

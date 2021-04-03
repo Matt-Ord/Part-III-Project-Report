@@ -4,29 +4,31 @@ TODO cite eqn (52)
 From the,
 
 \begin{equation}
-    \Gamma_{i,j, k,l}(\omega) =
-    \int_0^\infty{}{
-    ds \exp{(i\omega{}s)}
-    Tr_{E}[E^\dagger_{i,j}(t)E_{k,l}(t-s)\rho_E(0)]
-    }
+  \Gamma_{i,j, k,l}(\omega) =
+  \int_0^\infty{}{
+  ds \exp{(i\omega{}s)}
+  Tr_{E}[E^\dagger_{i,j}(t)E_{k,l}(t-s)\rho_E(0)]
+  }
 \end{equation}
 using the definition of the
 environment interaction hamiltonian
 from \cref{eqn:split interaction hamiltonian}
-\begin{alignat}{2}
-    E_{i, j}(t) & =
-    \exp{(iH_e t)}
-    \sum_{k,k'} V_{i,j} \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
-    \exp{(-iH_e t)}                           \\
-                & = \sum_{k,k'} \hat{V}_{i,j}
-    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s} \exp{(i(E_k' - E_k)t)}
-\end{alignat}
+\begin{align}
+  E_{i, j}(t) & =
+  \exp{(iH_e t)}
+  \sum_{k,k'} V_{i,j} \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+  \exp{(-iH_e t)}                           \\
+              & = \sum_{k,k'} \hat{V}_{i,j}
+  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s} \exp{(i(E_k' - E_k)t)}
+\end{align}
 If we use a density matrix of a purely
 statistical ensemble of electrons,
 we find that it is
 diagonal~\cite{sakurai_napolitano_2020}
 \begin{equation}
-    \rho_E(0) = \sum_{\{N(k)\}} P(\{N(k)\}) \ket{N(k)} \bra{N(k)}
+  \rho_E(0) = \sum_{\{N(k)\}}
+  P(\{N(k)\})
+  \ket{N(k)} \bra{N(k)}
 \end{equation}
 where \(P(N(k)) =
 \frac{1}{z}\sum_{k,s}
@@ -34,30 +36,30 @@ where \(P(N(k)) =
 
 We start by expanding out the trace
 over the environment
-\begin{alignat}{2}
-    Tr_E[\dots] & = \sum_{\{N(k)\}}
-    \bra{N(k)} E^\dagger_{i,j}(t)E_{k,l}(t-s) \rho_E(0) \ket{N(k)}
-    \\
-                & = \begin{aligned}[t]
-        \sum_{\{N(k)\}, \{N'(k)\}} &
-        P(\{N'(k)\}) \bra{N'(k)}  \ket{N(k)}                                               \\
-                                   & \bra{N(k)} E^\dagger_{i,j}(t)E_{k,l}(t-s) \ket{N'(k)}
-    \end{aligned} \\
-                & = \sum_{\{N(k)\}}
-    P(\{N(k)\}) \bra{N(k)}
-    E^\dagger_{i,j}(t)E_{k,l}(t-s) \ket{N(k)} \\
-                & = \begin{aligned}[t]
-        \sum_{\substack{\{N(k)\}                             \\
-        k_1,s^1,k_2,s^2                                      \\
-                k_3,s^3,k_4,s^4 }}
-         & P(\{N(k)\}) V_{i,j} V_{k,l}                       \\
-         & \exp{(i(E_1 - E_2) t)} \exp{(i(E_3 - E_4) (t-s))} \\
-         & \bra{N(k)}
-        \hat{b}_{k_1,s^1}^\dagger{} \hat{b}_{k_2,s^2}
-        \hat{b}_{k_3,s^3}^\dagger{} \hat{b}_{k_4,s^4}
-        \ket{N(k)}
-    \end{aligned}
-\end{alignat}
+\begin{align}
+  Tr_E[\dots] & = \sum_{\{N(k)\}}
+  \bra{N(k)} E^\dagger_{i,j}(t)E_{k,l}(t-s) \rho_E(0) \ket{N(k)}
+  \\
+              & = \begin{aligned}[t]
+    \sum_{\{N(k)\}, \{N'(k)\}} &
+    P(\{N'(k)\}) \bra{N'(k)}  \ket{N(k)}                                               \\
+                               & \bra{N(k)} E^\dagger_{i,j}(t)E_{k,l}(t-s) \ket{N'(k)}
+  \end{aligned} \\
+              & = \sum_{\{N(k)\}}
+  P(\{N(k)\}) \bra{N(k)}
+  E^\dagger_{i,j}(t)E_{k,l}(t-s) \ket{N(k)} \\
+              & = \begin{aligned}[t]
+    \sum_{\substack{\{N(k)\}                             \\
+    k_1,s^1,k_2,s^2                                      \\
+        k_3,s^3,k_4,s^4 }}
+     & P(\{N(k)\}) V_{i,j} V_{k,l}                       \\
+     & \exp{(i(E_1 - E_2) t)} \exp{(i(E_3 - E_4) (t-s))} \\
+     & \bra{N(k)}
+    \hat{b}_{k_1,s^1}^\dagger{} \hat{b}_{k_2,s^2}
+    \hat{b}_{k_3,s^3}^\dagger{} \hat{b}_{k_4,s^4}
+    \ket{N(k)}
+  \end{aligned}
+\end{align}
 Where here we have used
 the fact that the
 potential is real, and
@@ -66,53 +68,53 @@ from the usual definition.
 This expression is non zero
 in only two cases
 \begin{itemize}
-    \item \(k_1=k_2, s^1=s^2\),
-          \(k_3=k_4, s^3=s^4\)
-    \item \(k_1=k_4, s^1=s^4\),
-          \(k_3=k_2, s^3=s^2\) but
-          \(k_1\neq{}k_2, s^1\neq{}s^2\)
+  \item \(k_1=k_2, s^1=s^2\),
+        \(k_3=k_4, s^3=s^4\)
+  \item \(k_1=k_4, s^1=s^4\),
+        \(k_3=k_2, s^3=s^2\) but
+        \(k_1\neq{}k_2, s^1\neq{}s^2\)
 \end{itemize}
 we use the result
-\begin{alignat}{2}
-    \bra{N(k)}
-    \hat{b}_{k_1,s^1}^\dagger{}
-    \hat{b}_{k_1,s^1}
-    \hat{b}_{k_3,s^3}^\dagger{}
-    \hat{b}_{k_3,s^3}\ket{N(k)} & = N_1 N_3       \\
-    \bra{N(k)}
-    \hat{b}_{k_1,s^1}^\dagger{}
-    \hat{b}_{k_3,s^3}
-    \hat{b}_{k_3,s^3}^\dagger{}
-    \hat{b}_{k_1,s^1}\ket{N(k)} & = \bra{N(k)}
-    \hat{b}_{k_1,s^1}^\dagger{}
-    \hat{b}_{k_1,s^1}
-    \hat{b}_{k_3,s^3}
-    \hat{b}_{k_3,s^3}^\dagger{}
-    \ket{N(k)}                                    \\
-                                & = N_1 (1 - N_3)
-\end{alignat}
+\begin{align}
+  \bra{N(k)}
+  \hat{b}_{k_1,s^1}^\dagger{}
+  \hat{b}_{k_1,s^1}
+  \hat{b}_{k_3,s^3}^\dagger{}
+  \hat{b}_{k_3,s^3}\ket{N(k)} & = N_1 N_3       \\
+  \bra{N(k)}
+  \hat{b}_{k_1,s^1}^\dagger{}
+  \hat{b}_{k_3,s^3}
+  \hat{b}_{k_3,s^3}^\dagger{}
+  \hat{b}_{k_1,s^1}\ket{N(k)} & = \bra{N(k)}
+  \hat{b}_{k_1,s^1}^\dagger{}
+  \hat{b}_{k_1,s^1}
+  \hat{b}_{k_3,s^3}
+  \hat{b}_{k_3,s^3}^\dagger{}
+  \ket{N(k)}                                    \\
+                              & = N_1 (1 - N_3)
+\end{align}
 to simplify the above sum
-\begin{alignat}{2}
-    Tr_E[\dots] & = \begin{aligned}[t]
-        \sum_{k_1,s^1,k_3,s^3 }
-         & V_{i,j} V_{k,l} [ \\
-         & N_1 N_3
-                + N_1 (1 - N_3) \exp{(-i(E_3 - E_1)s)}]
-    \end{aligned}
-\end{alignat}
+\begin{equation}
+  Tr_E[\dots] = \begin{aligned}[t]
+    \sum_{k_1,s^1,k_3,s^3 }
+     & V_{i,j} V_{k,l} [ \\
+     & N_1 N_3
+        + N_1 (1 - N_3) \exp{(-i(E_3 - E_1)s)}]
+  \end{aligned}
+\end{equation}
 If we then integrate over s we find
-\begin{alignat}{2}
-    \Gamma_{i,j, k,l}(\omega) & =
-    \int_0^\infty{}{
-        ds \exp{(i\omega{}s)} Tr_{E}[\dots]
-    }                                                      \\
-    {}                        & =\begin{aligned}[t]
-        \sum_{k_1,s^1,k_3,s^3,k_4,s^4 }
-         & V_{i,j} V_{k,l} [ \\
-         & N_1 N_3 \delta(w)
-                + N_1 (1 - N_3)  \delta(w + E_1 -E_3) ]
-    \end{aligned}
-\end{alignat}
+\begin{align}
+  \Gamma_{i,j, k,l}(\omega) & =
+  \int_0^\infty{}{
+    ds \exp{(i\omega{}s)} Tr_{E}[\dots]
+  }                                                      \\
+  {}                        & =\begin{aligned}[t]
+    \sum_{k_1,s^1,k_3,s^3,k_4,s^4 }
+     & V_{i,j} V_{k,l} [ \\
+     & N_1 N_3 \delta(w)
+        + N_1 (1 - N_3)  \delta(w + E_1 -E_3) ]
+  \end{aligned}
+\end{align}
 to convert these delta functions
 into delta function in momentum we
 use the formula
@@ -120,9 +122,9 @@ use the formula
 \abs{\frac{df}{dx}}^{-1}\delta(x - x_0)\)
 to give
 \begin{equation}
-    \delta(w + E_1 -E_3) =
-    \frac{m}{\sqrt{k_1^2 - 2m\omega}}
-    \delta({k_3 \pm \sqrt{k_1^2 + 2m\omega}})
+  \delta(w + E_1 -E_3) =
+  \frac{m}{\sqrt{k_1^2 - 2m\omega}}
+  \delta({k_3 \pm \sqrt{k_1^2 + 2m\omega}})
 \end{equation}
 Note we are working in units of \(\hbar = 1\)
 and the \(\delta(\omega)\) is just
@@ -130,32 +132,32 @@ constraining \(E_3 = E_4\) which is
 already satisfied when \(k_3 = k_4\).
 Adding this back into the expression
 for \(\Gamma \) we find
-\begin{alignat}{2}
-    \Gamma_{i,j, k,l}(\omega) & =\begin{aligned}[t]
-        \sum_{k_1,s^1,k_3,s^3 }
-         & V_{i,j} V_{k,l} [
-        N_1 N_3 \delta_{w, 0} \frac{m}{\sqrt{k_3^2}} \\
-         & + N_1 (1 - N_3)
-                \frac{m}{\sqrt{k_1^2 - 2m\omega}}
-                \delta({k_3 \pm \sqrt{k_1^2 + 2m\omega}}) ]
-    \end{aligned}
-\end{alignat}
+\begin{align}
+  \Gamma_{i,j, k,l}(\omega) & =\begin{aligned}[t]
+    \sum_{k_1,s^1,k_3,s^3 }
+     & V_{i,j} V_{k,l} [
+    N_1 N_3 \delta_{w, 0} \frac{m}{\sqrt{k_3^2}} \\
+     & + N_1 (1 - N_3)
+        \frac{m}{\sqrt{k_1^2 - 2m\omega}}
+        \delta({k_3 \pm \sqrt{k_1^2 + 2m\omega}}) ]
+  \end{aligned}
+\end{align}
 To calculate these terms we
 need to switch to the integral
 representation. Absorbing the factors
 of \(L^6\) back into the definition
 of \(V_{i,j}\) we find
 \begin{align}
-    \Gamma_{i,j, k,l}(\omega) & =\begin{aligned}[t]
-        \sum_{s^1,s^3} \int &
-        \frac{d^3\vec{k}_1}{{(2\pi)}^3}
-        \frac{d^3\vec{k}_3}{{(2\pi)}^3}
-        V_{i,j} V_{k,l} [
-        N_1 N_3 \delta_{w, 0} \frac{m}{\sqrt{k_3^2}} \\
-                            & + N_1 (1 - N_3)
-                \frac{m}{\sqrt{k_1^2 - 2m\omega}}
-                \delta({k_3 \pm \sqrt{k_1^2 + 2m\omega}}) ]
-    \end{aligned}
+  \Gamma_{i,j, k,l}(\omega) & =\begin{aligned}[t]
+    \sum_{s^1,s^3} \int &
+    \frac{d^3\vec{k}_1}{{(2\pi)}^3}
+    \frac{d^3\vec{k}_3}{{(2\pi)}^3}
+    V_{i,j} V_{k,l} [
+    N_1 N_3 \delta_{w, 0} \frac{m}{\sqrt{k_3^2}} \\
+                        & + N_1 (1 - N_3)
+        \frac{m}{\sqrt{k_1^2 - 2m\omega}}
+        \delta({k_3 \pm \sqrt{k_1^2 + 2m\omega}}) ]
+  \end{aligned}
 \end{align}
 we perform the integral over k by expanding about
 \(k = k_f\) noting that the value of
@@ -164,11 +166,11 @@ difference of the hydrogen
 \(\Gamma_{i,j, k,l}(\omega) = \Gamma_{i,j, k,l}(\omega_{k,l})\)
 (see \cref{eqn:cross terms density matrix evolution}).
 \begin{align}
-    1 - N_3 & = \frac{1}{1 + \exp{(-\beta(E_3 - \mu))}}                                  \\
-            & = \frac{1}{1 + \exp{(-\beta(E_1 + \omega - \mu))}}                         \\
-            & \sim \frac{1}{2 + -\beta(E_1 + \omega - \mu)}                              \\
-            & \sim \frac{1}{(1 - \frac{\beta \omega}{2})(2 + -\beta(E_1  - \mu))}        \\
-            & \sim \exp{(\frac{\beta \omega}{2})}\frac{1}{1 + \exp{(-\beta(E_1 - \mu))}}
+  1 - N_3 & = \frac{1}{1 + \exp{(-\beta(E_3 - \mu))}}                                  \\
+          & = \frac{1}{1 + \exp{(-\beta(E_1 + \omega - \mu))}}                         \\
+          & \sim \frac{1}{2 + -\beta(E_1 + \omega - \mu)}                              \\
+          & \sim \frac{1}{(1 - \frac{\beta \omega}{2})(2 + -\beta(E_1  - \mu))}        \\
+          & \sim \exp{(\frac{\beta \omega}{2})}\frac{1}{1 + \exp{(-\beta(E_1 - \mu))}}
 \end{align}
 
 We then discard the first part of the integral by noting no
@@ -176,63 +178,63 @@ terms with \(\omega = 0\) appear in the
 final expression for \(\dot{\rho}\), and note
 \(\omega \ll k_1\) at the fermi surface.
 \begin{align}
-    \Gamma_{i,j, k,l}(\omega_{k,l}) & =\begin{aligned}[t]
-        \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
-        \frac{m{(4\pi)}^2 k_1^4 dk_1}{{(2\pi)}^6\sqrt{k_1^2 - 2m\omega}}
-        V_{i,j} V_{k,l} [ N_1 (1 - N_1)]
-    \end{aligned} \\
-                                    & =\begin{aligned}[t]
-        \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
-        \frac{m k_1^3 dk_1}{4\pi^4}
-        V_{i,j} V_{k,l} [ N_1 (1 - N_1)]
-    \end{aligned}
+  \Gamma_{i,j, k,l}(\omega_{k,l}) & =\begin{aligned}[t]
+    \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
+    \frac{m{(4\pi)}^2 k_1^4 dk_1}{{(2\pi)}^6\sqrt{k_1^2 - 2m\omega}}
+    V_{i,j} V_{k,l} [ N_1 (1 - N_1)]
+  \end{aligned} \\
+                                  & =\begin{aligned}[t]
+    \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
+    \frac{m k_1^3 dk_1}{4\pi^4}
+    V_{i,j} V_{k,l} [ N_1 (1 - N_1)]
+  \end{aligned}
 \end{align}
 we expand \(N_1 (1 - N_1)\) about \(k_1 = k_f\)
 \begin{align}
-    N_1 (1 - N_1) & = \frac{1}{1 + \exp{\beta \Delta E}}
-    \frac{1}{1 + \exp{-\beta \Delta E}}                                                \\
-                  & \sim \frac{1}{2 + \beta \Delta E + \frac{{(\beta \Delta E)}^2}{2}}
-    \frac{1}{2 - \beta \Delta E + \frac{{(\beta \Delta E)}^2}{2}}                      \\
-                  & = \frac{1}{4}
-    \frac{1}{1 + \frac{\beta \Delta E}{2} + \frac{{(\beta \Delta E)}^2}{4}}
-    \frac{1}{1 - \frac{\beta \Delta E}{2} + \frac{{(\beta \Delta E)}^2}{4}}            \\
-                  & \sim \begin{aligned}[t]
-        \frac{1}{4}
-         & (1 - \frac{\beta \Delta E}{2} - \frac{{(\beta \Delta E)}^2}{4} + {(\frac{\beta \Delta E}{2})}^2) \\
-         & (1 + \frac{\beta \Delta E}{2} - \frac{{(\beta \Delta E)}^2}{4} + {(\frac{\beta \Delta E}{2})}^2)
-    \end{aligned}                                    \\
-                  & = \frac{1}{4}(1 - \frac{{(\beta \Delta E)}^2}{4})                  \\
-                  & \sim \frac{1}{4}\exp{(- \frac{{(\beta \Delta E)}^2}{4})}
+  N_1 (1 - N_1) & = \frac{1}{1 + \exp{\beta \Delta E}}
+  \frac{1}{1 + \exp{-\beta \Delta E}}                                                \\
+                & \sim \frac{1}{2 + \beta \Delta E + \frac{{(\beta \Delta E)}^2}{2}}
+  \frac{1}{2 - \beta \Delta E + \frac{{(\beta \Delta E)}^2}{2}}                      \\
+                & = \frac{1}{4}
+  \frac{1}{1 + \frac{\beta \Delta E}{2} + \frac{{(\beta \Delta E)}^2}{4}}
+  \frac{1}{1 - \frac{\beta \Delta E}{2} + \frac{{(\beta \Delta E)}^2}{4}}            \\
+                & \sim \begin{aligned}[t]
+    \frac{1}{4}
+     & (1 - \frac{\beta \Delta E}{2} - \frac{{(\beta \Delta E)}^2}{4} + {(\frac{\beta \Delta E}{2})}^2) \\
+     & (1 + \frac{\beta \Delta E}{2} - \frac{{(\beta \Delta E)}^2}{4} + {(\frac{\beta \Delta E}{2})}^2)
+  \end{aligned}                                    \\
+                & = \frac{1}{4}(1 - \frac{{(\beta \Delta E)}^2}{4})                  \\
+                & \sim \frac{1}{4}\exp{(- \frac{{(\beta \Delta E)}^2}{4})}
 \end{align}
 The sharp exponential decay justifies
 this expansion. Going back to the
 integral we have
 \begin{align}
-    \Gamma_{i,j, k,l}(\omega_{k,l}) & =\begin{aligned}[t]
-        \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
-        \frac{m k_1^3 dk_1}{{(2\pi)}^4}
-        V_{i,j} V_{k,l} \exp{(- \frac{{(\beta \Delta E)}^2}{4})}
-    \end{aligned} \\
-                                    & =\begin{aligned}[t]
-        \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
-        \frac{m k_1^3 dk_1}{{(2\pi)}^4}
-        V_{i,j} V_{k,l} \exp{(- \frac{{(\frac{\beta \hbar^2}{2 m}(k_1^2 - k_f^2))}^2}{4})}
-    \end{aligned} \\
-                                    & =\begin{aligned}[t]
-        \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
-        \frac{m k_f^2 du}{2{(2\pi)}^4}
-        V_{i,j} V_{k,l} \exp{(- \frac{\beta^2 \hbar^4}{{(4m)}^2} u^2)}
-    \end{aligned} \\
-                                    & =\begin{aligned}[t]
-        \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \frac{m k_f^2 }{{(2\pi)}^4}
-        V_{i,j} V_{k,l} \sqrt{\pi} \frac{2m}{\beta \hbar^2}
-    \end{aligned}
+  \Gamma_{i,j, k,l}(\omega_{k,l}) & =\begin{aligned}[t]
+    \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
+    \frac{m k_1^3 dk_1}{{(2\pi)}^4}
+    V_{i,j} V_{k,l} \exp{(- \frac{{(\beta \Delta E)}^2}{4})}
+  \end{aligned} \\
+                                  & =\begin{aligned}[t]
+    \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
+    \frac{m k_1^3 dk_1}{{(2\pi)}^4}
+    V_{i,j} V_{k,l} \exp{(- \frac{{(\frac{\beta \hbar^2}{2 m}(k_1^2 - k_f^2))}^2}{4})}
+  \end{aligned} \\
+                                  & =\begin{aligned}[t]
+    \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \int &
+    \frac{m k_f^2 du}{2{(2\pi)}^4}
+    V_{i,j} V_{k,l} \exp{(- \frac{\beta^2 \hbar^4}{{(4m)}^2} u^2)}
+  \end{aligned} \\
+                                  & =\begin{aligned}[t]
+    \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})} \frac{m k_f^2 }{{(2\pi)}^4}
+    V_{i,j} V_{k,l} \sqrt{\pi} \frac{2m}{\beta \hbar^2}
+  \end{aligned}
 \end{align}
 checking the units of \(\Gamma \) we find
 \begin{align}
-    [\Gamma] & = {[kg]}^2[m^{-2}]{[kgm^5s^{-2}]}^2{[kgm^2s^{-2}]}^{1}{[kg m^2 s^{-1}]}^{-2} \\
-             & = [{kg}^2 m^{-2} m^{6} s^{-2} {kg}^{1} m^{2} s^{-2}]                         \\
-             & = [{kg}^3 m^{6}s^{-4}]
+  [\Gamma] & = {[kg]}^2[m^{-2}]{[kgm^5s^{-2}]}^2{[kgm^2s^{-2}]}^{1}{[kg m^2 s^{-1}]}^{-2} \\
+           & = [{kg}^2 m^{-2} m^{6} s^{-2} {kg}^{1} m^{2} s^{-2}]                         \\
+           & = [{kg}^3 m^{6}s^{-4}]
 \end{align}
 to recover the correct units of \(s^{-1}\) we
 therefore divide by \(\hbar^3 \) which was previously
@@ -243,15 +245,15 @@ taken to be 1. We can also write
 where \(\mathcal{C}_{i,j}\) is the hydrogen
 overlap factor TODO-CITE
 \begin{align}
-    \Gamma_{i,j, k,l}(\omega_{k,l}) & =
-    \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})}
-    \frac{m k_f^2 }{{(2\pi)}^4}
-    \mathcal{C}_{i,j} \mathcal{C}_{k,l}
-    \sqrt{\pi} \frac{2m}{\beta \hbar^5} {(\frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2})}^2 \\
-                                    & =
-    \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})}
-    \mathcal{C}_{i,j} \mathcal{C}_{k,l}
-    \sqrt{\pi} \frac{8 k_f^2 \epsilon_0^2 \hbar^3}{\beta e^4 m^2}
+  \Gamma_{i,j, k,l}(\omega_{k,l}) & =
+  \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})}
+  \frac{m k_f^2 }{{(2\pi)}^4}
+  \mathcal{C}_{i,j} \mathcal{C}_{k,l}
+  \sqrt{\pi} \frac{2m}{\beta \hbar^5} {(\frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2})}^2 \\
+                                  & =
+  \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})}
+  \mathcal{C}_{i,j} \mathcal{C}_{k,l}
+  \sqrt{\pi} \frac{8 k_f^2 \epsilon_0^2 \hbar^3}{\beta e^4 m^2}
 \end{align}
 
 If we go back to calculate the
@@ -261,37 +263,37 @@ temperature limit and noting
 particle number is constant
 with temperature)
 \begin{align}
-    \Gamma_{i,j, k,l}(\omega) & =
-    \sum_{s^1,s^3} \int_0^{k_f}
-    \frac{d^3\vec{k}_1}{{(2\pi)}^3}
-    \frac{d^3\vec{k}_3}{{(2\pi)}^3}
-    V_{i,j} V_{k,l} [
-    N_1 N_3 \delta_{w, 0} \frac{m}{k_3}] \\
-                              & =
-    \sum_{s^1,s^3} \int_0^{k_f}
-    \frac{4\pi k_1^2 dk_1}{{(2\pi)}^3}
-    \frac{4 \pi m_e k_3 dk_3}{{(2\pi)}^3}
-    V_{i,j} V_{k,l} \delta_{w, 0}        \\
-                              & =
-    \sum_{s^1,s^3} \frac{4\pi k_f^3 m_e}{3{(2\pi)}^3}
-    \frac{2 \pi k_f^2}{{(2\pi)}^3}
-    V_{i,j} V_{k,l} \delta_{w, 0}        \\
-                              & =
-    \sum_{s^1,s^3} \frac{4\pi k_f^3 m_e}{3{(2\pi)}^3}
-    \frac{2 \pi k_f^2}{{(2\pi)}^3}
-    V_{i,j} V_{k,l} \delta_{w, 0}        \\
+  \Gamma_{i,j, k,l}(\omega) & =
+  \sum_{s^1,s^3} \int_0^{k_f}
+  \frac{d^3\vec{k}_1}{{(2\pi)}^3}
+  \frac{d^3\vec{k}_3}{{(2\pi)}^3}
+  V_{i,j} V_{k,l} [
+  N_1 N_3 \delta_{w, 0} \frac{m}{k_3}] \\
+                            & =
+  \sum_{s^1,s^3} \int_0^{k_f}
+  \frac{4\pi k_1^2 dk_1}{{(2\pi)}^3}
+  \frac{4 \pi m_e k_3 dk_3}{{(2\pi)}^3}
+  V_{i,j} V_{k,l} \delta_{w, 0}        \\
+                            & =
+  \sum_{s^1,s^3} \frac{4\pi k_f^3 m_e}{3{(2\pi)}^3}
+  \frac{2 \pi k_f^2}{{(2\pi)}^3}
+  V_{i,j} V_{k,l} \delta_{w, 0}        \\
+                            & =
+  \sum_{s^1,s^3} \frac{4\pi k_f^3 m_e}{3{(2\pi)}^3}
+  \frac{2 \pi k_f^2}{{(2\pi)}^3}
+  V_{i,j} V_{k,l} \delta_{w, 0}        \\
 \end{align}
 If we add back in the factor of  \(\hbar^3\)
 \begin{align}
-    \Gamma_{i,j, k,l}(0) & =
-    \sum_{s^1,s^3} \frac{4\pi k_f^3 m_e}{3\hbar^3{(2\pi)}^3}
-    \frac{2 \pi k_f^2}{{(2\pi)}^3}
-    \mathcal{C}_{i,j} \mathcal{C}_{k,l}
-    \delta_{w, 0} {(\frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2})}^2 \\
-                         & =
-    \sum_{s^1,s^3}
-    \frac{8k_f^5 \epsilon_0^2 \hbar^5}{3e^4 m^3}
-    \mathcal{C}_{i,j} \mathcal{C}_{k,l} \delta_{w, 0}
+  \Gamma_{i,j, k,l}(0) & =
+  \sum_{s^1,s^3} \frac{4\pi k_f^3 m_e}{3\hbar^3{(2\pi)}^3}
+  \frac{2 \pi k_f^2}{{(2\pi)}^3}
+  \mathcal{C}_{i,j} \mathcal{C}_{k,l}
+  \delta_{w, 0} {(\frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2})}^2 \\
+                       & =
+  \sum_{s^1,s^3}
+  \frac{8k_f^5 \epsilon_0^2 \hbar^5}{3e^4 m^3}
+  \mathcal{C}_{i,j} \mathcal{C}_{k,l} \delta_{w, 0}
 \end{align}
 If we use dimensional analysis on this term
 we find it is proportional to \(m^{-1}s^{-1}\).
@@ -302,9 +304,9 @@ setting \(k_3 = k_4\)) we would get
 out an extra factor of \(L\). This term
 therefore diverges as \(L \rightarrow \infty \).
 \begin{align}
-    \Gamma_{i,j, k,l}(0) & =
-    L \sum_{s^1,s^3}
-    \frac{8k_f^5 \epsilon_0^2 \hbar^5}{3e^4 m^3}
-    \mathcal{C}_{i,j} \mathcal{C}_{k,l} \delta_{w, 0}
-    \label{eqn:divergent expression for first integral}
+  \Gamma_{i,j, k,l}(0) & =
+  L \sum_{s^1,s^3}
+  \frac{8k_f^5 \epsilon_0^2 \hbar^5}{3e^4 m^3}
+  \mathcal{C}_{i,j} \mathcal{C}_{k,l} \delta_{w, 0}
+  \label{eqn:divergent expression for first integral}
 \end{align}

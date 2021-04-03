@@ -3,46 +3,170 @@ the\ldots, and contains interactions between
 electrons, nickel atoms and
 
 
+
 The \ldots was modeled using a simple
 hamiltonian, assuming
+
+
 
 \ldots system of electrons interacting with
 a single hydrogen atom which would lie at
 either a low or a high energy site
 \begin{equation}
-    \hat{H} = \hat{H}_{free} + \hat{H}_{int}
+  \hat{H} = \hat{H}_{free} + \hat{H}_{int}
 \end{equation}
-where the free hamiltonian is given by
-\begin{eqnarray}
-    \hat{H}_{free} &=& \hat{H}_{e^-} + \hat{H}_{h}\\
-    \hat{H}_{e^-} &=& \sum_{k, s}
-    \frac{\hbar^2 k^2}{2m_e} \hat{b}^\dagger_{k, s} \hat{b}_{k, s}\\
-    \hat{H}_{h} &=&
-    E_0 \hat{a}^\dagger_0 \hat{a}_0
-    + E_1 \hat{a}^\dagger_1 \hat{a}_1
-\end{eqnarray}
-\(\hat{a}^\dagger_i\) is the hydrogen creation
-operator for the site i, and satisfies the standard commutation
-relations for a boson \(\left[ \hat{a}_i, \hat{a}^\dagger_j \right] = \delta_{ij}\),
-and \(\hat{b}^\dagger_{k, s}\) is the electron creation operator
-with spin \(s\) and wavevector \(k\) satisfying the standard
-fermion anti-commutation relations
-\( \{ \hat{b}_{k, s}, \hat{b}^\dagger_{k', s'} \} = \delta_{k k'} \delta_{s s'}\).
+where the free hamiltonian can be separated
+into an electrons and hydrogen component
+\begin{equation}
+  \hat{H}_{free} =
+  \hat{H}_{e^-} + \hat{H}_{h}\\
+\end{equation}
 
-TODO- SHOW THIS
+\subsection{Electron States}
+For the purpose of this model the electrons
+were assumed to be free, allowing
+us expand the electron
+hamiltonian using the plane wave
+basis
+\begin{equation}
+  \hat{H}_{e^-} = \sum_{k, s}
+  \frac{\hbar^2 k^2}{2m_e} \hat{b}^\dagger_{k, s} \hat{b}_{k, s}\\
+\end{equation}
+where \(\hat{b}^\dagger_{k, s}\)
+is the electron creation operator
+with spin \(s\) and wavevector
+\(k\) satisfying the standard
+fermion anti-commutation relations
+\( \{ \hat{b}_{k, s}, \hat{b}^\dagger_{k', s'} \}
+= \delta_{k k'} \delta_{s s'}\).
+
+Nickel is arranged in an FCC (cite??),
+with a lattice constant of
+\(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753},
+which gives a Nickel density of
+\(9.34\times{}10^{28}m^{-3}\).
+Assuming both of the 2 valence
+electrons on Nickel are completely
+delocalised in
+the free electron gas we
+find an electron density of
+\(n = 1.87\times{}10^{29} m^{-3}\).
+We then used this value to calculate
+the fermi-wavevector and fermi-energy of
+Nickel~\cite{KittelCharles1953Itss}
+\begin{align}
+  \epsilon_f & = \frac{\hbar^2}{2m} {(3\pi^2n)}^{2/3} \\
+  k_f^3      & = 3 \pi^2 n
+\end{align}
+which gives a value of
+\begin{align}
+  \epsilon_f & = 1.91\times{}10^{-18}J     \\
+  k_f        & = 1.77\times{}10^{10}m^{-1}
+\end{align}
+From measurements of the optical
+properties of Nickel the
+fermi energy is found to
+be slightly lower
+at only
+\(1.24\times{} 10^{-18}J\)~\cite{PhysRev.131.2469},
+\ldots possibly due to the two
+valence electrons not fully delocalised.
+
+POSSIBLY IN IMPROVEMENTS SECTIONS
+The true fermi surface
+of Nickel is also not completely
+spherical~\cite{FermiSufaceNickel},
+and has a different level for different spin
+cannot expand in plane waves
+however \ldots we assume it is.
+
+\subsection{Hydrogen States}
+The hydrogen states produced
+taking into account interaction with
+the \(Ni\) lattice, with the form
+of the wavefunctions taken
+from previous DFT calculations. TODO-CITE
+
+These calculations gave hydrogen
+states localised at two positions
+within the material, at a lower energy
+`FCC' site and a higher energy
+`HCP' site. We expand the hydrogen
+hamiltonian in this basis
+\begin{equation}
+  \hat{H}_{h} =
+  E_0 \hat{a}^\dagger_0 \hat{a}_0
+  + E_1 \hat{a}^\dagger_1 \hat{a}_1
+\end{equation}
+where \(0\) denotes the FCC site and \(1\)
+denotes the HCP site,
+with \(\hat{a}^\dagger_i\) the hydrogen creation
+operator for the site i
+which satisfies the standard commutation
+relations for a boson
+\(\left[ \hat{a}_i, \hat{a}^\dagger_j \right]
+= \delta_{ij}\).
+
+Although the DFT calculation
+also provides a theoretical calculation
+of the hydrogen energies the
+energy of the states used in the
+model were
+taken from direct spin-echo measurements.
+These measurements gave a value of
+\begin{equation}
+  \Delta{}E_{hyd} = E_1 - E_0
+  = 3.04\pm0.16\times{}10^{-21} J
+  \label{eqn:hydrogen energy difference}
+\end{equation}
+
+
+\subsection{Electron Hydrogen Interaction}
+The electron hydrogen interaction can
+be described simply by introducing
+the electron and hydrogen field
+operators \(\hat{\psi}_e\) and
+\(\hat{\psi}_h\)~\cite{nazarov_danon_2013}
+\begin{equation}
+  \hat{H}_{int} = \int\int{d\vec{r} d\vec{r}'
+    V(\vec{r}-\vec{r}')
+    \hat{\psi}^\dagger_h(\vec{r})
+    \hat{\psi}^\dagger_e(\vec{r'})
+    \hat{\psi}_e(\vec{r'})
+    \hat{\psi}_h(\vec{r})}
+\end{equation}
+where \(V(\vec{r})\) is
+the electron-hydrogen
+interaction potential.
+We first expand out the
+electron operator in
+the free electron basis state
+\begin{align}
+  \hat{\psi}_e(\vec{r}) & = \sum_{k, s}
+  \braket{\vec{r}|\vec{k}}
+  \hat{b}_{k, s}                                      \\
+                        & = \frac{1}{L^{\frac{3}{2}}}
+  \sum_{k, s} \exp{(i\vec{k}.\vec{r})}
+  \hat{b}_{k, s}
+\end{align}
+TODO DERIVATION
 \ldots giving us the
 \begin{equation}
-    \hat{H}_{int} = \frac{1}{L^3}\sum_{k,s,k',s'}\hat{b}^\dagger_{k',s'}\hat{b}_{k,s}\tilde{V}(\vec{q})\int{d\vec{r}
-    \hat{\psi}_h^{\dagger}\hat{\psi}_h \exp(i\vec{q}.\vec{r})}
+  \hat{H}_{int} = \frac{1}{L^3}
+  \sum_{k,s,k',s'}
+  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+  \tilde{V}(\vec{q})\int{d\vec{r}
+  \hat{\psi}_h^{\dagger}\hat{\psi}_h
+  \exp(i\vec{q}.\vec{r})}
 \end{equation}
 We then gather the q dependant terms into
 an effective potential
 \begin{equation}
-    \hat{H}_{int} = \sum_{k,s,k',s',i,j}
-    {\tilde{V}_{eff}(\vec{q})}_{i,j}
-    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
-    \hat{a}^\dagger_{i}\hat{a}_{j}
-    \label{eqn:interaction hamiltonian in k}
+  \hat{H}_{int} = \sum_{k,s,k',s',i,j}
+  {\tilde{V}_{eff}(\vec{q})}_{i,j}
+  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+  \hat{a}^\dagger_{i}\hat{a}_{j}
+  \label{eqn:interaction hamiltonian in k}
 \end{equation}
 
 \subsection{The Electron Hydrogen Potential}
@@ -58,14 +182,14 @@ the hydrogen lie close to the 1s groundstate.
 
 The potential is then given by the equation
 \begin{equation}
-    V(\vec{r}) = \frac{e^2}{4 \pi \epsilon_0}(
-    -\frac{1}{r}
-    + \int{\frac{\abs{\phi(\vec{r}')}^2}{
-            \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
+  V(\vec{r}) = \frac{e^2}{4 \pi \epsilon_0}(
+  -\frac{1}{r}
+  + \int{\frac{\abs{\phi(\vec{r}')}^2}{
+      \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
 \end{equation}
 where
 \begin{equation}
-    \phi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
+  \phi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
 \end{equation}
 is the 1s hydrogen orbital, and \(a_0\) is
 the bohr radius. We then fourier
@@ -73,15 +197,15 @@ transform this expression
 (see \cref{app:interaction potential calculation})
 to find
 \begin{eqnarray}
-    V(\vec{q}) &=& \frac{e^2}{\epsilon_0 q^2}(
-    \frac{\alpha^4}{{(\alpha^2 + q^2)}^2} - 1
-    )
+  V(\vec{q}) &=& \frac{e^2}{\epsilon_0 q^2}(
+  \frac{\alpha^4}{{(\alpha^2 + q^2)}^2} - 1
+  )
 \end{eqnarray}
 with \(\alpha = \frac{2}{a_0}\). If we expand
 about \(q=0\) we find
 \begin{eqnarray}
-    V(q) &\sim&\frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)\\
-    {} &=& -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
+  V(q) &\sim&\frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)\\
+  {} &=& -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
 \end{eqnarray}
 taking \(q = k_f = 1.175\times{}10^{10}\) TODO- ADD FERMI K CALCULATION
 and \(\alpha = 3.79\times{}10^{10}\) we see the second
@@ -101,12 +225,15 @@ known from previous \ldots DFT Calculations from Jianding's thesis \ldots
 
 The wavefunctions provided by this software however
 were expressed in terms of bloch wavefunctions spread
-through the whole material. To recover a localised
+through the whole material.
+To recover a localised
 wavepacket several of these states were chosen
-centered about \(q=0\). Given these wavefunctions
+centered about \(q=0\).
+TODO-HOW
+Given these wavefunctions
 it was then possible to calculate the fourier
 transform products directly. As there was a fixed
-distance between the \(FCC\) and \(HCP\) lattice
+distance between the FCC and HCP lattice
 sites however the fourier transform was seen to
 oscillate, with a frequency proportional to
 \(\frac{2\pi}{a}\) where \(a\) is the lattice
@@ -114,6 +241,30 @@ constant of \(Ni\). The value of this constant
 is around \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753}
 corresponding to oscillations at
 \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\).
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width= 0.9\linewidth]{Figures/Model/Plot of fourier transform of the wavefunction fccfcc xz plane.png}
+    \subcaption{FCC-FCC Fourier Transform in xz Plane}\label{fig:diagonal hydrogen matrix element no oscillation}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width= 0.9\linewidth]{Figures/Model/Plot of fourier transform of the wavefunction.png}
+    \subcaption{FCC-HCP Fourier Transform in xy Plane}\label{fig:cross hydrogen matrix element oscillation}
+  \end{subfigure}
+  \caption{Results of the hydrogen fourier transform calculations.
+  FCC-FCC and HCP-HCP calculations
+  (\cref{fig:diagonal hydrogen matrix element no oscillation})
+  show a smooth curve, with a normalised
+  value of one at \(q=0\).
+  The FCC-HCP fourier transform
+  (\cref{fig:cross hydrogen matrix element oscillation})
+  however show oscillations with a characteristic
+  wavevector \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\),
+  corresponding to the lattice vector of \(Ni\).}
+\end{figure}
 
 In theory this should have a noticeable
 effect on the matrix element, with the
@@ -128,13 +279,16 @@ potential required for the simulation.
 
 TODO- The calculated values of the integrals!
 
-\section{}
+\subsection{}
 It is often beneficial to separate the interaction
 hamiltonian (\cref{eqn:interaction hamiltonian in k})
 into a system and environment contribution.
 \begin{align}
-    \hat{H}_{int} & = \sum_{i,j} \hat{a}^\dagger_{i}\hat{a}_{j}
-    \sum_{k,s,k',s'} {\tilde{V}_{eff}(\vec{q})}_{i,j}
-    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}                                                              \\
-                  & = \sum_{i,j} \hat{S}_{i,j} \hat{E}_{i,j}\label{eqn:split interaction hamiltonian}
+  \hat{H}_{int} & =
+  \sum_{i,j}
+  \hat{a}^\dagger_{i}\hat{a}_{j}
+  \sum_{k,s,k',s'}
+  {\tilde{V}_{eff}(\vec{q})}_{i,j}
+  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}                                                              \\
+                & = \sum_{i,j} \hat{S}_{i,j} \hat{E}_{i,j}\label{eqn:split interaction hamiltonian}
 \end{align}

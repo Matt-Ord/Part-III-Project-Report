@@ -3,17 +3,21 @@
 
 \usepackage{mathtools}
 \usepackage{braket}
+\usepackage{amssymb}
 
 \usepackage{cleveref}
+\usepackage{biblatex}
+\addbibresource{main.bib}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{booktabs}
 
 % vectors bold not underlined
 \renewcommand{\vec}[1]{\mathbf{#1}}
 % abs symbol
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
-
-%biblatex %cspell:disable-line
-\usepackage{biblatex}
-\addbibresource{main.bib}
 
 \title{TODO Name Project}
 \author{Matthew Ord}
@@ -38,14 +42,12 @@ How does it fit into the bigger picture
 \section{Lit review}
 Outline the state of the art
 
-\section{Methods}
-How to repeat such an experiment
-
 \section{Theory}
 Explain what the equations mean
 \input{Sections/the model.tex}
 
 \section{Simulating The System}
+how to setup the experiment
 \input{Sections/simulation.tex}
 
 \section{Results Of The Simulation}
@@ -58,10 +60,6 @@ field etc
 
 \section{The Redfield Equation}
 \input{Sections/redfield.tex}
-
-\section{The Modified Redfield Equation}
-
-
 
 \section{results}
 Graphs should show units, and figure captions should explain other variable values such as Temperature, B
