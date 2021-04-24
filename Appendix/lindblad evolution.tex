@@ -1,111 +1,112 @@
 Starting from the
 expression for \(\dot{\rho}(t)\)
-TODO-CITE
+in \cref{sec:the redfield assumption}
 \begin{align}
-    \dot{\hat{\rho{}(t)}} = \begin{aligned}[t]
-        \sum_{i,j,k, l} &
-        \exp{(-i(\omega_{i,j}-\omega_{k,l})t)}
-        \Gamma_{i,j;k, l}(\omega_{k,l})
-        [S_{k, l}\hat{\rho(t)},
-        S^\dagger_{i,j}]                                       \\
-        +               & \exp{(i(\omega_{i,j}-\omega_{k,l}))}
-        \Gamma^*_{k, l; i,j}(\omega_{i,j})
-        [S_{k, l},
-            \hat{\rho(t)} S^\dagger_{i,j}]
-    \end{aligned}
+  \dot{\hat{\rho}}(t) = \begin{aligned}[t]
+    \sum_{i,j,k, l} &
+    \exp{(-i(\omega_{i,j}-\omega_{k,l})t)}
+    \Gamma_{i,j;k, l}(\omega_{k,l})
+    [S_{k, l}\hat{\rho}(t),
+    S^\dagger_{i,j}]                                       \\
+    +               & \exp{(i(\omega_{i,j}-\omega_{k,l}))}
+    \Gamma^*_{k, l; i,j}(\omega_{i,j})
+    [S_{k, l},
+      \hat{\rho}(t) S^\dagger_{i,j}]
+  \end{aligned}
 \end{align}
 where \(S_{i,j}= \hat{a}^\dagger_i \hat{a}_j\),
 \(\omega_{i,j} = E_i - E_j\), the energy of
 the hydrogen atoms excluding the interaction, and
-gamma is as defined in TODO-reference. To
+gamma is as defined in
+\cref{eqn:gamma definition}. To
 make the following calculation easier we deal
 with a single component of \(\rho \), and
 denote \(\Delta{}E = \omega_{i,j}-\omega_{k,l}\)
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{n} = \begin{aligned}[t]
-        \sum_{i,j,k, l} &
-        \exp{(-i\Delta{}Et)}
-        \Gamma_{i,j;k, l}(\omega_{k,l})
-        \bra{m}[S_{k, l}\hat{\rho(t)},
-        S^\dagger_{i,j}] \ket{n}               \\
-        +               & \exp{(i\Delta{}E t)}
-        \Gamma^*_{k, l; i,j}(\omega_{i,j})
-        \bra{m}[S_{k, l},
-            \hat{\rho(t)} S^\dagger_{i,j}]\ket{n}
-    \end{aligned}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{n} = \begin{aligned}[t]
+    \sum_{i,j,k, l} &
+    \exp{(-i\Delta{}Et)}
+    \Gamma_{i,j;k, l}(\omega_{k,l})
+    \bra{m}[S_{k, l}\hat{\rho}(t),
+    S^\dagger_{i,j}] \ket{n}               \\
+    +               & \exp{(i\Delta{}E t)}
+    \Gamma^*_{k, l; i,j}(\omega_{i,j})
+    \bra{m}[S_{k, l},
+      \hat{\rho}(t) S^\dagger_{i,j}]\ket{n}
+  \end{aligned}
 \end{align}
 focusing on the commutators we have
 \begin{align}
-    \bra{m}[S_{k, l}\hat{\rho(t)},
-    S^\dagger_{i, j}] \ket{n} & =
-    \sum_{\alpha, \beta} \rho_{\alpha, \beta}\bra{m}
-    [\hat{a}^\dagger_k \hat{a}_l
-        \hat{a}^\dagger_\alpha \hat{a}_\beta,
-        \hat{a}^\dagger_j \hat{a}_i]
-    \ket{n}                       \\
-                              & =
-    \sum_{\alpha, \beta} \rho_{\alpha, \beta}\bra{m}
-    \hat{a}^\dagger_k \hat{a}_l
-    \hat{a}^\dagger_\alpha \hat{a}_\beta
-    \hat{a}^\dagger_j \hat{a}_i
-    -
-    \hat{a}^\dagger_j \hat{a}_i
-    \hat{a}^\dagger_k \hat{a}_l
-    \hat{a}^\dagger_\alpha \hat{a}_\beta
-    \ket{n}                       \\
-                              & =
-    \sum_{\alpha, \beta} \rho_{\alpha, \beta} [
-        \delta_{m, k}\delta_{l, \alpha}
-        \delta_{\beta, j}\delta_{i, n}
-        -\delta_{m, j}\delta_{i, k}
-        \delta_{l, \alpha}\delta_{\beta, n}]
+  \bra{m}[S_{k, l}\hat{\rho}(t),
+  S^\dagger_{i, j}] \ket{n} & =
+  \sum_{\alpha, \beta} \rho_{\alpha, \beta}\bra{m}
+  [\hat{a}^\dagger_k \hat{a}_l
+    \hat{a}^\dagger_\alpha \hat{a}_\beta,
+    \hat{a}^\dagger_j \hat{a}_i]
+  \ket{n}                       \\
+                            & =
+  \sum_{\alpha, \beta} \rho_{\alpha, \beta}\bra{m}
+  \hat{a}^\dagger_k \hat{a}_l
+  \hat{a}^\dagger_\alpha \hat{a}_\beta
+  \hat{a}^\dagger_j \hat{a}_i
+  -
+  \hat{a}^\dagger_j \hat{a}_i
+  \hat{a}^\dagger_k \hat{a}_l
+  \hat{a}^\dagger_\alpha \hat{a}_\beta
+  \ket{n}                       \\
+                            & =
+  \sum_{\alpha, \beta} \rho_{\alpha, \beta} [
+    \delta_{m, k}\delta_{l, \alpha}
+    \delta_{\beta, j}\delta_{i, n}
+    -\delta_{m, j}\delta_{i, k}
+    \delta_{l, \alpha}\delta_{\beta, n}]
 \end{align}
 similarly for the second commutator
 \begin{align}
-    \bra{m}[S_{k, l},
-    \hat{\rho(t)}S^\dagger_{i, j}] \ket{n} & =
-    \sum_{\alpha, \beta} \rho_{\alpha, \beta}\bra{m}
-    [\hat{a}^\dagger_k \hat{a}_l
-        ,\hat{a}^\dagger_\alpha \hat{a}_\beta
-        \hat{a}^\dagger_j \hat{a}_i]
-    \ket{n}                                    \\
-                                           & =
-    \sum_{\alpha, \beta} \rho_{\alpha, \beta} [
-        \delta_{m, k}\delta_{l, \alpha}
-        \delta_{\beta, j}\delta_{i, n}
-        -\delta_{m, \alpha}\delta_{\beta, j}
-        \delta_{i, k}\delta_{l, n}]
+  \bra{m}[S_{k, l},
+  \hat{\rho}(t)S^\dagger_{i, j}] \ket{n} & =
+  \sum_{\alpha, \beta} \rho_{\alpha, \beta}\bra{m}
+  [\hat{a}^\dagger_k \hat{a}_l
+    ,\hat{a}^\dagger_\alpha \hat{a}_\beta
+    \hat{a}^\dagger_j \hat{a}_i]
+  \ket{n}                                    \\
+                                         & =
+  \sum_{\alpha, \beta} \rho_{\alpha, \beta} [
+    \delta_{m, k}\delta_{l, \alpha}
+    \delta_{\beta, j}\delta_{i, n}
+    -\delta_{m, \alpha}\delta_{\beta, j}
+    \delta_{i, k}\delta_{l, n}]
 \end{align}
 subbing into the full expression for
 \(\Gamma \) we find
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{n} = \begin{aligned}[t]
-        \sum_{i,j,k, l, \alpha, \beta} &
-        \exp{(-i\Delta{}Et)}
-        \Gamma_{i,j;k, l}(\omega_{k,l})
-        \rho_{\alpha, \beta} [         &
-            \delta_{m, k}\delta_{l, \alpha}
-        \delta_{\beta, j}\delta_{i, n}                          \\
-                                       &                      &
-            -\delta_{m, j}\delta_{i, k}
-        \delta_{l, \alpha}\delta_{\beta, n}]                    \\
-        +                              & \exp{(i\Delta{}E t)}
-        \Gamma^*_{k, l; i,j}(\omega_{i,j})
-        \rho_{\alpha, \beta} [         &
-            \delta_{m, k}\delta_{l, \alpha}
-        \delta_{\beta, j}\delta_{i, n}                          \\
-                                       &                      &
-            - \delta_{m, \alpha}\delta_{\beta, j}
-            \delta_{i, k}\delta_{l, n}]
-    \end{aligned}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{n} = \begin{aligned}[t]
+    \sum_{i,j,k, l, \alpha, \beta} &
+    \exp{(-i\Delta{}Et)}
+    \Gamma_{i,j;k, l}(\omega_{k,l})
+    \rho_{\alpha, \beta} [         &
+      \delta_{m, k}\delta_{l, \alpha}
+    \delta_{\beta, j}\delta_{i, n}                          \\
+                                   &                      &
+      -\delta_{m, j}\delta_{i, k}
+    \delta_{l, \alpha}\delta_{\beta, n}]                    \\
+    +                              & \exp{(i\Delta{}E t)}
+    \Gamma^*_{k, l; i,j}(\omega_{i,j})
+    \rho_{\alpha, \beta} [         &
+      \delta_{m, k}\delta_{l, \alpha}
+    \delta_{\beta, j}\delta_{i, n}                          \\
+                                   &                      &
+      - \delta_{m, \alpha}\delta_{\beta, j}
+      \delta_{i, k}\delta_{l, n}]
+  \end{aligned}
 \end{align}
 
 \subsection{Rotating Wave Approximation}
 To apply the rotating wave approximation we consider
 two cases
 \begin{itemize}
-    \item \(i=j\), \(k=l\)
-    \item \(i=k\), \(j=l\)
+  \item \(i=j\), \(k=l\)
+  \item \(i=k\), \(j=l\)
 \end{itemize}
 however we need to make sure we don't
 double count. This is done using
@@ -118,33 +119,33 @@ function
 this is done on each group of
 \(\delta \) functions separately
 \begin{align}
-    (1) & =  (\delta_{i,j}\delta_{k,l}
-    + \delta_{i,k}\delta_{j,l}
-    - \delta_{i,j}\delta_{k,l}\delta_{i,k}) (
-    \delta_{m, k}\delta_{l, \alpha}
-    \delta_{\beta, j}\delta_{i, n})                          \\
-        & =  (\delta_{m, k, l, \alpha}\delta_{\beta, j,i, n}
-    + \delta_{i, n, m, k}\delta_{l, \alpha, \beta, j}
-    - \delta_{m, k, l, \alpha, \beta, j,i, n})               \\
-    (2) & =  (\delta_{i,j}\delta_{k,l}
-    + \delta_{i,k}\delta_{j,l}
-    - \delta_{i,j}\delta_{k,l}
-    \delta_{i,k}) (
-    \delta_{m, j}\delta_{i, k}
-    \delta_{l, \alpha}\delta_{\beta, n})                     \\
-        & =  (\delta_{m, j,i, k,l, \alpha}\delta_{\beta, n}
-    + \delta_{m, j,l, \alpha}\delta_{i, k}\delta_{\beta, n}
-    - \delta_{m, j,i, k, l, \alpha}\delta_{\beta, n} )       \\
-    (3) & =  (\delta_{i,j}\delta_{k,l}
-    + \delta_{i,k}\delta_{j,l}
-    - \delta_{i,j}\delta_{k,l}
-    \delta_{i,k}) (
-    \delta_{m, \alpha}\delta_{\beta, j}
-    \delta_{i, k}\delta_{l, n})                              \\
-        & =  (\delta_{m, \alpha}\delta_{\beta, j,i, k, l, n}
-    + \delta_{m, \alpha}\delta_{\beta, j,l, n}
-    \delta_{i, k}
-    - \delta_{m, \alpha}\delta_{\beta, j,i, k,l, n})
+  (1) & =  (\delta_{i,j}\delta_{k,l}
+  + \delta_{i,k}\delta_{j,l}
+  - \delta_{i,j}\delta_{k,l}\delta_{i,k}) (
+  \delta_{m, k}\delta_{l, \alpha}
+  \delta_{\beta, j}\delta_{i, n})                          \\
+      & =  (\delta_{m, k, l, \alpha}\delta_{\beta, j,i, n}
+  + \delta_{i, n, m, k}\delta_{l, \alpha, \beta, j}
+  - \delta_{m, k, l, \alpha, \beta, j,i, n})               \\
+  (2) & =  (\delta_{i,j}\delta_{k,l}
+  + \delta_{i,k}\delta_{j,l}
+  - \delta_{i,j}\delta_{k,l}
+  \delta_{i,k}) (
+  \delta_{m, j}\delta_{i, k}
+  \delta_{l, \alpha}\delta_{\beta, n})                     \\
+      & =  (\delta_{m, j,i, k,l, \alpha}\delta_{\beta, n}
+  + \delta_{m, j,l, \alpha}\delta_{i, k}\delta_{\beta, n}
+  - \delta_{m, j,i, k, l, \alpha}\delta_{\beta, n} )       \\
+  (3) & =  (\delta_{i,j}\delta_{k,l}
+  + \delta_{i,k}\delta_{j,l}
+  - \delta_{i,j}\delta_{k,l}
+  \delta_{i,k}) (
+  \delta_{m, \alpha}\delta_{\beta, j}
+  \delta_{i, k}\delta_{l, n})                              \\
+      & =  (\delta_{m, \alpha}\delta_{\beta, j,i, k, l, n}
+  + \delta_{m, \alpha}\delta_{\beta, j,l, n}
+  \delta_{i, k}
+  - \delta_{m, \alpha}\delta_{\beta, j,i, k,l, n})
 \end{align}
 applying this to the full expression
 for gamma we find
@@ -152,136 +153,136 @@ for gamma we find
 
 
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{n} & = \begin{aligned}[t]
-        \sum_{i,j,k, l, \alpha, \beta} &
-        \Gamma_{i,j;k, l}(\omega_{k,l})
-        \rho_{\alpha, \beta} [                             \\
-                                       &
-            (\delta_{m, k, l, \alpha}\delta_{\beta, j,i, n}
-            + \delta_{i, n, m, k}\delta_{l, \alpha, \beta, j}
-        - \delta_{m, k, l, \alpha, \beta, j,i, n})         \\
-                                       &
-            - (    \delta_{m, j,i, k,l, \alpha}\delta_{\beta, n}
-            + \delta_{m, j,l, \alpha}\delta_{i, k}\delta_{\beta, n}
-        - \delta_{m, j,i, k, l, \alpha}\delta_{\beta, n})] \\
-        +                              &
-        \Gamma^*_{k, l; i,j}(\omega_{i,j})
-        \rho_{\alpha, \beta} [                             \\
-                                       &
-            (\delta_{m, k, l, \alpha}\delta_{\beta, j,i, n}
-            + \delta_{i, n, m, k}\delta_{l, \alpha, \beta, j}
-        - \delta_{m, k, l, \alpha, \beta, j,i, n})         \\
-                                       &
-            - (\delta_{m, \alpha}\delta_{\beta, j,i, k, l, n}
-            + \delta_{m, \alpha}\delta_{\beta, j,l, n}
-            \delta_{i, k}
-            - \delta_{m, \alpha}\delta_{\beta, j,i, k,l, n})]
-    \end{aligned}  \\
-                                         & = \begin{aligned}[t]
-        \sum_{i} &
-        [ (\Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
-        + \Gamma_{n,i;n, i}(\omega_{n,i})\rho_{i, i}\delta_{m,n}     \\ &
-        - \Gamma_{n,n;n,n}(\omega_{n,n})\rho_{n,n}\delta_{m,n,i})    \\
-                 &
-                - (\Gamma_{m,m;m,m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
-        +\Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}                  \\ &
-        -\Gamma_{m,m;m,m}(\omega_{m,m})\rho_{m, n}\delta_{i,n})]     \\
-        +        &
-        [(\Gamma^*_{m,m; n,n}(\omega_{n,n})\rho_{m, n}\delta_{i,n}
-        + \Gamma^*_{m,i; m,i}(\omega_{m,i})\rho_{i, i}\delta_{n, m}  \\ &
-        - \Gamma^*_{n,n,n,n}(\omega_{n,n})\rho_{n,n}\delta_{n, m,i}) \\
-                 &
-                - (\Gamma^*_{n,n;n,n}(\omega_{n,n})\rho_{m, n}\delta_{i,n}
-        + \Gamma^*_{i, n; i,n}(\omega_{i,n})\rho_{m, n}              \\ &
-                - \Gamma^*_{n,n,n,n}(\omega_{n,n})\rho_{m, n}\delta_{i, n})]
-    \end{aligned}  \\
-                                         & = \begin{aligned}[t]
-        \sum_{i} &
-        [ \Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
-        + \Gamma_{n,i;n, i}(\omega_{n,i})\rho_{i, i}\delta_{m,n}    \\
-                 &
-                - \Gamma_{n,n;n,n}(\omega_{n,n})\rho_{n,n}\delta_{m,n,i}
-        - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}]               \\
-        +        &
-        [ \Gamma^*_{m,m; n,n}(\omega_{n,n})\rho_{m, n}\delta_{i,n}
-        + \Gamma^*_{m,i; m,i}(\omega_{m,i})\rho_{i, i}\delta_{n, m} \\
-                 &
-                - \Gamma^*_{n,n,n,n}(\omega_{n,n})\rho_{n,n}\delta_{n, m,i}
-                - \Gamma^*_{i,n; i,n}(\omega_{i,n})\rho_{m, n}]
-    \end{aligned}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{n} & = \begin{aligned}[t]
+    \sum_{i,j,k, l, \alpha, \beta} &
+    \Gamma_{i,j;k, l}(\omega_{k,l})
+    \rho_{\alpha, \beta} [                             \\
+                                   &
+      (\delta_{m, k, l, \alpha}\delta_{\beta, j,i, n}
+      + \delta_{i, n, m, k}\delta_{l, \alpha, \beta, j}
+    - \delta_{m, k, l, \alpha, \beta, j,i, n})         \\
+                                   &
+      - (    \delta_{m, j,i, k,l, \alpha}\delta_{\beta, n}
+      + \delta_{m, j,l, \alpha}\delta_{i, k}\delta_{\beta, n}
+    - \delta_{m, j,i, k, l, \alpha}\delta_{\beta, n})] \\
+    +                              &
+    \Gamma^*_{k, l; i,j}(\omega_{i,j})
+    \rho_{\alpha, \beta} [                             \\
+                                   &
+      (\delta_{m, k, l, \alpha}\delta_{\beta, j,i, n}
+      + \delta_{i, n, m, k}\delta_{l, \alpha, \beta, j}
+    - \delta_{m, k, l, \alpha, \beta, j,i, n})         \\
+                                   &
+      - (\delta_{m, \alpha}\delta_{\beta, j,i, k, l, n}
+      + \delta_{m, \alpha}\delta_{\beta, j,l, n}
+      \delta_{i, k}
+      - \delta_{m, \alpha}\delta_{\beta, j,i, k,l, n})]
+  \end{aligned}  \\
+                                     & = \begin{aligned}[t]
+    \sum_{i} &
+    [ (\Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
+    + \Gamma_{n,i;n, i}(\omega_{n,i})\rho_{i, i}\delta_{m,n}     \\ &
+    - \Gamma_{n,n;n,n}(\omega_{n,n})\rho_{n,n}\delta_{m,n,i})    \\
+             &
+        - (\Gamma_{m,m;m,m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
+    +\Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}                  \\ &
+    -\Gamma_{m,m;m,m}(\omega_{m,m})\rho_{m, n}\delta_{i,n})]     \\
+    +        &
+    [(\Gamma^*_{m,m; n,n}(\omega_{n,n})\rho_{m, n}\delta_{i,n}
+    + \Gamma^*_{m,i; m,i}(\omega_{m,i})\rho_{i, i}\delta_{n, m}  \\ &
+    - \Gamma^*_{n,n,n,n}(\omega_{n,n})\rho_{n,n}\delta_{n, m,i}) \\
+             &
+        - (\Gamma^*_{n,n;n,n}(\omega_{n,n})\rho_{m, n}\delta_{i,n}
+    + \Gamma^*_{i, n; i,n}(\omega_{i,n})\rho_{m, n}              \\ &
+        - \Gamma^*_{n,n,n,n}(\omega_{n,n})\rho_{m, n}\delta_{i, n})]
+  \end{aligned}  \\
+                                     & = \begin{aligned}[t]
+    \sum_{i} &
+    [ \Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
+    + \Gamma_{n,i;n, i}(\omega_{n,i})\rho_{i, i}\delta_{m,n}    \\
+             &
+        - \Gamma_{n,n;n,n}(\omega_{n,n})\rho_{n,n}\delta_{m,n,i}
+    - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}]               \\
+    +        &
+    [ \Gamma^*_{m,m; n,n}(\omega_{n,n})\rho_{m, n}\delta_{i,n}
+    + \Gamma^*_{m,i; m,i}(\omega_{m,i})\rho_{i, i}\delta_{n, m} \\
+             &
+        - \Gamma^*_{n,n,n,n}(\omega_{n,n})\rho_{n,n}\delta_{n, m,i}
+        - \Gamma^*_{i,n; i,n}(\omega_{i,n})\rho_{m, n}]
+  \end{aligned}
 \end{align}
 to convert \(\Gamma^*\)
 into \(\Gamma \) we use
 \(\Gamma^*_{a,b,c,d} = \Gamma_{c, d, a, b}\)
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{n} & = \begin{aligned}[t]
-        \sum_{i} &
-        [ \Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
-        + \Gamma_{n,i;n, i}(\omega_{n,i})\rho_{i, i}\delta_{m,n} \\
-                 &
-                - \Gamma_{n,n;n,n}(\omega_{n,n})\rho_{n,n}\delta_{m,n,i}
-        - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}]            \\
-        +        &
-        [ \Gamma_{n,n; m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
-        + \Gamma_{m,i;m,i}(\omega_{m,i})\rho_{i, i}\delta_{n, m} \\
-                 &
-                - \Gamma_{n,n,n,n}(\omega_{n,n})\rho_{n,n}\delta_{n, m,i}
-                - \Gamma_{ i,n; i,n}(\omega_{n,i})\rho_{m, n}]
-    \end{aligned} \\
-                                         & = \begin{aligned}[t]
-        \sum_{i} &
-        [2 \Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
-        + 2\Gamma_{n,i;n, i}(\omega_{n,i})\rho_{i, i}\delta_{m,n} \\
-                 &
-                - 2\Gamma_{n,n;n,n}(\omega_{n,n})\rho_{n,n}\delta_{m,n,i}
-        - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}              \\
-                 &
-                - \Gamma_{ i,n; i,n}(\omega_{n,i})\rho_{m, n}]
-    \end{aligned}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{n} & = \begin{aligned}[t]
+    \sum_{i} &
+    [ \Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
+    + \Gamma_{n,i;n, i}(\omega_{n,i})\rho_{i, i}\delta_{m,n} \\
+             &
+        - \Gamma_{n,n;n,n}(\omega_{n,n})\rho_{n,n}\delta_{m,n,i}
+    - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}]            \\
+    +        &
+    [ \Gamma_{n,n; m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
+    + \Gamma_{m,i;m,i}(\omega_{m,i})\rho_{i, i}\delta_{n, m} \\
+             &
+        - \Gamma_{n,n,n,n}(\omega_{n,n})\rho_{n,n}\delta_{n, m,i}
+        - \Gamma_{ i,n; i,n}(\omega_{n,i})\rho_{m, n}]
+  \end{aligned} \\
+                                     & = \begin{aligned}[t]
+    \sum_{i} &
+    [2 \Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
+    + 2\Gamma_{n,i;n, i}(\omega_{n,i})\rho_{i, i}\delta_{m,n} \\
+             &
+        - 2\Gamma_{n,n;n,n}(\omega_{n,n})\rho_{n,n}\delta_{m,n,i}
+    - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}              \\
+             &
+        - \Gamma_{ i,n; i,n}(\omega_{n,i})\rho_{m, n}]
+  \end{aligned}
 \end{align}
 the second and third terms cancel
 for \(i=m\), and the first and
 last two terms cancel for \(m=n\)
 provided \(i = n\)
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{n} & = \begin{aligned}[t]
-        \sum_{i} &
-        [2 \Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
-        + 2\Gamma_{n,\neq n;n, \neq n}(\omega_{n,\neq n})\rho_{\neq n, \neq n}\delta_{m,n, i} \\
-                 &
-                - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}
-                - \Gamma_{ i,n;i,n}(\omega_{n,i})\rho_{m, n}]
-    \end{aligned}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{n} & = \begin{aligned}[t]
+    \sum_{i} &
+    [2 \Gamma_{n,n;m, m}(\omega_{m,m})\rho_{m, n}\delta_{i,n}
+    + 2\Gamma_{n,\neq n;n, \neq n}(\omega_{n,\neq n})\rho_{\neq n, \neq n}\delta_{m,n, i} \\
+             &
+        - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, n}
+        - \Gamma_{ i,n;i,n}(\omega_{n,i})\rho_{m, n}]
+  \end{aligned}
 \end{align}
 If we take \(m=n\)
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{m} & = \begin{aligned}[t]
-        \sum_{i} &
-        [2 \Gamma_{m,m;m, m}(\omega_{m,m})\rho_{m, m}\delta_{i,m}                          \\ &
-        + 2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m}\delta_{m,i} \\
-                 &
-                - 2 \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, m}]
-    \end{aligned}                                                 \\
-                                         & = \begin{aligned}[t]
-        \sum_{i} &
-        [2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m}\delta_{m,i} \\
-                 &
-                -2 \Gamma_{\neq m,m;\neq m, m}(\omega_{\neq m,m})\rho_{m, m}\delta_{m,i}]
-    \end{aligned}                                                 \\
-                                         & = \begin{aligned}[t]
-        [ & 2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m} \\
-        - & 2\Gamma_{\neq m,m;\neq m, m}(\omega_{\neq m,m})\rho_{m, m}]
-    \end{aligned}\label{eqn:cross terms density matrix evolution}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{m} & = \begin{aligned}[t]
+    \sum_{i} &
+    [2 \Gamma_{m,m;m, m}(\omega_{m,m})\rho_{m, m}\delta_{i,m}                          \\ &
+    + 2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m}\delta_{m,i} \\
+             &
+        - 2 \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, m}]
+  \end{aligned}                                                 \\
+                                     & = \begin{aligned}[t]
+    \sum_{i} &
+    [2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m}\delta_{m,i} \\
+             &
+        -2 \Gamma_{\neq m,m;\neq m, m}(\omega_{\neq m,m})\rho_{m, m}\delta_{m,i}]
+  \end{aligned}                                                 \\
+                                     & = \begin{aligned}[t]
+    [ & 2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m} \\
+    - & 2\Gamma_{\neq m,m;\neq m, m}(\omega_{\neq m,m})\rho_{m, m}]
+  \end{aligned}\label{eqn:cross terms density matrix evolution}
 \end{align}
 If we take \(m \neq n\)
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{\neq m} & = \begin{aligned}[t]
-        \sum_{i} &
-        [2 \Gamma_{\neq m,\neq m;m, m}(\omega_{m,m})\rho_{m, \neq m}\delta_{i,m} \\
-                 &
-                - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, \neq m}
-                - \Gamma_{ i,\neq m; i, \neq m}(\omega_{i, \neq m,})\rho_{m, \neq m}]
-    \end{aligned}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{\neq m} & = \begin{aligned}[t]
+    \sum_{i} &
+    [2 \Gamma_{\neq m,\neq m;m, m}(\omega_{m,m})\rho_{m, \neq m}\delta_{i,m} \\
+             &
+        - \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, \neq m}
+        - \Gamma_{ i,\neq m; i, \neq m}(\omega_{i, \neq m,})\rho_{m, \neq m}]
+  \end{aligned}
 \end{align}
 We only have interaction
 between diagonal elements.
@@ -301,75 +302,75 @@ much more complicated. Starting from the
 previous expression for \(\rho \) we
 swap \(\Gamma^*\) for \(\Gamma \) and expand
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{n} & = \begin{aligned}[t]
-        \sum_{i,j,k, l, \alpha, \beta} &
-        \exp{(-i\Delta{}E_{i,j;k,l}t)}
-        \Gamma_{i,j;k, l}(\omega_{k,l})
-        \rho_{\alpha, \beta} [               \\ &
-            \delta_{m, k}\delta_{l, \alpha}
-            \delta_{\beta, j}\delta_{i, n}
-            -\delta_{m, j}\delta_{i, k}
-        \delta_{l, \alpha}\delta_{\beta, n}] \\
-        +                              &
-        \exp{(i\Delta{}E_{i,j;k,l} t)}
-        \Gamma_{i,j; k, l}(\omega_{i,j})
-        \rho_{\alpha, \beta} [               \\ &
-            \delta_{m, k}\delta_{l, \alpha}
-            \delta_{\beta, j}\delta_{i, n}
-            - \delta_{m, \alpha}\delta_{\beta, j}
-            \delta_{i, k}\delta_{l, n}]
-    \end{aligned}                                   \\
-                                         & = \begin{aligned}[t]
-        \sum_{i,j} &
-        \exp{(-i\Delta{}E_{n,j;m,i} t)}
-        \Gamma_{n,j;m, i}(\omega_{m,i})
-        \rho_{i,j}   \\
-                   &
-        -\exp{(-i\Delta{}E_{i,m;i,j} t)}
-        \Gamma_{i,m;i, j}(\omega_{i,j})
-        \rho_{j, n}  \\
-                   &
-        +\exp{(i\Delta{}E_{n,j;m,i} t)}
-        \Gamma_{n,j; m, i}(\omega_{n,j})
-        \rho_{i, j}  \\
-                   &
-        -\exp{(i\Delta{}E_{i,j;i,n} t)}
-        \Gamma_{i,j; i, n}(\omega_{i,j})
-        \rho_{m, j}
-    \end{aligned}\label{eqn:full redfield solution}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{n} & = \begin{aligned}[t]
+    \sum_{i,j,k, l, \alpha, \beta} &
+    \exp{(-i\Delta{}E_{i,j;k,l}t)}
+    \Gamma_{i,j;k, l}(\omega_{k,l})
+    \rho_{\alpha, \beta} [               \\ &
+      \delta_{m, k}\delta_{l, \alpha}
+      \delta_{\beta, j}\delta_{i, n}
+      -\delta_{m, j}\delta_{i, k}
+    \delta_{l, \alpha}\delta_{\beta, n}] \\
+    +                              &
+    \exp{(i\Delta{}E_{i,j;k,l} t)}
+    \Gamma_{i,j; k, l}(\omega_{i,j})
+    \rho_{\alpha, \beta} [               \\ &
+      \delta_{m, k}\delta_{l, \alpha}
+      \delta_{\beta, j}\delta_{i, n}
+      - \delta_{m, \alpha}\delta_{\beta, j}
+      \delta_{i, k}\delta_{l, n}]
+  \end{aligned}                                   \\
+                                     & = \begin{aligned}[t]
+    \sum_{i,j} &
+    \exp{(-i\Delta{}E_{n,j;m,i} t)}
+    \Gamma_{n,j;m, i}(\omega_{m,i})
+    \rho_{i,j}   \\
+               &
+    -\exp{(-i\Delta{}E_{i,m;i,j} t)}
+    \Gamma_{i,m;i, j}(\omega_{i,j})
+    \rho_{j, n}  \\
+               &
+    +\exp{(i\Delta{}E_{n,j;m,i} t)}
+    \Gamma_{n,j; m, i}(\omega_{n,j})
+    \rho_{i, j}  \\
+               &
+    -\exp{(i\Delta{}E_{i,j;i,n} t)}
+    \Gamma_{i,j; i, n}(\omega_{i,j})
+    \rho_{m, j}
+  \end{aligned}\label{eqn:full redfield solution}
 \end{align}
 consider the case \(m=n\)
 \begin{align}
-    \bra{m}\dot{\hat{\rho{}(t)}} \ket{m} & = \begin{aligned}[t]
-        \sum_{i,j} &
-        \exp{(-i\omega_{i,j} t)}
-        \Gamma_{m,j;m, i}(\omega_{m,i})
-        \rho_{i,j}   \\
-                   &
-        -\exp{(-i\omega_{j,m} t)}
-        \Gamma_{i,m;i, j}(\omega_{i,j})
-        \rho_{j, m}  \\
-                   &
-        +\exp{(i\omega_{i,j} t)}
-        \Gamma_{m,j; m, i}(\omega_{m,j})
-        \rho_{i, j}  \\
-                   &
-        -\exp{(i\omega_{m,j} t)}
-        \Gamma_{i,j; i, m}(\omega_{i,j})
-        \rho_{m, j}
-    \end{aligned} \\
-                                         & = \begin{aligned}[t]
-        \sum_{i,j} &
-        (\exp{(-i\omega_{i,j} t)}
-        \Gamma_{m,j;m, i}(\omega_{m,i})
-        +\exp{(i\omega_{i,j} t)}
-        \Gamma_{m,j; m, i}(\omega_{m,j})
-        )\rho_{i,j}                 \\
-                   &
-        -\exp{(-i\omega_{j,m} t)}
-        \Gamma_{i,m;i, j}(\omega_{i,j})
-        (\rho_{j, m} + \rho_{m, j}) \\
-    \end{aligned}
+  \bra{m}\dot{\hat{\rho}}(t) \ket{m} & = \begin{aligned}[t]
+    \sum_{i,j} &
+    \exp{(-i\omega_{i,j} t)}
+    \Gamma_{m,j;m, i}(\omega_{m,i})
+    \rho_{i,j}   \\
+               &
+    -\exp{(-i\omega_{j,m} t)}
+    \Gamma_{i,m;i, j}(\omega_{i,j})
+    \rho_{j, m}  \\
+               &
+    +\exp{(i\omega_{i,j} t)}
+    \Gamma_{m,j; m, i}(\omega_{m,j})
+    \rho_{i, j}  \\
+               &
+    -\exp{(i\omega_{m,j} t)}
+    \Gamma_{i,j; i, m}(\omega_{i,j})
+    \rho_{m, j}
+  \end{aligned} \\
+                                     & = \begin{aligned}[t]
+    \sum_{i,j} &
+    (\exp{(-i\omega_{i,j} t)}
+    \Gamma_{m,j;m, i}(\omega_{m,i})
+    +\exp{(i\omega_{i,j} t)}
+    \Gamma_{m,j; m, i}(\omega_{m,j})
+    )\rho_{i,j}                 \\
+               &
+    -\exp{(-i\omega_{j,m} t)}
+    \Gamma_{i,m;i, j}(\omega_{i,j})
+    (\rho_{j, m} + \rho_{m, j}) \\
+  \end{aligned}
 \end{align}
 we need to make sure that this
 has no contribution for
@@ -381,27 +382,27 @@ covered by the rotating wave approximation.
 This covers only one case for each part of
 the expression
 \begin{itemize}
-    \item \(i \neq j\), \(i \neq m\) in the
-          first expression
-    \item \(j\neq m\), \(i \neq j\) on the
-          second ect \ldots
+  \item \(i \neq j\), \(i \neq m\) in the
+        first expression
+  \item \(j\neq m\), \(i \neq j\) on the
+        second ect \ldots
 \end{itemize}
 the contribution from these
 terms is then
 \begin{align}
-    \begin{aligned}
-         & \exp{(-i\omega_{\neq m,m} t)}
-        \Gamma_{m,m;m, \neq m}(\omega_{m,\neq m})
-        \rho_{\neq m,m}                  \\
-         &
-        +\exp{(i\omega_{m,\neq m} t)}
-        \Gamma_{m,\neq m; m, m}(\omega_{m,\neq m})
-        \rho_{m,\neq m}                  \\
-         &
-        -\exp{(-i\omega_{\neq m,m} t)}
-        \Gamma_{m,m;m, \neq m}(\omega_{m,\neq m})
-        (\rho_{\neq m, m} + \rho_{m, \neq m})
-    \end{aligned}
+  \begin{aligned}
+     & \exp{(-i\omega_{\neq m,m} t)}
+    \Gamma_{m,m;m, \neq m}(\omega_{m,\neq m})
+    \rho_{\neq m,m}                  \\
+     &
+    +\exp{(i\omega_{m,\neq m} t)}
+    \Gamma_{m,\neq m; m, m}(\omega_{m,\neq m})
+    \rho_{m,\neq m}                  \\
+     &
+    -\exp{(-i\omega_{\neq m,m} t)}
+    \Gamma_{m,m;m, \neq m}(\omega_{m,\neq m})
+    (\rho_{\neq m, m} + \rho_{m, \neq m})
+  \end{aligned}
 \end{align}
 It is clear that these terms all cancel,
 and the divergence of \(\Gamma \) at \(\omega = 0\)

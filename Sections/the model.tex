@@ -1,31 +1,32 @@
-\subsection{The Hamiltonian}
-the\ldots, and contains interactions between
-electrons, nickel atoms and
+
+The model involves a system of electrons
+interacting with
+a single hydrogen atom.
+The hamiltonian is TODO
 
 
-
-The \ldots was modeled using a simple
-hamiltonian, assuming
-
-
-
-\ldots system of electrons interacting with
-a single hydrogen atom which would lie at
-either a low or a high energy site
+To build a model of the Electron-Hydrogen
+system we split the hamiltonian into
+the free and interaction energy
 \begin{equation}
   \hat{H} = \hat{H}_{free} + \hat{H}_{int}
 \end{equation}
-where the free hamiltonian can be separated
-into an electrons and hydrogen component
+where the free hamiltonian \(\hat{H}_{free}\)
+can be separated
+into an electron and hydrogen component
 \begin{equation}
   \hat{H}_{free} =
   \hat{H}_{e^-} + \hat{H}_{h}\\
 \end{equation}
 
-\subsection{Electron States}
-For the purpose of this model the electrons
-were assumed to be free, allowing
-us expand the electron
+
+
+\subsection{Electron States}\label{sec:electron states}
+For the purpose of this model we ignore the
+interaction between the electrons
+and the lattice as well as electron-electron
+interactions. This allows
+us expand the free electron
 hamiltonian using the plane wave
 basis
 \begin{equation}
@@ -60,8 +61,8 @@ Nickel~\cite{KittelCharles1953Itss}
 \end{align}
 which gives a value of
 \begin{align}
-  \epsilon_f & = 1.91\times{}10^{-18}J     \\
-  k_f        & = 1.77\times{}10^{10}m^{-1}
+  \epsilon_f & = 1.91\times{}10^{-18}J                                  \\
+  k_f        & = 1.77\times{}10^{10}m^{-1} \label{eqn:fermi wavevector}
 \end{align}
 From measurements of the optical
 properties of Nickel the
@@ -91,7 +92,8 @@ These calculations gave hydrogen
 states localised at two positions
 within the material, at a lower energy
 `FCC' site and a higher energy
-`HCP' site. We expand the hydrogen
+`HCP' site. We consider two neighbouring
+sites, and expand the hydrogen
 hamiltonian in this basis
 \begin{equation}
   \hat{H}_{h} =
@@ -109,10 +111,10 @@ relations for a boson
 
 Although the DFT calculation
 also provides a theoretical calculation
-of the hydrogen energies the
-energy of the states used in the
+of the hydrogen energies, the
+energy used in the
 model were
-taken from direct spin-echo measurements.
+taken from direct spin-echo measurements~\cite{Jianding-Zhu}.
 These measurements gave a value of
 \begin{equation}
   \Delta{}E_{hyd} = E_1 - E_0
@@ -149,30 +151,48 @@ the free electron basis state
   \sum_{k, s} \exp{(i\vec{k}.\vec{r})}
   \hat{b}_{k, s}
 \end{align}
-TODO DERIVATION
-\ldots giving us the
-\begin{equation}
-  \hat{H}_{int} = \frac{1}{L^3}
+to give us the expression
+\begin{align}
+  \hat{H}_{int} & =
+  \sum_{k, s, k', s'} \int\int{\frac{d\vec{r} d\vec{r}'}{L^3}
+    V(\vec{r}-\vec{r}')
+    \hat{b}^\dagger_{k',s'}
+    \hat{b}_{k, s}
+    \exp{(i(\vec{k} - \vec{k'}).\vec{r'})}
+    \hat{\psi}^\dagger_h(\vec{r})
+  \hat{\psi}_h(\vec{r})}                       \\
+                & = \begin{aligned}[t]
+    \frac{1}{L^3}
+    \sum_{k, s, k', s'}
+     & \int d(\vec{r}' - \vec{r})
+    V(\vec{r}-\vec{r}')
+    \hat{b}^\dagger_{k',s'}
+    \hat{b}_{k, s}
+    \exp{(i(\vec{k} - \vec{k'}).(\vec{r'} - \vec{r}))} \\
+     & \int d\vec{r}
+    \exp{(i(\vec{k} - \vec{k'}).\vec{r})}
+    \hat{\psi}^\dagger_h(\vec{r})
+    \hat{\psi}_h(\vec{r})
+  \end{aligned} \\
+  \hat{H}_{int} & = \frac{1}{L^3}
   \sum_{k,s,k',s'}
   \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
   \tilde{V}(\vec{q})\int{d\vec{r}
   \hat{\psi}_h^{\dagger}\hat{\psi}_h
   \exp(i\vec{q}.\vec{r})}
-\end{equation}
-We then gather the q dependant terms into
-an effective potential
-\begin{equation}
-  \hat{H}_{int} = \sum_{k,s,k',s',i,j}
-  {\tilde{V}_{eff}(\vec{q})}_{i,j}
-  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
-  \hat{a}^\dagger_{i}\hat{a}_{j}
-  \label{eqn:interaction hamiltonian in k}
-\end{equation}
+\end{align}
+where \(\vec{q} = \vec{k} - \vec{k'}\)
+is the scattering wavevector, and
+\(\tilde{V}(\vec{q})\) is the
+fourier transform of the interaction
+potential.
+
 
 \subsection{The Electron Hydrogen Potential}
 
 The electrons surrounding the hydrogen
-atom have energies \(E_n = -\frac{13.6}{n^2} eV\) TODO-Cite.
+atom have energies
+\(E_n = -\frac{13.6}{n^2} eV\)~\cite{griffiths_schroeter_2018}.
 Since the energy required to excite the electron
 to the \(n=2\) energy level is much greater
 than the fermi energy of \(Ni\)
@@ -180,19 +200,20 @@ than the fermi energy of \(Ni\)
 make the approximation that the electron surrounding
 the hydrogen lie close to the 1s groundstate.
 
-The potential is then given by the equation
+The potential is then given by the equation TODO-CITE
 \begin{equation}
   V(\vec{r}) = \frac{e^2}{4 \pi \epsilon_0}(
   -\frac{1}{r}
   + \int{\frac{\abs{\phi(\vec{r}')}^2}{
       \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
 \end{equation}
-where
+where \(a_0\) is
+the bohr radius and
 \begin{equation}
   \phi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
 \end{equation}
-is the 1s hydrogen orbital, and \(a_0\) is
-the bohr radius. We then fourier
+is the 1s hydrogen orbital~\cite{griffiths_schroeter_2018}.
+We then fourier
 transform this expression
 (see \cref{app:interaction potential calculation})
 to find
@@ -207,10 +228,11 @@ about \(q=0\) we find
   V(q) &\sim&\frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)\\
   {} &=& -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
 \end{eqnarray}
-taking \(q = k_f = 1.175\times{}10^{10}\) TODO- ADD FERMI K CALCULATION
+taking \(q = k_f = 1.77\times{}10^{10}m^{-1}\)
+(see \cref{sec:electron states})
 and \(\alpha = 3.79\times{}10^{10}\) we see the second
 order correction only contributes to a variation
-of around \(14.5\% \) to the overall potential.
+of around \(14.5\% \).
 We therefore assume that for the relevant scattering
 of electrons the potential takes a constant
 value \(V(q) \sim -\frac{2e^2}{\epsilon_0 \alpha^2}\).
@@ -279,16 +301,57 @@ potential required for the simulation.
 
 TODO- The calculated values of the integrals!
 
-\subsection{}
-It is often beneficial to separate the interaction
-hamiltonian (\cref{eqn:interaction hamiltonian in k})
+\subsection{Simplified Electron-Hydrogen Interaction}
+For simplicity, in the following sections
+we gather the constant terms into
+an effective potential.
+\begin{equation}
+  \hat{H}_{int} = \sum_{k,s,k',s',i,j}
+  {\tilde{V}(\vec{q})}_{i,j}
+  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+  \hat{a}^\dagger_{i}\hat{a}_{j}
+  \label{eqn:interaction hamiltonian in k}
+\end{equation}
+If we take the potential to be independent
+of \(q\) we can separate it
+into a constant prefactor
+and hydrogen overlap factors
+\begin{align}
+  V_{i,j}
+   & =
+  \frac{1}{L^3}
+  \mathcal{C}_{i,j}
+  \frac{2e^2}{\epsilon_0 \alpha^2} \\
+   & =
+  \frac{1}{L^3}
+  \mathcal{C}_{i,j}
+  \frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2}
+  \label{eqn:simplified interacton potential}
+\end{align}
+where \(\mathcal{C}\) takes
+the value
+\begin{align}
+  \mathcal{C}_{i, i}      & = 1      \\
+  \mathcal{C}_{i, \neq i} & = 0.0044
+\end{align}
+
+It is often beneficial to separate
+\cref{eqn:interaction hamiltonian in k}
 into a system and environment contribution.
 \begin{align}
   \hat{H}_{int} & =
   \sum_{i,j}
   \hat{a}^\dagger_{i}\hat{a}_{j}
   \sum_{k,s,k',s'}
-  {\tilde{V}_{eff}(\vec{q})}_{i,j}
-  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}                                                              \\
-                & = \sum_{i,j} \hat{S}_{i,j} \hat{E}_{i,j}\label{eqn:split interaction hamiltonian}
+  \tilde{V}_{i,j}
+  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s} \\
+                & = \sum_{i,j}
+  \hat{S}_{i,j} \hat{E}_{i,j}\label{eqn:split interaction hamiltonian}
+\end{align}
+where
+\begin{align}
+  \hat{S}_{i,j} & = \hat{a}^\dagger_{i}\hat{a}_{j} \\
+  \hat{E}_{i,j} & = \sum_{k,s,k',s'}
+  \tilde{V}_{i,j}
+  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
 \end{align}
