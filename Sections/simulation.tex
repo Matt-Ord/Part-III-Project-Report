@@ -1,17 +1,17 @@
-The behaviour of the system
+The dynamics of the electrons
 discussed in \cref{sec:the model}
 can be investigated by
-solving
-the Schrödinger equation.
+directly simulating the system.
 
 \subsection{Eigenvalue Decomposition}
-The Schrödinger equation can
-be solved through direct
+To simulate the system we must solve
+the Schrödinger equation. This
+can be done through direct
 integration, however
-if decompose
+if we first decompose
 the initial state
 into eigenstates
-of the hamiltonian
+of the complete hamiltonian
 \begin{align}
     \ket{\Psi(t)} = \exp{(-i\frac{Ht}{\hbar})} \sum_n C_n \ket{n} \\
     = \sum_n C_n \exp{(-i\frac{E_n t}{\hbar})} \ket{n}
@@ -19,7 +19,6 @@ of the hamiltonian
 we can propagate
 by multiplying each eigenstate
 by a phase-factor.
-
 
 Since we are dealing with a
 large number of eigenstates
@@ -33,7 +32,7 @@ of the two methods (\cref{tab:algorithm complexity}).
             \toprule
             Cost    & Integration            & Decomposition              \\
             \midrule
-            Time    & \(\mathcal{O}(n^2 t)\) & \(\mathcal{O}(n^3 + n t)\) \\
+            Time    & \(\mathcal{O}(n^2 t)\) & \(\mathcal{O}(n^3 + n d)\) \\
             Storage & \(\mathcal{O}(n d)\)   & \(\mathcal{O}(n^2 + n d)\) \\
             \bottomrule
         \end{tabular}
@@ -55,7 +54,7 @@ of the two methods (\cref{tab:algorithm complexity}).
     }\label{tab:algorithm complexity}
 \end{table}
 
-Since we
+As we
 are only interested in the
 evolution of the eigenstates
 at times much greater than
@@ -76,13 +75,17 @@ matrix, however in
 practise this
 was not required.
 
-Since decomposition is
-expensive we only did it
-once \ldots.
-
+Although the decomposition is
+expensive it was only repeated once,
+which allowed us to gather a large
+number of times at very little additional
+cost. It was also possible to use the
+fact that the matrix was hermitian to
+provide and additional increase in speed.
 
 \subsection{Matrix Representation}\label{sec:state representation}
-Working in the unperturbed basis (TODO:reference)
+Working in the unperturbed electron basis
+(\cref{sec:electron states})
 we label each eigenstate
 according to the index of the
 hydrogen site and
@@ -100,7 +103,7 @@ we limit ourselves
 to a fixed
 number of electrons (\(N\)).
 In this case the number
-of states scales as \(m \binom{n}{N}\).
+of states scales as \(m \times{} \binom{n}{N}\).
 In practise we are able to
 simulate a system with
 around \(2000\) eigenstates,
@@ -136,7 +139,8 @@ or \(12\) half filled electron states
 
 The process of converting
 between these labels and
-\ldots was handled by
+the states used in the hamiltonian
+was handled by
 an ElectronSystem object (TODO reference)
 
 
@@ -156,8 +160,7 @@ between the exchanged energy levels.
     a^\dagger_1a_2 \ket{2,3} & = \ket{1,3}  \\
     a^\dagger_1a_3 \ket{2,3} & = -\ket{1,2}
 \end{align}
-
-TO find the probability
+To find the probability
 of finding the hydrogen in site \ldots
 
 \subsection{Choosing the Initial States}
@@ -204,11 +207,11 @@ constant we make the approximation
     g(E) = \frac{dN}{dE} \sim \frac{1}{E_{space}}
 \end{equation}
 where \(E_{space}\) is the energy spacing
-of the simulation.
-Since the interaction
-hamiltonian scales
-\(\propto \frac{1}{V}\)
-(\cref{eqn:simplified interacton potential})
+of the simulation. From \cref{eqn:simplified interacton potential} we find
+\begin{equation}
+    \hat{H}_{int} \propto \frac{1}{V} \propto E_{space}
+    \label{eqn:energy spacing dependance of interaction hamiltonian}
+\end{equation}
 for smaller
 energy spacing we have
 a larger volume, and a smaller
@@ -218,9 +221,8 @@ perturbation.
 To be able to average over successive
 simulations we also need to setup the
 simulation with a somewhat random
-choice of initial states. Since the states
-are represented by vectors (\cref{sec:state representation})
-we can start the hydrogen
+choice of initial states.
+We can start the hydrogen
 in the \(FCC\) site by setting the
 amplitudes of the \(HCP\) sites to zero
 before choosing the \(FCC\) aptitudes according to
@@ -230,7 +232,7 @@ In simulations for which we choose states
 with a large range of energies however
 the electron distribution should not be
 random and should follow the fermi dirac distribution.
-To match this distribution at \(T=0\) we therefore
+To match this distribution we
 need to alter the averages used
 to produce the initial state vector.
 Since the amplitude corresponds to
@@ -244,45 +246,66 @@ associated with each state.
 \end{align}
 If we plot the resulting
 electron distribution produced
-by this method for fixed N however
-we do not see the expected electron
+by this method for fixed N
+we see the expected electron
 distribution for a standard electron
-gas.
-TODO-PLOT THIS
-
-This is because the
-derivation assumes a distribution
-of states at all N, weighted by the
-chemical potential. If we add back
-these states we find that the correct
-distribution is recovered.
-TODO-Plot
-In most cases we choose to
-simulate only the most
-likely configuration of electrons,
-assuming the chemical potential is large.
-This holds for all but the state at
-\(k = k_f\) where we have \(\mu = 0\)
-relative to the average energy of the
-electrons. However the number of
-states \ldots \(ACB\) big for N=2
-TODO-section correcting for this effect!!!
-
-
-This approach however does not take
-into accounts the shift in energies
-caused by the perturbation. This
-does not effect the distribution
-for a small perturbation,
-however in some cases,
-especially those for which the energy
-spacing was large this assumption
-no longer holds. In this case
-we see the electron distribution
-begin to diverge from the
-boltzmann distribution at large times.
-TODO-Plot
-
+gas (\cref{fig:correct fermi dirac}).
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width =0.9 \linewidth]{Figures/Simulation/Plot of correct fermi dirac distribution on center.png}
+        \caption{5 Electrons 10 States}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{Figures/Simulation/Plot of correct fermi dirac distribution off centre.png}
+        \caption{3 Electrons 10 States}
+    \end{subfigure}
+    \caption{Plot of the electron distribution seen
+        when setting up the system randomly. The
+        correct fermi-dirac distribution is seen in both the on and
+        off center systems. Errors are given by the standard
+        deviation of the electron densities, and are therefore
+        larger around the fermi surface where fluctuations are
+        large.}\label{fig:correct fermi dirac}
+\end{figure}
+However if we were to include
+a large interaction term, such
+as those required for the
+real Nickel system the
+electron distribution is
+seen to diverge, as the approach
+does not take into accounts the
+shift in energies
+caused by the perturbation (\cref{fig:incorrect fermi dirac}).
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width =0.9 \linewidth]{Figures/Simulation/Plot of incorrect fermi dirac distribution on center.png}
+        \caption{Large interaction}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{Figures/Simulation/Plot of incorrect fermi dirac distribution on center small interaction.png}
+        \caption{Reduced Interaction}\label{sub@fig:reduced interaction fermi-dirac}
+    \end{subfigure}
+    \caption{Plot of the fermi-dirac distribution
+        with the inclusion of interaction. The
+        correct distribution is no longer seen when
+        the full interaction is included, however
+        if this is reduced by a factor of \(10\)
+        (\cref{sub@fig:reduced interaction fermi-dirac})
+        the correct distribution is recovered.}\label{fig:incorrect fermi dirac}
+\end{figure}
+To overcome this limitation
+the simulation was repeated
+for only small ranges of energy,
+for which the electron distribution
+was uniform.
 
 Full code is available in the appendix TODO-
 
@@ -296,88 +319,246 @@ To obtain a rough estimate of
 the rate the system was setup
 with electrons evenly spaced
 in the region \(E_k = E_f \pm 2K_b T\)
-with degenerate hydrogen energies.
-
-\begin{figure}[htb]
+with degenerate hydrogen energies (\cref{fig:tunnelling rate single large band}).
+The hydrogen occupation
+could then be inferred by
+summing the occupation
+of electrons in both the FCC and
+HCP sites.
+\begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band simulation decay times.png}
         \subcaption{Tunnelling excluding hydrogen energy}\label{fig:large band degenerate simulation}
     \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band simulation decay times rapid oscillations.png }
+        \subcaption{Rapid oscillation of the hydrogen occupation}
+    \end{subfigure}
+    \caption{Plot of the tunnelling rate taken using a
+        simple choice of electron energies,
+        taken evenly in the range \(E=E_f \pm 2 K_b T\).
+        Simulation with a degenerate hydrogen
+        (\cref{fig:large band degenerate simulation})
+        shows tunnelling in around
+        \(10^{-9}s\).}\label{fig:tunnelling rate single large band}
+\end{figure}
+Unfortunately we find that the interaction is
+relatively large. The diagonal terms in
+the interaction hamiltonian
+had a value of \(6.21\times{}10^{-21}J\)
+and a cross diagonal value of \(2.73\times{}10^{-23}J\)
+whereas the electron energies were separated
+by only \(9.2\times{}10^{-22}J\). This meant that
+the perturbation approximation required for
+fermi-dirac distributed states is not valid.
+We also fail to see any tunnelling when
+the hydrogen energy is included (\cref{fig:issues with single large band}).
+\begin{figure}[htbp]
+    \centering
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band simulation with hydrogen energies.png}
         \subcaption{Tunnelling including hydrogen energy}\label{fig:large band non degenerate simulation}
     \end{subfigure}
-    \caption{Plot of the tunnelling rate taken using a
-    simple choice of electron energies,
-    taken evenly in the range \(E=E_f \pm K_b T\).
-    Simulation with a degenerate hydrogen
-    (\cref{fig:large band degenerate simulation})
-    shows tunnelling in around
-    \(3\times{}10^{-10}s\), however when the
-    hydrogen energy is included (\cref{fig:large band non degenerate simulation})
-    no tunnelling can be seen, even
-    at much larger timescales.}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band electron distribution.png}
+        \subcaption{Electron Distribution}\label{fig:large band fermi-dirac}
+    \end{subfigure}
+    \caption{Plot demonstrating the issues with the
+        simple approach used to calculate the rate.
+        When including the hydrogen energies
+        (\cref{fig:large band non degenerate simulation})
+        no tunnelling can be seen, even
+        at much larger timescales. Even without the
+        inclusion of hydrogen energies
+        the incorrect electron distribution is
+        seen (\cref{fig:large band fermi-dirac}).}\label{fig:issues with single large band}
 \end{figure}
 
-Since we are choosing electrons
-with a relatively large spacing
-we have large
-interaction. The diagonal terms in
-the interaction hamiltonian
-had a value of \(1.03\times{}10^{-21}J\)
-and a cross diagonal value of \(4.53\times{}10^{-23}J\)
-whereas the electron energies were separated
-by only \(2.3\times{}10^{-22}J\). This meant that
-the perturbation approximation required for
-fermi dirac distributed states is not valid TODO PLOT TEMP inversion.
-Luckily however in the region \(\pm K_b T\)
-the electron distribution is relatively flat,
-and this should therefore have very little
-effect on the tunnelling rate.
+In section (TODO- ) we discuss the methods
+used to overcome these limitations.
 
-\subsection{Differing Hydrogen Energy}
-If we add the hydrogen energies to the
-simulation we no longer see tunnelling
-on any timescale. This is caused by the
-principle of energy conservation --- tunnelling
-TODO-Band Diagram
+\subsection{Small Band Approach}\label{sec:small band approach}
+To limit the effect of the incorrect
+electron distribution we can
+take electrons localised
+in a small region of the fermi
+surface such that their energies
+and occupations are all similar.
 
-If we employ the uncertainty principle
-\(\Delta{}E\Delta{}T \geq \frac{\hbar}{2}\)
+One issue is that states at the edge
+of the band will be `missing'
+states to mix with during the
+perturbation. We can approximate
+this overlap using first order perturbation theory.
+\begin{equation}
+    \ket{n} = \ket{n^{(0)}} + \sum_{K\neq{}n} \frac{\bra{k^{(0)}} \hat{H}_{int} \ket{n^{(0)}}}{E_n^{(0)} - E_k^{(0)}} \ket{k^{(0)}}
+\end{equation}
+Since \(\hat{H}_{int} \propto E_{space}\)
+(\cref{eqn:energy spacing dependance of interaction hamiltonian})
+the degree of overlap of neighbouring states does
+not depend on the energy spacing. Luckily
+however the interaction is small
+enough such that states only interact with
+their closest neighbours (\cref{fig:single band energies}),
+and the effect of these missing states should be small.
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of single band eigenstate energy range.png}
+        \subcaption{Final State Energies}\label{fig:initial and final state energies of single band}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of single band eigenstate energy range closeup.png}
+        \subcaption{Detailed view of lower energies}\label{fig:initial and final state energies of single band zoom}
+    \end{subfigure}
+    \caption{Plot of average initial state energy weighted by the
+        probability of occupation. The final
+        state energy is separated into two,
+        due to the symmetric and antisymmetric
+        contributions
+        (\cref{fig:initial and final state energies of single band}).
+        In \cref{fig:initial and final state energies of single band zoom}
+        we can see each state is highly degenerate, and mixing
+        is limited to the four nearest neighbours.
+    }\label{fig:single band energies}
+\end{figure}
+
+
+The tunneling could also be
+influenced by these states
+through a combination of
+several electron `hops'.
+Due to the energy time uncertainty
+principle \(\Delta{}E\Delta{}T \geq \frac{\hbar}{2}\)
 we expect the total energy to be conserved
 to within
 \begin{equation}
     \Delta{}E \sim \frac{\hbar}{2\Delta{} t}
 \end{equation}
-for a tunnelling time of \(\sim 10^{-10}s\)
-we would expect an energy fluctuation
-of \(\sim 5\times{}10^{-25} J\).
+so that for a tunnelling time of
+\(\sim 10^{-9}s\)
+we expect an energy fluctuation
+of \(\sim 5\times{}10^{-26} J\).
+We therefore choose states separated
+by at-least \(10^{-25} J\) such that
+interaction with states outside
+the band is prohibited
+through energy conservation.
 
 
-. Since tunnelling occurs between sates which are
-degenerate in energy \ldots we don't see any tunnelling
+\subsection{Different Hydrogen Energy}
+If we add the hydrogen energies to the
+simulation we no longer see tunnelling
+on any timescale. Repeating the analysis
+in \cref{sec:small band approach} we
+see that eigenstate mixing and hence
+tunnelling is dominated by
+eigenstates degenerate in energy.
+In the initial approach we therefore
+miss many of the states which could
+contribute to tunnelling. To ensure that we always have
+states degenerate in energy we
+therefore introduce two electron
+bands separated by the hydrogen energy
+difference.
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/single band eigenstate energies.png}
+        \subcaption{One Band Overlaps}\label{fig:one band overlap}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band eigenstate energies.png}
+        \subcaption{Two Band Overlaps}\label{fig:two band overlap}
+    \end{subfigure}
+    \caption{Plot of the energies of the
+        eigenstates, against the portion of the
+        state which lies in the FCC site.
+        For the single band approach we
+        see very little overlap between the FCC and HCP
+        initial states (\cref{fig:one band overlap})
+        as the energies of the FCC and HCP sites
+        are poorly matched. By introducing
+        two bands separated by the hydrogen energy
+        difference (\cref{fig:two band overlap})
+        we find mixing between states which are
+        degenerate in energy
+    }\label{fig:overlap with hydrogen energies}
+\end{figure}
 
-Using the energy time uncertainty principle
-\(\Delta{}E\Delta{}T \geq \frac{\hbar}{2}\), and
-using a tunnelling time of \(\sim 10^{-9}s\) TODO-CITE
-we are able to identify that no significant tunnelling
-can occur between states separated by more than
-\(\Delta{}E \sim 5\times{}10^{-26} J\). This is
-much smaller than the range of energies for
-which the electrons are able to undergo
-transitions about the fermi surface
-(\(K_b T \sim 2 \times 10^{-21}J\) at \(150K\)).
+If we were to plot the initial and final
+state energies for the single band approach
+we no longer see two distinct levels. Instead
+we see three levels split into
+several distinct groups.
+To promote interaction between each group
+we could increase the width of each band,
+however this leads to a reduction in
+the overlap between states.
 
+TODO-FIgure with
+-two band grouping
+-two band mixing?
+-two large band grouping
+-two large band mixing
 
-\ldots when choosing states evenly in this
-range we only see degenerate tunnelling
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band eigenstate energies varience.png}
+        \subcaption{Two Band Overlaps}\label{fig:two band minimum mixing}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band electron distribution.png}
+        \subcaption{Two Band Electron Distribution}
+    \end{subfigure}
+    \caption{Investigation into the behaviour of the
+        two band approach \ldots several interesting
+        behaviours.
+        The final state energies no longer exhibited
+        a two band structure, and instead
+        produced several groups with very little
+        mixing between each group. If we increase
+        the spacing of each band the }\label{fig:issue with two band approach}
+\end{figure}
+Interestingly we also find the material cools
+as the hydrogen tunnels, as can be seen
+through the average electron distribution in
+the initial and final state. This is a
+result of energy transfer from the
+electron gas to the hydrogen
 
+TODO-Figure
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band eigenstate energies varience.png}
+        \subcaption{Two Band Overlaps}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band electron distribution.png}
+        \subcaption{Two Band Electron Distribution}\label{fig:two band temperature shift}
+    \end{subfigure}
+    \caption{
+        The temperature of the HCP site was also
+        seen to be significantly lower than the FCC
+        site (\cref{fig:two band temperature shift})
+        as energy is transferred from the electron gas
+        to the Hydrogen
+    }
+\end{figure}
 
-
-To .. we therefore need to ensure that
-there are states in \ldots of the same energy
-states
+Unfortunately however the overall
+amount of tunnelling remains small,
+as the forward and backward tunnelling
+rate \ldots are very different.
 
 \subsection{Multi Band Approach}
 To resolve these issues we instead simulated the system
@@ -432,16 +613,11 @@ times, as we choose to sample fewer and
 fewer electrons \ldots so this is not seen.
 
 
-\subsection{Degenerate Correction Approach}
-From the previous investigation it is clear
-that it is not possible to incorporate the
-hydrogen energy directly \ldots. In the
-real system the electrons would move
-between states at a much shorter time
-period than that of hydrogen tunnelling.
-After an electron transitions to a lower
-band the fermi distribution should therefore
-be recovered almost instantaneously. We
+
+
+
+
+We
 therefore `fix' the behaviour by
 ignoring the fact the electron
 has moved to a lower band at all,
@@ -453,5 +629,9 @@ the hydrogen energy difference.
 
 
 The Approach used to simulate the system is as follows
+
+
+assuming the states are closely spaced we can find the
+chemical potential using \ldots
 
 \subsection{Correcting for unfixed N}

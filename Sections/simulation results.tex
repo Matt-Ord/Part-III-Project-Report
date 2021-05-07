@@ -1,120 +1,127 @@
-\subsection{Degenerate tunnelling at 150K}
+
+From the previous investigation it is clear
+that it is not possible to incorporate the
+hydrogen energy directly \ldots. In the
+real system the electrons would move
+between states at a much shorter time
+period than that of hydrogen tunnelling.
+After an electron transitions to a lower
+band the fermi distribution should therefore
+be recovered almost instantaneously.
+The tunneling rate ignoring the
+hydrogen energy difference should
+therefore provide a good approximation
+for the true tunneling rate, as the
+electron should only spend a small
+fraction of it's time in the lower band.
+
+\subsection{}
+To calculate the overall tunneling rate
+the simulation was repeated in small
+bands (of width cite TODO)
 
 
-The curve was initially fitted to
+
+
+\subsection{Degenerate Tunnelling at 150K}
+The tunnelling was simulated at various occupancy,
+however the rate was seen to change as the
+number of electrons was increased.
+
+and the rate curve was fitted to
 \begin{equation}
-    R(N, N) = \frac{2R_0}{\cosh{(B(N - 0.5))}}
+    R(N,N) = 4 R_0 N(1-N)\label{eqn:degenerate tunnelling rate}
 \end{equation}
-with both the initial and final occupancy
-equal to N. \ldots however although the rate is small it
-would not fall to zero as \(N \rightarrow 0\).
-Since we expect the rate to be proportional to the
-number of electrons we add a prefactor of \(N(N-1)\)
-to the expression, giving us
-\begin{equation}
-    R = \frac{2 N(N-1) R_0}{\cosh{(B(N - 0.5))}}
-\end{equation}
-To see the effect of this factor
-states with only
-one electron or one hole must be included.
-In this
-case the previous
-oscillatory behaviour is replaced
-by a more steady decay, which was fitted to
-\(\exp{(-at^2)}\). TODO-justify in figure Due to this new
-method of fitting the data the
-single particle rates appeared
-offset from the rest of the data,
-however their rates were consistent
-with the \(N(N-1)\) factor TODO-fig.
 
-Although this has \ldots little effect in exp \ldots
-when plotting \(\ln{R}\) against \(N\) we can see a
-clear reduction in the rate, consistent with this factor
-at lower occupations.
+\subsection{Tunnelling at Half Filling}
+Since the rate depends only on a single
+parameter \(R_0\) we are able to
+extrapolate the rate at all
+occupancy from the asymptotic
+limit of the rate at \(N=0.5\).
+Plotting \ldots TODO we find
+a value of
 
-TODO-plot, fill out missing \ldots.
+TODO plot
 
-The degenerate tunnelling rates
 
-\subsection{Non Degenerate Tunnelling}
-To recover the tunnelling rate for hydrogen of different
-energy we need to transform the rate equation
-into the form
+\subsection{Complete Tunnelling Rate}
+To recover the complete tunneling
+rate the occupation rate curve
+must first be converted into an
+energy rate using the
+fermi-dirac distribution (TODO CITE)
+\begin{align}
+    N(\epsilon)           & = \frac{1}{1 + \exp{(\beta(\epsilon - \mu))}}                                                      \\
+    R(\epsilon, \epsilon) & = 4R_0 \frac{1}{1 + \exp{(\beta(\epsilon - \mu))}}(1- \frac{1}{1 + \exp{(\beta(\epsilon - \mu))}}) \\
+                          & = 4R_0 \frac{\exp{(\beta(\epsilon - \mu))}}{{(1 + \exp{(\beta(\epsilon - \mu))})}^2}
+\end{align}
+where we have assumed uniform
+occupation within a band.
+The rate curve (TODO-figure) can then be
+integrated to give an
+overall tunneling rate of \ldots.
+\begin{figure}
+    TODO
+\end{figure}
 
-Due to the arguments outlined in
+\subsection{Correcting for Reversed Rate}
+In reality however the occupation
+of the lower band should be larger than
+that of the higher energy band. Due to
+the arguments outlined in
 \cref{app:combined tunnelling rates}
-a general system with two tunnelling
-rates has a combined rate
+a general system with a different
+forward and backward rate has a combined rate
 \begin{equation}
-    R_{tot}(N\rightarrow{}N') = R(N\rightarrow{}N') + R_{tot}(N'\rightarrow{}N)
+    R(N,N') = R(N\rightarrow{}N') + R(N'\rightarrow{}N)
 \end{equation}
-therefore any guess at the corrected rate
-must be written in this form, where the
-behaviour of \(R(N\rightarrow{}N')\)
-should match up with \(0.5 R_{tot}(N\rightarrow{}N)\)
-at \(N' = N\). The four simplest
-ways to transform the rate are
+where \(R(N\rightarrow{}N')\) is the
+tunneling rate from an occupation \(N\)
+to an occupation \(N'\). From
+\cref{eqn:degenerate tunnelling rate}
+it is clear that
+\begin{equation}
+    R(N\rightarrow{}N) = 2R_0N(1-N)
+\end{equation}
+By requiring the correct
+behaviour at \(N' = N\), there are
+three ways to modify the tunneling
+rate
 \begin{align}
-    R(N\rightarrow{}N') & = \frac{N(N-1) R_0}{\cosh{(B(N - 0.5))}}               \\
-    R(N\rightarrow{}N') & = \frac{N(N'-1) R_0}{\cosh{(B(N - 0.5))}}              \\
-    R(N\rightarrow{}N') & = \frac{N(N-1) R_0}{\cosh{(\frac{B}{2}(N + N' - 1))}}  \\
-    R(N\rightarrow{}N') & = \frac{N(N'-1) R_0}{\cosh{(\frac{B}{2}(N + N' - 1))}}
-    \label{eqn:double corrected rate expression}
+    R(N\rightarrow{}N') & = 2R_0N(1-N)                 \\
+    R(N\rightarrow{}N') & = 2R_0N(1-N')                \\
+    R(N\rightarrow{}N') & = 2R_0 \sqrt{N(1-N)N'(1-N')}
 \end{align}
-TODO-Reword
-where the \(N(N'-1)\) prefactor is interpreted
-as the number of initial electrons multiplied
-by the number of final state holes, and
-\( N + N' - 1 \) is interpreted as
-\(N\) electrons minus \(1 -N' \) holes
-since the holes flow in the backwards direction.
-If we plot the four corrected rate curves
-we can eliminate (eq \ldots to \ldots) if we
-require the rate to peak at  \ldots
+note we have ignored functions
+such as \(2R_0N'(1-N')\) which
+would give the same overall rate
+as \(2R_0N(1-N)\).
 
-\subsection{Temperature Dependance}
-The correction should also be well behaved
-at all temperatures. As we reduce the
-temperature the hydrogen
-energy becomes much greater than the
-range of electrons exited above the fermi
-surface, and we therefore expect the tunnelling
-rate to be `frozen out' as \(T\rightarrow{}0\).
-This behaviour is not seen in eqn \ldots
-where backwards rate begins to
-dominate.
+\section{Investigating Rate Corrections}
 
-Two other possible forms for the
-tunnelling rate were suggested
-\begin{align}
-    R(N\rightarrow{}N') & = \frac{\sqrt{N(N-1)N'(N'-1)} R_0}{\cosh{(B(N - 0.5))}}                             \\
-    R(N\rightarrow{}N') & = \frac{4N(N-1)N'(N'-1) R_0}{\cosh{(B(N - 0.5))}}\label{eqn:two hop corrected rate}
-\end{align}
-Both of these could be justified by considering
-the rate as composed of two processes ---
-tunnelling followed by reorganisation of
-the electron gas. The tunnelling rate
-would therefore depend on \(N_{i}(1-N_{f})\)
-for both processes.
-
-Ultimately however we see very little
-difference effect
-on the tunnelling rate
-at \(150K\) if we impose the
-correct limit as \(N' \rightarrow N\) TODO-Plot
-and there is no evidence that the
-rate should not diverge at low temperatures.
-\ldots we therefore stick with
-\cref{eqn:double corrected rate expression}
-
-\subsection{Corrected Results}
-Overall we see the corrected results
-have very little
+% \begin{equation}
+%     \epsilon(N)= k_b T (\mu + \ln{\frac{1 - N}{N}} )
+% \end{equation}
 
 
 
-\ldots Discussion of different ways to transform
+
+\subsection{Tunneling without Self Interaction}
+\ldots only introduce an offset in energy
+we might be tempted to exclude this self interaction
+
+the tunnelling rate is however much different
+in this case
 
 
 
+
+
+\subsection{Simulation With Multiple Spins}
+
+
+\subsection{Bosons with Constrained Occupation}
+To investigate the effect of fermion spin
+statistics \ldots to calculate the rate
+for bosons.

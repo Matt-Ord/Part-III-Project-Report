@@ -279,17 +279,18 @@ tunnelling time of
 In reality however there
 are 3 sites neighbouring
 each FCC Hydrogen. The tunnelling
-rate should therefore be
+rate should therefore be around
 \(1.8\times{}10^{9}s^{-1}\),
 \(3\) times the single
-neighbour rate.
+neighbour rate. If we plot
+the decay rate against temperature \ldots
 
 
 \begin{figure}
     \centering
     \includegraphics[width=.5\linewidth]{Figures/Redfield/Plot of lindblad solution.png}
     \caption{Plot of the Lindblad solution with a characteristic decay
-    rate of \(6.1\times{}10^{9}s^{-1}\) TODO:Is this a typo???}
+    rate of \(6.1\times{}10^{8}s^{-1}\) TODO:Is this a typo???}
 \end{figure}
 
 \subsection{Assessing the Rotating Wave approximation}
@@ -349,10 +350,22 @@ predicted by the lindblad result.
     Lindblad equation.}\label{fig:redfield full solution}
 \end{figure}
 
-\subsection{Temperature Dependance}
-Although the tunnelling rate is..
-it should also have the correct
-temperature dependence.
+\subsection{Multiple Sites}
+Extending the simulation to contain a large
+grid of sites with periodic boundary conditions
+we find that
+
+To asses the rotating wave approximation
+in this case we can run the simulation with a
+`sink' in the hcp site\ldots
+
+TODO- average hops against time
+
+\subsection{Extracting a Tunnelling Rate}
+One issue is how best to characterise the
+true tunnelling rate of this system\ldots
+however the decoherent process is completely
+ignored in this model
 
 
 \subsection{Further Generalisations}

@@ -15,12 +15,43 @@ several electron states randomly distributed
 around a sphere of k states, and from
 this an effective potential could be calculated.
 
+
+Even in a q-independent model it may
+be possible to find an improved effective
+average overlap \ldots this could
+provide around an additional
+factor of 0.5 to the squared overlap
+
 TODO- calculate tunnelling rate if half the
 interaction potential.
 
 TODO- Sparse matrix
 TODO- Properly vectorise
 TODO-
+
+\subsection{Treatment of Electrons}
+For the
+However the true fermi energy, is slightly lower
+at only \(1.24\times{} 10^{-18}J\). This
+is possibly due to the two
+valence electrons not being fully delocalised.
+The true fermi surface
+of Nickel is also not completely
+spherical~\cite{FermiSufaceNickel},
+and has a different level for each spin,
+which leads to ferromagnetism~\cite{PhysRev.49.537}.
+
+Since
+only a small number of electrons
+were included in each simulation
+it would not be possible to include
+such behaviour, however if we
+perform the integration numerically
+it should be possible to include these
+in the lindblad model.
+
+Ultimately however the effect is small \ldots
+
 
 \subsection{Multiple Hydrogen Sites}
 In the real Nickel lattice the FCC and
@@ -43,14 +74,14 @@ at later times. An effect we will
 fail to see in any \ldots integration of
 the schrodinger equation.
 
-\subsection{Additional Factors}
-\ldots in the derivation we have assumed
-that the \(N \rightarrow N' \)
-tunnelling rate should
-It is however possible that the
-Additional \(N'(N-1)\) factor
-suggested in \cref{eqn:two hop corrected rate}
-suppresses the rate by an exra
-factor of \(\frac{1}{4}\)
-we need more data to be able to say more than
-an order of magnitude approximation
+% \subsection{Additional Factors}
+% \ldots in the derivation we have assumed
+% that the \(N \rightarrow N' \)
+% tunnelling rate should
+% It is however possible that the
+% Additional \(N'(N-1)\) factor
+% suggested in \cref{eqn:two hop corrected rate}
+% suppresses the rate by an exra
+% factor of \(\frac{1}{4}\)
+% we need more data to be able to say more than
+% an order of magnitude approximation

@@ -1,13 +1,8 @@
-
-The model involves a system of electrons
-interacting with
-a single hydrogen atom.
-The hamiltonian is TODO
-
-
-To build a model of the Electron-Hydrogen
-system we split the hamiltonian into
-the free and interaction energy
+To calculate the tunnelling rate we
+need to build a model of the Electron-Hydrogen
+system of Nickel. This system is completely
+described by it's hamiltonian, which can be
+split into free and interaction energy
 \begin{equation}
   \hat{H} = \hat{H}_{free} + \hat{H}_{int}
 \end{equation}
@@ -41,10 +36,9 @@ fermion anti-commutation relations
 \( \{ \hat{b}_{k, s}, \hat{b}^\dagger_{k', s'} \}
 = \delta_{k k'} \delta_{s s'}\).
 
-Nickel is arranged in an FCC (cite??),
-with a lattice constant of
+Taking the lattice constant of Nickel as
 \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753},
-which gives a Nickel density of
+we find the density of Nickel as
 \(9.34\times{}10^{28}m^{-3}\).
 Assuming both of the 2 valence
 electrons on Nickel are completely
@@ -69,17 +63,7 @@ properties of Nickel the
 fermi energy is found to
 be slightly lower
 at only
-\(1.24\times{} 10^{-18}J\)~\cite{PhysRev.131.2469},
-\ldots possibly due to the two
-valence electrons not fully delocalised.
-
-POSSIBLY IN IMPROVEMENTS SECTIONS
-The true fermi surface
-of Nickel is also not completely
-spherical~\cite{FermiSufaceNickel},
-and has a different level for different spin
-cannot expand in plane waves
-however \ldots we assume it is.
+\(1.24\times{} 10^{-18}J\)~\cite{PhysRev.131.2469}.
 
 \subsection{Hydrogen States}
 The hydrogen states produced
@@ -257,13 +241,13 @@ it was then possible to calculate the fourier
 transform products directly. As there was a fixed
 distance between the FCC and HCP lattice
 sites however the fourier transform was seen to
-oscillate, with a frequency proportional to
+oscillate (\cref{fig:fourier transform oscillation}), with a frequency proportional to
 \(\frac{2\pi}{a}\) where \(a\) is the lattice
 constant of \(Ni\). The value of this constant
 is around \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753}
 corresponding to oscillations at
 \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\).
-\begin{figure}
+\begin{figure}[htb]
   \centering
   \begin{subfigure}{0.45\linewidth}
     \centering
@@ -285,21 +269,37 @@ corresponding to oscillations at
   (\cref{fig:cross hydrogen matrix element oscillation})
   however show oscillations with a characteristic
   wavevector \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\),
-  corresponding to the lattice vector of \(Ni\).}
+  corresponding to the lattice vector of \(Ni\).}\label{fig:fourier transform oscillation}
 \end{figure}
-
 In theory this should have a noticeable
-effect on the matrix element, with the
-fermi wavevector
-and the fermi wavevector is \(1.175\times{}10^{10}\) TODO- ADD FERMI K CALCULATION
-TODO- ADD PLOTS
-However since the overall wavepacket decays over a region
+effect on the matrix element, with a
+fermi wavevector of
+\(1.177\times{}10^{10} m^{-1}\)~\cref{eqn:fermi wavevector},
+however since the overall wavepacket decays over a region
 of around \(\frac{100\pi}{a}\) we should be
 able to average over the rapid oscillations of
 \(V(\vec{q})\) to obtain an effective constant
-potential required for the simulation.
-
-TODO- The calculated values of the integrals!
+potential required for the simulation. For this
+model we therefore simply take the maximum overlap
+of the normalised wavefunction (\cref{tab:hydrogen overlaps}).
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{ *{3}{c} }
+      \toprule
+      Overlap & Maximum Overlap        & Normalised Overlap     \\
+      \midrule
+      FCC-FCC & \(3.00\times{}10^{7}\) & \(1\)                  \\
+      HCP-HCP & \(3.00\times{}10^{7}\) & \(1\)                  \\
+      HCP-FCC & \(1.33\times{}10^{5}\) & \(4.4\times{}10^{-3}\) \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Normalised Hydrogen overlaps as used in the
+    model. Fluctuations in the overlap
+    integral are ignored. The maximum
+    is taken instead of the \(q=0\) value as the HCP-FCC integral
+    has a minimum at this point.}\label{tab:hydrogen overlaps}
+\end{table}
 
 \subsection{Simplified Electron-Hydrogen Interaction}
 For simplicity, in the following sections
