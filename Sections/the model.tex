@@ -4,14 +4,14 @@ system of Nickel. This system is completely
 described by it's hamiltonian, which can be
 split into free and interaction energy
 \begin{equation}
-  \hat{H} = \hat{H}_{free} + \hat{H}_{int}
+    \hat{H} = \hat{H}_{free} + \hat{H}_{int}
 \end{equation}
 where the free hamiltonian \(\hat{H}_{free}\)
 can be separated
 into an electron and hydrogen component
 \begin{equation}
-  \hat{H}_{free} =
-  \hat{H}_{e^-} + \hat{H}_{h}\\
+    \hat{H}_{free} =
+    \hat{H}_{e^-} + \hat{H}_{h}\\
 \end{equation}
 
 
@@ -25,8 +25,8 @@ us expand the free electron
 hamiltonian using the plane wave
 basis
 \begin{equation}
-  \hat{H}_{e^-} = \sum_{k, s}
-  \frac{\hbar^2 k^2}{2m_e} \hat{b}^\dagger_{k, s} \hat{b}_{k, s}\\
+    \hat{H}_{e^-} = \sum_{k, s}
+    \frac{\hbar^2 k^2}{2m_e} \hat{b}^\dagger_{k, s} \hat{b}_{k, s}\\
 \end{equation}
 where \(\hat{b}^\dagger_{k, s}\)
 is the electron creation operator
@@ -50,13 +50,13 @@ We then used this value to calculate
 the fermi-wavevector and fermi-energy of
 Nickel~\cite{KittelCharles1953Itss}
 \begin{align}
-  \epsilon_f & = \frac{\hbar^2}{2m} {(3\pi^2n)}^{2/3} \\
-  k_f^3      & = 3 \pi^2 n
+    \epsilon_f & = \frac{\hbar^2}{2m} {(3\pi^2n)}^{2/3} \\
+    k_f^3      & = 3 \pi^2 n
 \end{align}
 which gives a value of
 \begin{align}
-  \epsilon_f & = 1.91\times{}10^{-18}J                                  \\
-  k_f        & = 1.77\times{}10^{10}m^{-1} \label{eqn:fermi wavevector}
+    \epsilon_f & = 1.91\times{}10^{-18}J                                  \\
+    k_f        & = 1.77\times{}10^{10}m^{-1} \label{eqn:fermi wavevector}
 \end{align}
 From measurements of the optical
 properties of Nickel the
@@ -80,9 +80,9 @@ within the material, at a lower energy
 sites, and expand the hydrogen
 hamiltonian in this basis
 \begin{equation}
-  \hat{H}_{h} =
-  E_0 \hat{a}^\dagger_0 \hat{a}_0
-  + E_1 \hat{a}^\dagger_1 \hat{a}_1
+    \hat{H}_{h} =
+    E_0 \hat{a}^\dagger_0 \hat{a}_0
+    + E_1 \hat{a}^\dagger_1 \hat{a}_1
 \end{equation}
 where \(0\) denotes the FCC site and \(1\)
 denotes the HCP site,
@@ -101,9 +101,9 @@ model were
 taken from direct spin-echo measurements~\cite{Jianding-Zhu}.
 These measurements gave a value of
 \begin{equation}
-  \Delta{}E_{hyd} = E_1 - E_0
-  = 3.04\pm0.16\times{}10^{-21} J
-  \label{eqn:hydrogen energy difference}
+    \Delta{}E_{hyd} = E_1 - E_0
+    = 3.04\pm0.16\times{}10^{-21} J
+    \label{eqn:hydrogen energy difference}
 \end{equation}
 
 
@@ -114,12 +114,12 @@ the electron and hydrogen field
 operators \(\hat{\psi}_e\) and
 \(\hat{\psi}_h\)~\cite{nazarov_danon_2013}
 \begin{equation}
-  \hat{H}_{int} = \int\int{d\vec{r} d\vec{r}'
-    V(\vec{r}-\vec{r}')
-    \hat{\psi}^\dagger_h(\vec{r})
-    \hat{\psi}^\dagger_e(\vec{r'})
-    \hat{\psi}_e(\vec{r'})
-    \hat{\psi}_h(\vec{r})}
+    \hat{H}_{int} = \int\int{d\vec{r} d\vec{r}'
+        V(\vec{r}-\vec{r}')
+        \hat{\psi}^\dagger_h(\vec{r})
+        \hat{\psi}^\dagger_e(\vec{r'})
+        \hat{\psi}_e(\vec{r'})
+        \hat{\psi}_h(\vec{r})}
 \end{equation}
 where \(V(\vec{r})\) is
 the electron-hydrogen
@@ -128,42 +128,42 @@ We first expand out the
 electron operator in
 the free electron basis state
 \begin{align}
-  \hat{\psi}_e(\vec{r}) & = \sum_{k, s}
-  \braket{\vec{r}|\vec{k}}
-  \hat{b}_{k, s}                                      \\
-                        & = \frac{1}{L^{\frac{3}{2}}}
-  \sum_{k, s} \exp{(i\vec{k}.\vec{r})}
-  \hat{b}_{k, s}
+    \hat{\psi}_e(\vec{r}) & = \sum_{k, s}
+    \braket{\vec{r}|\vec{k}}
+    \hat{b}_{k, s}                                      \\
+                          & = \frac{1}{L^{\frac{3}{2}}}
+    \sum_{k, s} \exp{(i\vec{k}.\vec{r})}
+    \hat{b}_{k, s}
 \end{align}
 to give us the expression
 \begin{align}
-  \hat{H}_{int} & =
-  \sum_{k, s, k', s'} \int\int{\frac{d\vec{r} d\vec{r}'}{L^3}
-    V(\vec{r}-\vec{r}')
-    \hat{b}^\dagger_{k',s'}
-    \hat{b}_{k, s}
-    \exp{(i(\vec{k} - \vec{k'}).\vec{r'})}
-    \hat{\psi}^\dagger_h(\vec{r})
-  \hat{\psi}_h(\vec{r})}                       \\
-                & = \begin{aligned}[t]
-    \frac{1}{L^3}
-    \sum_{k, s, k', s'}
-     & \int d(\vec{r}' - \vec{r})
-    V(\vec{r}-\vec{r}')
-    \hat{b}^\dagger_{k',s'}
-    \hat{b}_{k, s}
-    \exp{(i(\vec{k} - \vec{k'}).(\vec{r'} - \vec{r}))} \\
-     & \int d\vec{r}
-    \exp{(i(\vec{k} - \vec{k'}).\vec{r})}
-    \hat{\psi}^\dagger_h(\vec{r})
-    \hat{\psi}_h(\vec{r})
-  \end{aligned} \\
-  \hat{H}_{int} & = \frac{1}{L^3}
-  \sum_{k,s,k',s'}
-  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
-  \tilde{V}(\vec{q})\int{d\vec{r}
-  \hat{\psi}_h^{\dagger}\hat{\psi}_h
-  \exp(i\vec{q}.\vec{r})}
+    \hat{H}_{int} & =
+    \sum_{k, s, k', s'} \int\int{\frac{d\vec{r} d\vec{r}'}{L^3}
+        V(\vec{r}-\vec{r}')
+        \hat{b}^\dagger_{k',s'}
+        \hat{b}_{k, s}
+        \exp{(i(\vec{k} - \vec{k'}).\vec{r'})}
+        \hat{\psi}^\dagger_h(\vec{r})
+    \hat{\psi}_h(\vec{r})}                       \\
+                  & = \begin{aligned}[t]
+        \frac{1}{L^3}
+        \sum_{k, s, k', s'}
+         & \int d(\vec{r}' - \vec{r})
+        V(\vec{r}-\vec{r}')
+        \hat{b}^\dagger_{k',s'}
+        \hat{b}_{k, s}
+        \exp{(i(\vec{k} - \vec{k'}).(\vec{r'} - \vec{r}))} \\
+         & \int d\vec{r}
+        \exp{(i(\vec{k} - \vec{k'}).\vec{r})}
+        \hat{\psi}^\dagger_h(\vec{r})
+        \hat{\psi}_h(\vec{r})
+    \end{aligned} \\
+    \hat{H}_{int} & = \frac{1}{L^3}
+    \sum_{k,s,k',s'}
+    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+    \tilde{V}(\vec{q})\int{d\vec{r}
+    \hat{\psi}_h^{\dagger}\hat{\psi}_h
+    \exp(i\vec{q}.\vec{r})}
 \end{align}
 where \(\vec{q} = \vec{k} - \vec{k'}\)
 is the scattering wavevector, and
@@ -186,15 +186,15 @@ the hydrogen lie close to the 1s groundstate.
 
 The potential is then given by the equation TODO-CITE
 \begin{equation}
-  V(\vec{r}) = \frac{e^2}{4 \pi \epsilon_0}(
-  -\frac{1}{r}
-  + \int{\frac{\abs{\phi(\vec{r}')}^2}{
-      \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
+    V(\vec{r}) = \frac{e^2}{4 \pi \epsilon_0}(
+    -\frac{1}{r}
+    + \int{\frac{\abs{\phi(\vec{r}')}^2}{
+            \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
 \end{equation}
 where \(a_0\) is
 the bohr radius and
 \begin{equation}
-  \phi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
+    \phi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
 \end{equation}
 is the 1s hydrogen orbital~\cite{griffiths_schroeter_2018}.
 We then fourier
@@ -202,15 +202,15 @@ transform this expression
 (see \cref{app:interaction potential calculation})
 to find
 \begin{eqnarray}
-  V(\vec{q}) &=& \frac{e^2}{\epsilon_0 q^2}(
-  \frac{\alpha^4}{{(\alpha^2 + q^2)}^2} - 1
-  )
+    V(\vec{q}) &=& \frac{e^2}{\epsilon_0 q^2}(
+    \frac{\alpha^4}{{(\alpha^2 + q^2)}^2} - 1
+    )
 \end{eqnarray}
 with \(\alpha = \frac{2}{a_0}\). If we expand
 about \(q=0\) we find
 \begin{eqnarray}
-  V(q) &\sim&\frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)\\
-  {} &=& -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
+    V(q) &\sim&\frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)\\
+    {} &=& -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
 \end{eqnarray}
 taking \(q = k_f = 1.77\times{}10^{10}m^{-1}\)
 (see \cref{sec:electron states})
@@ -247,29 +247,29 @@ constant of \(Ni\). The value of this constant
 is around \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753}
 corresponding to oscillations at
 \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\).
-\begin{figure}[htb]
-  \centering
-  \begin{subfigure}{0.45\linewidth}
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width= 0.9\linewidth]{Figures/Model/Plot of fourier transform of the wavefunction fccfcc xz plane.png}
-    \subcaption{FCC-FCC Fourier Transform in xz Plane}\label{fig:diagonal hydrogen matrix element no oscillation}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.45\linewidth}
-    \centering
-    \includegraphics[width= 0.9\linewidth]{Figures/Model/Plot of fourier transform of the wavefunction.png}
-    \subcaption{FCC-HCP Fourier Transform in xy Plane}\label{fig:cross hydrogen matrix element oscillation}
-  \end{subfigure}
-  \caption{Results of the hydrogen fourier transform calculations.
-  FCC-FCC and HCP-HCP calculations
-  (\cref{fig:diagonal hydrogen matrix element no oscillation})
-  show a smooth curve, with a normalised
-  value of one at \(q=0\).
-  The FCC-HCP fourier transform
-  (\cref{fig:cross hydrogen matrix element oscillation})
-  however show oscillations with a characteristic
-  wavevector \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\),
-  corresponding to the lattice vector of \(Ni\).}\label{fig:fourier transform oscillation}
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width= 0.9\linewidth]{Figures/Model/Plot of fourier transform of the wavefunction fccfcc xz plane.png}
+        \subcaption{FCC-FCC Fourier Transform in xz Plane}\label{fig:diagonal hydrogen matrix element no oscillation}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width= 0.9\linewidth]{Figures/Model/Plot of fourier transform of the wavefunction.png}
+        \subcaption{FCC-HCP Fourier Transform in xy Plane}\label{fig:cross hydrogen matrix element oscillation}
+    \end{subfigure}
+    \caption{Results of the hydrogen fourier transform calculations.
+    FCC-FCC and HCP-HCP calculations
+    (\cref{fig:diagonal hydrogen matrix element no oscillation})
+    show a smooth curve, with a normalised
+    value of one at \(q=0\).
+    The FCC-HCP fourier transform
+    (\cref{fig:cross hydrogen matrix element oscillation})
+    however show oscillations with a characteristic
+    wavevector \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\),
+    corresponding to the lattice vector of \(Ni\).}\label{fig:fourier transform oscillation}
 \end{figure}
 In theory this should have a noticeable
 effect on the matrix element, with a
@@ -282,76 +282,77 @@ able to average over the rapid oscillations of
 potential required for the simulation. For this
 model we therefore simply take the maximum overlap
 of the normalised wavefunction (\cref{tab:hydrogen overlaps}).
-\begin{table}[htb]
-  \begin{center}
-    \begin{tabular}{ *{3}{c} }
-      \toprule
-      Overlap & Maximum Overlap        & Normalised Overlap     \\
-      \midrule
-      FCC-FCC & \(3.00\times{}10^{7}\) & \(1\)                  \\
-      HCP-HCP & \(3.00\times{}10^{7}\) & \(1\)                  \\
-      HCP-FCC & \(1.33\times{}10^{5}\) & \(4.4\times{}10^{-3}\) \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  \caption{Normalised Hydrogen overlaps as used in the
-    model. Fluctuations in the overlap
-    integral are ignored. The maximum
-    is taken instead of the \(q=0\) value as the HCP-FCC integral
-    has a minimum at this point.}\label{tab:hydrogen overlaps}
+\begin{table}[htbp]
+    \begin{center}
+        \begin{tabular}{ *{3}{c} }
+            \toprule
+            Overlap & Maximum Overlap        & Normalised Overlap     \\
+            \midrule
+            FCC-FCC & \(3.00\times{}10^{7}\) & \(1\)                  \\
+            HCP-HCP & \(3.00\times{}10^{7}\) & \(1\)                  \\
+            HCP-FCC & \(1.33\times{}10^{5}\) & \(4.4\times{}10^{-3}\) \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \caption{Normalised Hydrogen overlaps as used in the
+        model. Fluctuations in the overlap
+        integral are ignored. The maximum
+        is taken instead of the \(q=0\) value as the HCP-FCC integral
+        has a minimum at this point.}\label{tab:hydrogen overlaps}
 \end{table}
 
-\subsection{Simplified Electron-Hydrogen Interaction}
+\subsection{Simplified Electron-Hydrogen Interaction
+}\label{sec:simplified interaction}
 For simplicity, in the following sections
 we gather the constant terms into
 an effective potential.
 \begin{equation}
-  \hat{H}_{int} = \sum_{k,s,k',s',i,j}
-  {\tilde{V}(\vec{q})}_{i,j}
-  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
-  \hat{a}^\dagger_{i}\hat{a}_{j}
-  \label{eqn:interaction hamiltonian in k}
+    \hat{H}_{int} = \sum_{k,s,k',s',i,j}
+    {\tilde{V}(\vec{q})}_{i,j}
+    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+    \hat{a}^\dagger_{i}\hat{a}_{j}
+    \label{eqn:interaction hamiltonian in k}
 \end{equation}
 If we take the potential to be independent
 of \(q\) we can separate it
 into a constant prefactor
 and hydrogen overlap factors
 \begin{align}
-  V_{i,j}
-   & =
-  \frac{1}{L^3}
-  \mathcal{C}_{i,j}
-  \frac{2e^2}{\epsilon_0 \alpha^2} \\
-   & =
-  \frac{1}{L^3}
-  \mathcal{C}_{i,j}
-  \frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2}
-  \label{eqn:simplified interacton potential}
+    V_{i,j}
+     & =
+    \frac{1}{L^3}
+    \mathcal{C}_{i,j}
+    \frac{2e^2}{\epsilon_0 \alpha^2} \\
+     & =
+    \frac{1}{L^3}
+    \mathcal{C}_{i,j}
+    \frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2}
+    \label{eqn:simplified interacton potential}
 \end{align}
 where \(\mathcal{C}\) takes
 the value
 \begin{align}
-  \mathcal{C}_{i, i}      & = 1      \\
-  \mathcal{C}_{i, \neq i} & = 0.0044
+    \mathcal{C}_{i, i}      & = 1      \\
+    \mathcal{C}_{i, \neq i} & = 0.0044
 \end{align}
 
 It is often beneficial to separate
 \cref{eqn:interaction hamiltonian in k}
 into a system and environment contribution.
 \begin{align}
-  \hat{H}_{int} & =
-  \sum_{i,j}
-  \hat{a}^\dagger_{i}\hat{a}_{j}
-  \sum_{k,s,k',s'}
-  \tilde{V}_{i,j}
-  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s} \\
-                & = \sum_{i,j}
-  \hat{S}_{i,j} \hat{E}_{i,j}\label{eqn:split interaction hamiltonian}
+    \hat{H}_{int} & =
+    \sum_{i,j}
+    \hat{a}^\dagger_{i}\hat{a}_{j}
+    \sum_{k,s,k',s'}
+    \tilde{V}_{i,j}
+    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s} \\
+                  & = \sum_{i,j}
+    \hat{S}_{i,j} \hat{E}_{i,j}\label{eqn:split interaction hamiltonian}
 \end{align}
 where
 \begin{align}
-  \hat{S}_{i,j} & = \hat{a}^\dagger_{i}\hat{a}_{j} \\
-  \hat{E}_{i,j} & = \sum_{k,s,k',s'}
-  \tilde{V}_{i,j}
-  \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+    \hat{S}_{i,j} & = \hat{a}^\dagger_{i}\hat{a}_{j} \\
+    \hat{E}_{i,j} & = \sum_{k,s,k',s'}
+    \tilde{V}_{i,j}
+    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
 \end{align}

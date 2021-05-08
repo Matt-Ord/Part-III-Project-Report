@@ -1,8 +1,8 @@
-
-TODO cite eqn (52)
-
-From the,
-
+Starting from the definition of gamma
+(\cref{eqn:gamma definition}) and
+the environment interaction hamiltonian
+(\cref{eqn:split interaction hamiltonian})
+we find
 \begin{equation}
   \Gamma_{i,j, k,l}(\omega) =
   \int_0^\infty{}{
@@ -10,9 +10,7 @@ From the,
   Tr_{E}[E^\dagger_{i,j}(t)E_{k,l}(t-s)\rho_E(0)]
   }
 \end{equation}
-using the definition of the
-environment interaction hamiltonian
-from \cref{eqn:split interaction hamiltonian}
+where
 \begin{align}
   E_{i, j}(t) & =
   \exp{(iH_e t)}
@@ -21,9 +19,9 @@ from \cref{eqn:split interaction hamiltonian}
               & = \sum_{k,k'} \hat{V}_{i,j}
   \hat{b}^\dagger_{k',s'}\hat{b}_{k,s} \exp{(i(E_k' - E_k)t)}
 \end{align}
-If we use a density matrix of a purely
-statistical ensemble of electrons,
-we find that it is
+For a purely
+statistical ensemble of electrons
+the density matrix is
 diagonal~\cite{sakurai_napolitano_2020}
 \begin{equation}
   \rho_E(0) = \sum_{\{N(k)\}}
@@ -243,7 +241,7 @@ taken to be 1. We can also write
 = \mathcal{C}_{i,j} \frac{2e^2}{\epsilon_0 \alpha^2}
 = \mathcal{C}_{i,j} \frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2}\)
 where \(\mathcal{C}_{i,j}\) is the hydrogen
-overlap factor TODO-CITE
+overlap factor given in \cref{sec:simplified interaction}
 \begin{align}
   \Gamma_{i,j, k,l}(\omega_{k,l}) & =
   \sum_{s^1,s^3} \exp{(\frac{\beta \omega_{k,l}}{2})}
