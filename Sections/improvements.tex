@@ -74,6 +74,59 @@ at later times. An effect we will
 fail to see in any \ldots integration of
 the schrodinger equation.
 
+\subsection{Generalisation of the Redfield Equation}
+One issue with this approach is that it
+completely ignores correlations
+between the system and the surroundings.
+This contradicts
+one of the key features seen in the simulation;
+the tunnelling process is dominated by
+transitions between two states with the same energy,
+rather than two states with the same electron configuration.
+It is not possible to `trace out' the environment
+for an arbitrary coupling, however if
+we limit ourselves to
+\begin{equation}
+    \hat{\rho}_t = \sum_{m,n} \hat{\rho}_{m,n} \otimes {(\hat{\rho}_E)}_{m,n} \
+\end{equation}
+we can follow the same procedure as in
+\cref{sec:the redfield assumption}
+to arrive at the modified redfield equation
+\begin{equation}
+    \bra{m}\dot{\hat{\rho}}(t)\ket{n} = \begin{aligned}[t]
+        \sum_{i,j,k, l} &
+        \exp{(-i(\omega_{i,j}-\omega_{k,l})t)}
+        \Gamma^{m,n}_{i,j;k, l}(\omega_{k,l})
+        [S_{k, l}{\hat{\rho}(t)}_{m,n},
+        S^\dagger_{i,j}]  \\
+        +               &
+        \exp{(i(\omega_{i,j}-\omega_{k,l}))}
+        {\Gamma^*}^{m,n}_{k, l; i,j}(\omega_{i,j})
+        [S_{k, l},
+                {\hat{\rho}(t)}_{m,n} S^\dagger_{i,j}]
+    \end{aligned}
+\end{equation}
+where
+\begin{equation}
+    \Gamma^{m,n}_{i,j, k,l}(\omega) =
+    \int_0^\infty{}{
+    ds \exp{(i\omega{}s)}
+    Tr_{E}[E^\dagger_{i,j}(t)E_{k,l}(t-s)
+    {(\hat{\rho}_E)}_{m,n}]
+    }
+\end{equation}
+The problem is then how best to express
+both the statistical and quantum uncertainty
+in the form of a density matrix.
+
+\subsection{Energy Conservation}
+TODO- Reduced Temperature density matrix
+
+TODO- How do we produced thematised and localised states??
+we can do one but not both??
+TODO- we want states to lie close to the fermi level after
+perturbation
+
 % \subsection{Additional Factors}
 % \ldots in the derivation we have assumed
 % that the \(N \rightarrow N' \)
@@ -81,7 +134,7 @@ the schrodinger equation.
 % It is however possible that the
 % Additional \(N'(N-1)\) factor
 % suggested in \cref{eqn:two hop corrected rate}
-% suppresses the rate by an exra
+% suppresses the rate by an extra
 % factor of \(\frac{1}{4}\)
 % we need more data to be able to say more than
 % an order of magnitude approximation

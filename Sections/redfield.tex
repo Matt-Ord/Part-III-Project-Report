@@ -116,18 +116,73 @@ wave approximation to
 \cref{eqn:redfield equation gamma form}.
 Before applying this
 we first expand out the commutators
-(reference)
-\begin{equation}
+in \cref{eqn:redfield equation gamma form}
+\begin{align}
     \bra{m}[S_{k, l}\hat{\rho}(t),
-        S^\dagger_{i, j}] \ket{n} =
+    S^\dagger_{i, j}] \ket{n}              & =
     \sum_{\alpha, \beta} \rho_{\alpha, \beta} [
         \delta_{m, k}\delta_{l, \alpha}
         \delta_{\beta, j}\delta_{i, n}
         -\delta_{m, j}\delta_{i, k}
-        \delta_{l, \alpha}\delta_{\beta, n}]
+    \delta_{l, \alpha}\delta_{\beta, n}]       \\
+    \bra{m}[S_{k, l},
+    \hat{\rho}(t)S^\dagger_{i, j}] \ket{n} & =
+    \sum_{\alpha, \beta} \rho_{\alpha, \beta} [
+        \delta_{m, k}\delta_{l, \alpha}
+        \delta_{\beta, j}\delta_{i, n}
+        -\delta_{m, \alpha}\delta_{\beta, j}
+        \delta_{i, k}\delta_{l, n}]
+\end{align}
+which we use to obtain an expanded
+form of \(\gamma{}\)
+\begin{equation}
+    \bra{m}\dot{\hat{\rho}}(t) \ket{n} = \begin{aligned}[t]
+        \sum_{i,j,k, l, \alpha, \beta} &
+        \exp{(-i\Delta{}Et)}
+        \Gamma_{i,j;k, l}(\omega_{k,l})
+        \rho_{\alpha, \beta} [         &
+            \delta_{m, k}\delta_{l, \alpha}
+        \delta_{\beta, j}\delta_{i, n}                          \\
+                                       &                      &
+            -\delta_{m, j}\delta_{i, k}
+        \delta_{l, \alpha}\delta_{\beta, n}]                    \\
+        +                              & \exp{(i\Delta{}E t)}
+        \Gamma^*_{k, l; i,j}(\omega_{i,j})
+        \rho_{\alpha, \beta} [         &
+            \delta_{m, k}\delta_{l, \alpha}
+        \delta_{\beta, j}\delta_{i, n}                          \\
+                                       &                      &
+            - \delta_{m, \alpha}\delta_{\beta, j}
+            \delta_{i, k}\delta_{l, n}]
+    \end{aligned}
 \end{equation}
+the rotating wave approximation
+limits us to two cases
+\begin{itemize}
+    \item \(i=j\), \(k=l\)
+    \item \(i=k\), \(j=l\)
+\end{itemize}
+Imposing this condition using the expression
+\(\delta_{i,j}\delta_{k,l}
++ \delta_{i,k}\delta_{j,l}
+- \delta_{i,j}\delta_{k,l}
+\delta_{i,k}\)
+we come to the lindblad
+equation
+\begin{equation}
+    \bra{m}\dot{\hat{\rho}}(t) \ket{m}  = \begin{aligned}[t]
+        [ & 2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m} \\
+        - & 2\Gamma_{\neq m,m;\neq m, m}(\omega_{\neq m,m})\rho_{m, m}]
+    \end{aligned}
+\end{equation}
+where the off diagonal
+terms vanish assuming the
+density matrix is initially
+purely diagonal. A full derivation
+of this expression can be found in
+\cref{app:redfield to lindblad}.
 
-to
+
 
 \subsection{Calculating \(\Gamma \)}
 Using \cref{eqn:gamma definition}
@@ -280,14 +335,16 @@ we find a tunnelling rate of
 \(6.1\times{}10^{8}s^{-1}\),
 corresponding to a
 tunnelling time of
-\(1.6\times{}10^{-9}s\).
+\(1.6\times{}10^{-9}s\) at
+\(150K\).
 
 
 \begin{figure}
     \centering
     \includegraphics[width=.5\linewidth]{Figures/Redfield/Plot of lindblad solution.png}
     \caption{Plot of the Lindblad solution with a characteristic decay
-    rate of \(6.1\times{}10^{8}s^{-1}\) TODO:Is this a typo???
+    rate of \(6.1\times{}10^{8}s^{-1}\) at
+    \(150K\).
     }\label{fig:two site lindblad soluton}
 \end{figure}
 
@@ -297,16 +354,17 @@ In reality there
 are 3 HCP sites neighbouring
 each FCC Hydrogen, all of which
 are connected to 2 other HCP sites.
-The tunnelling
-rate should therefore be at least
+We should expect the tunnelling
+rate to be at least
 \(3\) times the single
-neighbour rate TODO CITE MODEL CHAPTER.
+neighbour rate TODO CITE MODEL CHAPTER s.
 To investigate this behaviour we extend
 the simulation to contain a large
 grid of sites with periodic boundary conditions.
 From this we find that the combined FCC occupation
 falls at a rate of
-\(1.8\times{}10^{9}s^{-1}\), exactly
+\(1.8\times{}10^{9}s^{-1}\) at
+\(150K\), exactly
 three times the single neighbour rate (\cref{fig:multi site lindblad}).
 \begin{figure}[htbp]
     \centering
@@ -324,7 +382,8 @@ three times the single neighbour rate (\cref{fig:multi site lindblad}).
         }\label{sub@fig:multi site combined lindblad}
     \end{subfigure}
     \caption{Plot of the individual and combined
-    occupation probabilities against time. The combined
+    occupation probabilities against time at
+    \(150K\). The combined
     probability
     (\cref{sub@fig:multi site combined lindblad})
     follows exactly the same curve as in
@@ -339,40 +398,72 @@ three times the single neighbour rate (\cref{fig:multi site lindblad}).
     initial site to reach
     an equilibrium with the surroundings.}\label{fig:multi site lindblad}
 \end{figure}
-The time taken for the probability
-at the initial site to reach
-equilibrium is however significantly
-longer, and there are several
-features of the plot
-which could be identified as a
-tunneling time.
-\begin{itemize}
-    \item
-\end{itemize}
-
-And their corresponding
-tunneling times are
-
-
-
-
-\subsection{Extracting a Tunnelling Rate}
-One issue is how best to characterise the
-true tunnelling rate of this system\ldots
-however the decoherent process is completely
-ignored in this model
-
-\subsection{Temperature Dependance}
-\ldots we can now compare \ldots
-to the temperature dependant
-rates seen in experiment.
+It is also possible to infer a
+tunneling rate from the
+individual probabilities.
+Since these decay
+exponentially we take the tunneling
+time from the time taken for the
+distance from equilibrium
+to fall by \(\exp{(-1)}\).
+For the initial
+FCC site we can
+take this equilibrium
+to be the two site or
+the three site occupation.
+If we can also
+use the time taken for the
+neighbouring HCP sites to
+reach their maximum occupation,
+and half the time taken for the
+neighbouring FCC to reach equilibrium.
+The corresponding decay times are
+given in \cref{tab:implied decay rates}.
+\begin{table}[htbp]
+    \begin{center}
+        \begin{tabular}{ *{3}{c} }
+            \toprule
+            Measure                & Decay Time \(s\)                  & Implied Decay Rate \(s^{-1}\) \\
+            \midrule
+            Initial FCC            & \(4.54\times{}10^{-9}\)           & \(2.2\times{}10^{8}\)         \\
+            Initial FCC (Two Site) & \(3.99\times{}10^{-10}\)          & \(2.5\times{}10^{9}\)         \\
+            Next HCP               & \(4.37\times{}10^{-10}\)          & \(2.3\times{}10^{9}\)         \\
+            Next FCC               & \(2\times{}1.31 \times{}10^{-9}\) & \(7.6\times{}10^{8}\)         \\
+            Combined Occupation    & \(5.56\times{}10^{-10}\)          & \(1.8\times{}10^{9}\)         \\
+            RMS Distance           & \(5.09\times{}10^{-10}\)          & \(2.0 \times 10^{9}\)         \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \caption{Implied decay rates
+        from the probability
+        distribution and RMS distance
+        analysis at
+        \(150K\).
+        Since the individual
+        probabilities undergo an exponential
+        decay we take the decay time as
+        the time for the probability to fall
+        by \(\exp{(-1)}\).
+        The RMS decay time corresponds
+        to the time for the RMS distance
+        to equal \(0.5\). Most measures
+        of the decay rate take a similar
+        amount of time, however the
+        complete decay of the FCC
+        occupation takes an order of
+        magnitude longer.
+    }\label{tab:implied decay rates}
+\end{table}
 
 \subsection{Distance Traveled}
-As well as the correct
-temperature dependance
-we also expect the squared
-distance travelled to
-grow linearly.
+We should also be able to
+extract a tunneling time from
+the root-mean squared (rms)
+distance travelled by the
+hydrogen. As the hydrogen
+undergoes a random walk we should
+expect the squared distance to
+grow linearly with time.
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{Figures/Redfield/Plot of lindblad solution squared distance.png}
@@ -382,22 +473,69 @@ grow linearly.
     for a random walk. The time taken
     for the rms distance to equal \(0.5\)
     is found to be
-    \(5.25\times{}10^{-10}s\),
+    \(5.09\times{}10^{-10}s\),
     which corresponds to an implied rate
-    of \(1.9 \times 10^{9}s^{-1}\).
+    of \(2.0 \times 10^{9}s^{-1}\).
     }
 \end{figure}
-From this data we are able to
-extract another measure
-of the tunneling rate. The
-time taken for the rms
-distance to reach \(0.5\)
-is found to be \(5.25\times{}10^{-10}s\)
-giving an overall rate of
+The tunneling time was
+found to be \(5.25\times{}10^{-10}s\),
+corresponding to teh time taken
+for the rms distance to
+reach \(0.5\). This gives
+an overall rate of
 \(1.9 \times 10^{9}s^{-1}\).
 
+\subsection{Comparison with Experiment}
+Given these measures of the
+tunneling time it is now possible to compare
+these tunneling rates to experiment.
+In \cref{fig:tunneling rate against temperature}
+the theoretical rates
+are plotted against temperature
+alongside the rates extracted
+from the Lindblad analysis.
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width =0.9 \linewidth]{Figures/Redfield/Plot of redfield temperature dependance FCC points.png}
+        \caption{FCC Tunneling Rates
+        }\label{sub@fig:fcc tunneling rates temp dependence}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{Figures/Redfield/Plot of redfield temperature dependance close points.png}
+        \caption{Other Tunneling Rates
+        }\label{sub@fig:other tunneling rates temp dependence}
+    \end{subfigure}
+    \caption{Plot of the tunneling
+        rates against temperature, with comparison
+        to the experimental data.
+        The Initial and Next FCC tunneling rates
+        (\cref{sub@fig:fcc tunneling rates temp dependence})
+        deviate significantly from the experimental
+        measurements, as well as many of the other
+        measures of tunneling rate.
+        The remaining rates however give
+        a good fit to the experimental
+        data
+        (\cref{sub@fig:other tunneling rates temp dependence})
+        although the temperature dependence
+        is different for different measurements
+        of the rate.
+    }\label{fig:tunneling rate against temperature}
+\end{figure}
+Although the FCC tunneling
+rates differ by an order of
+magnitude the remaining
+measurements of the rate
+are similar to that measured
+in experiment.
+TODO-Temp dependance
 
-\subsection{Assessing the Rotating Wave approximation}
+\subsection{Assessing the Rotating Wave Approximation}
 If we relax the rotating wave approximation
 we arrive at the expression given in \cref{sec:redfield equation full solution}.
 \begin{align}
@@ -427,7 +565,6 @@ a characteristic timescales of
 the full solution (\cref{fig:redfield full solution})
 however we see exactly the same behaviour as that
 predicted by the lindblad result.
-
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.45\linewidth}
@@ -443,17 +580,27 @@ predicted by the lindblad result.
         \caption{Complete solution for long times
         }\label{fig:redfield full solution long timescales}
     \end{subfigure}
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{Figures/Redfield/Plot of redfield solution long time sink.png}
+        \caption{Complete solution with sink
+        }\label{fig:redfield full solution with sink}
+    \end{subfigure}
     \caption{Plot of the full solution of the Redfield
     equation. On short timescales
     (\cref{fig:redfield full solution short timescales})
     the solution is seen to
     oscillate with a characteristic
     frequency of \(2.1\times{}10^{-13}\)s however
-    at long timescales (\cref{fig:redfield full solution long timescales})
+    at long timescales
+    (\cref{fig:redfield full solution long timescales})
     the solution decays at the same rate as the
-    Lindblad equation.}\label{fig:redfield full solution}
+    Lindblad equation. The solution is
+    also well behaved with the inclusion of
+    a sink at the HCP site
+    (\cref{fig:redfield full solution with sink}).
+    }\label{fig:redfield full solution}
 \end{figure}
-
 In theory we should also be able
 to solve the redfield equation
 for multiple hydrogen sites, however
@@ -468,68 +615,5 @@ In this case
 we again see good
 agreement with the
 lindblad equation.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width =0.45 \linewidth]{Figures/Redfield/Plot of redfield solution long time sink.png}
-    \caption{Plot of the full solution of the Redfield
-        equation with a sink on the HCP site.
-        The hydrogen behaves exactly the same
-        as in the previous lindblad analysis.}
-\end{figure}
-
-
-
-\subsection{Further Generalisations}
-One issue with this approach is that it
-completely ignores correlations
-between the system and the surroundings.
-This contradicts
-one of the key features seen in the simulation;
-the tunnelling process is dominated by
-transitions between two states with the same energy,
-rather than two states with the same electron configuration.
-It is not possible to `trace out' the environment
-for an arbitrary coupling, however if
-we limit ourselves to
-\begin{equation}
-    \hat{\rho}_t = \sum_{m,n} \hat{\rho}_{m,n} \otimes {(\hat{\rho}_E)}_{m,n} \
-\end{equation}
-we can follow the same procedure as in
-\cref{sec:the redfield assumption}
-to arrive at the modified redfield equation
-\begin{equation}
-    \bra{m}\dot{\hat{\rho}}(t)\ket{n} = \begin{aligned}[t]
-        \sum_{i,j,k, l} &
-        \exp{(-i(\omega_{i,j}-\omega_{k,l})t)}
-        \Gamma^{m,n}_{i,j;k, l}(\omega_{k,l})
-        [S_{k, l}{\hat{\rho}(t)}_{m,n},
-        S^\dagger_{i,j}]  \\
-        +               &
-        \exp{(i(\omega_{i,j}-\omega_{k,l}))}
-        {\Gamma^*}^{m,n}_{k, l; i,j}(\omega_{i,j})
-        [S_{k, l},
-                {\hat{\rho}(t)}_{m,n} S^\dagger_{i,j}]
-    \end{aligned}
-\end{equation}
-where
-\begin{equation}
-    \Gamma^{m,n}_{i,j, k,l}(\omega) =
-    \int_0^\infty{}{
-    ds \exp{(i\omega{}s)}
-    Tr_{E}[E^\dagger_{i,j}(t)E_{k,l}(t-s)
-    {(\hat{\rho}_E)}_{m,n}]
-    }
-\end{equation}
-The problem is then how best to express
-both the statistical and quantum uncertainty
-in the form of a density matrix.
-
-\subsection{Energy Conservation}
-TODO- Reduced Temperature density matrix
-
-TODO- How do we produced thematised and localised states??
-we can do one but not both??
-TODO- we want states to lie close to the fermi level after
-perturbation
 
 

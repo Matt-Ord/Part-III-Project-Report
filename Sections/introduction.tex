@@ -1,5 +1,5 @@
 
-Neumentical solver of lindblad/ Redfield
+Numerical solver of lindblad/ Redfield
 % equation http://qutip.org/docs/latest/guide/dynamics/dynamics-bloch-redfield.html
 
 
@@ -11,6 +11,32 @@ hydrogen
 
 \ldots of Helium-3 spin-echo
 technique~\cite{Helium_spin_echo}
+
+first application of redfield was used to
+describe for nuclear magnetic resonance spectroscopy\cite{REDFIELD19651}
+lamb master equation~\cite{PhysRev.134.A1429}
+both of which however do not preserve the trace of the density matrix.
+This method was \ldots Lindblad~\cite{Lindblad1976} and other peeps\cite{doi:10.1063/1.522979}
+general overview\cite{Chru_ci_ski_2017}.
+
+We develop a novel quantum version of the transition state theory (actual state transition
+state theory), which makes use of the full bandstructure calculated from the adsorbate-surface
+potential energy in a 2D or 3D space
+
+
+We perform the ASTST calculations with the help of first-principle DFT calculations of
+the \(H-Ni(111)\) 3D potential energy, and the resulting rates of both H and D are compared with
+the experimental data. We find an excellent agreement with the experimental observation
+of H diffusion, more specifically, the ASTST accurately calculates the escaping rates of H
+in the activated regime, and qualitatively describes the observation of quantum tunnelling.
+
+
+
+Through the application of
+
+(ASTST) a precise prediction
+of the tunneling rates could be
+found at
 
 Through the application of
 density functional theory (DFT)
@@ -26,49 +52,92 @@ at a much higher rate due to
 their interaction with the
 electron heatbath.
 
-This report investigates
-the challenges
-\ldots propagating the
-wavefunctions \ldots
-and attempts
-
-to propagate
-..
-include the electron-hydrogen
-interaction \ldots previously ignored \ldots
-to
-
-The problem of propagating
-a system in connection with
-the environment can
-be solved \ldots trace density matrix
-\ldots most commonly \ldots
-in the Lindblad master
-equation~\cite{Manzano_2020}.
-
-The report makes
-use of such a master equation
-to obtain a further
-approximation of the
-tunnelling rate \ldots in section \ldots.
+\cite{Manzano_2020}
+Nickel \ldots along the closed packed plane \ldots structure~\cite{Jianding-Zhu},
 
 
+wide range of heterogeneous catalysed processes [45], and fuel cell technology [46, 47].
+
+\subsection{------}
+The aim of this report is to
+investigate the extent to which
+a first-principles calculation
+could be used to predict the rate of
+incoherent tunneling of Hydrogen
+on the surface of Nickel (Ni(111)).
+
+Hydrogen diffusion has been measured
+through a large number of
+techniques\cite{LIN199141, Ni_Diffusion_Experement},
+most recently
+using Helium-3 spin-echo
+interferometry\cite{Helium_spin_echo}. A
+generalised quantum analogue of transition
+state theory (ASTST) was developed to
+describe these tunneling rates,
+the results of which closely match the
+predicted rates, particularly
+in the activated regime\cite{Jianding-Zhu}.
+DFT calculations used to calculate\ldots
+The rate was however different at low temperatures,
+
+\ldots difference
+of which was attributed to incoherent tunnelling.
 
 
-The details of the model
-are discussed in \cref{sec:the model},
-with the method of
+The tunneling rate of Hydrogen
+is known th
+With the help of first-principle DFT calculations of
+the \(H-Ni(111)\) potential a
+quantum version of transition state theory (ASTST)
+was developed to describe these tunneling rates\cite{Jianding-Zhu}.
+These calculations
+found close agreement with the
+experimentally observed rates, particularly
+in the activated regime\cite{Jianding-Zhu}.
+The rate however differed at low temperatures,
+where it is thought that interaction with the
+electron-gas lead to incoherent tunnelling.
+To predict the incoherent behaviour
+it first necessary to investigate
+the propagation of hydrogen
+without ignoring the electron interaction.
+
+This problem can be
+simplified by tracing over the
+environmental degrees of
+freedom, an idea which lead to the
+development of quantum master
+equations. Initial
+attempts to find such an
+equation by Redfield\cite{REDFIELD19651}
+and Lamb\cite{PhysRev.134.A1429} produce
+many useful results, however in
+general they do not preserve the
+trace of the density matrix. This
+issue was eventually solved through
+the introduction of the
+Lindblad equation, developed
+simultaneously by Lindblad\cite{Lindblad1976}
+and others\cite{doi:10.1063/1.522979}.
+
+A model for the Electron-Hydrogen
+interaction is outlined in \cref{sec:the model},
+which is investigated through
 direct integration of the
-resulting hamiltonian outlined
-in \cref{sec:simulation}.
-TODO \cref{sec:simulation results}
+Schrödinger equation in
+\cref{sec:simulation}
+and \cref{sec:simulation results}.
 In \cref{sec:redfield} an
 analytical approximation
 of the rate was also obtained
 through an application
-of the redfield equation,
-before TODO-Conclusion
+of the lindblad equation.
+The limitations of the two methods
+are discussed in \cref{sec:improvements}
+before the conclusions of
+the report are outlined in \cref{sec:conclusion}.
 
 
 
-Nickel \ldots along the closed packed plane \ldots structure~\cite{Jianding-Zhu},
+

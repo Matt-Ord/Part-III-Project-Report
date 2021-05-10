@@ -33,43 +33,62 @@ and the rate curve was fitted to
     R(N,N) = 4 R_0 N(1-N)\label{eqn:degenerate tunnelling rate}
 \end{equation}
 
-\subsection{Tunnelling at Half Filling}
+\subsection{Calculating \(R_0\)}
 Since the rate depends only on a single
 parameter \(R_0\) we are able to
 extrapolate the rate at all
 occupancy from the asymptotic
 limit of the rate at a single
 occupation fraction. This can
-be achieved for \(N=\frac{1}{2}\), \(N=\frac{1}{3}\)
-and \(N=\frac{2}{3}\) where at
-least three datapoints could
-be collected (TODO-PLOT).
+only be achieved for
+\(N=\frac{1}{2}\), where
+by far the largest number of
+datapoints were collected (TODO-PLOT).
+We are also able to extrapolate
+\(R_0\) from the asymptotic
+rates for states with n electrons.
+As \(N\rightarrow{}0\)
+we find
+\(R(N,N) \sim{} 4 R_0 N = 4R_0 (\frac{n}{s})\).
+We are therefore able to
+use the gradient as the
+number of states \(s\rightarrow{}\infty{}\)
+to find \(R_0\).
+Since the rate curve
+is symmetric we expect
+identical behaviour for
+n holes, however
+since the 1 electron
+data was inconsistent (TODO cite)
+we limit the analysis to 2 electron
+or 2 hole data.
 
-The asymptotic rates and associated rate constants
+The calculated rate constants
 are given in \cref{tab:extracted rate constant}.
 \begin{table}[htbp]
     \begin{center}
-        \begin{tabular}{ *{3}{c} }
+        \begin{tabular}{ *{2}{c} }
             \toprule
-            Filling         & \(R(N)\)               & \(R_0\)                    \\
+            Filling                 & \(R_0\)                    \\
             \midrule
-            \(\frac{1}{3}\) & \(\mathcal{O}(n^2 t)\) & \(\mathcal{O}(n^3 + n d)\) \\
-            \(\frac{2}{3}\) & \(\mathcal{O}(n d)\)   & \(\mathcal{O}(n^2 + n d)\) \\
-            \(\frac{2}{3}\) & \(\mathcal{O}(n d)\)   & \(\mathcal{O}(n^2 + n d)\) \\
-            Combined        & ---                    & \(\mathcal{O}(n^2 + n d)\) \\
+            \(\frac{1}{2}\) Filling & \(\mathcal{O}(n^3 + n d)\) \\
+            \(2\) Electron Rate     & \(\mathcal{O}(n^2 + n d)\) \\
             \bottomrule
         \end{tabular}
     \end{center}
     \caption{Extracted value of \(R_0\) from the
-        simulated rate for half and third filled
-        states. \ldots
+        simulated rate for half filled
+        states and two electron states.
     }\label{tab:extracted rate constant}
 \end{table}
 
 \subsection{Correcting for Reversed Rate}
-In reality however the occupation
-of the lower band should be larger than
-that of the higher energy band. Due to
+When we attempted to include hydrogen
+energy in \cref{sec:different hydrogen energy}
+we found electron tunneling between states
+degenerate in energy. We should therefore
+correct the tunneling rate accordingly.
+Due to
 the arguments outlined in
 \cref{app:combined tunnelling rates}
 a general system with a different
@@ -99,32 +118,59 @@ such as \(2R_0N'(1-N')\) which
 would give the same overall rate
 as \(2R_0N(1-N)\).
 
-\subsection{Complete Tunnelling Rate}
-To recover the complete tunneling
+\subsection{Total Tunnelling Rate}
+To recover the total tunneling
 rate the occupation rate curve
 is converted into an
 energy rate using the
-fermi-dirac distribution (TODO CITE)
+fermi-dirac distribution (TODO cite).
+For example for \(R(N\rightarrow{}N') = 2R_0N(1-N')\)
+we find
 \begin{align}
-    N(\epsilon)            & = \frac{1}{1 + \exp{(\beta(\epsilon - \mu))}}                                                                         \\
-    R(\epsilon, \epsilon') & = 4R_0 \frac{1}{1 + \exp{(\beta(\epsilon - \mu))}}(1- \frac{1}{1 + \exp{(\beta(\epsilon' - \mu))}})                   \\
-                           & = 4R_0 \frac{\exp{(\beta(\epsilon' - \mu))}}{(1 + \exp{(\beta(\epsilon - \mu))})(1 + \exp{(\beta(\epsilon' - \mu))})}
+    N(\epsilon)             & = \frac{1}{1 + \exp{(\beta(\epsilon - \mu))}}                                                                         \\
+    R(\epsilon-> \epsilon') & = 2R_0 \frac{1}{1 + \exp{(\beta(\epsilon - \mu))}}(1- \frac{1}{1 + \exp{(\beta(\epsilon' - \mu))}})                   \\
+                            & = 2R_0 \frac{\exp{(\beta(\epsilon' - \mu))}}{(1 + \exp{(\beta(\epsilon - \mu))})(1 + \exp{(\beta(\epsilon' - \mu))})}
 \end{align}
 where we have assumed uniform
 occupation within a band.
-The rate curve (TODO-figure) can then be
+The rate curve
+(\cref{fig:tunneling rate against energy})
+can then be
 integrated to give an
-overall tunneling rate of \ldots.
-\begin{figure}
-    TODO
+overall tunneling rate.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width =0.9 \linewidth]{Figures/Simulation/Corrected Decay Rates.png}
+    \caption{Plot of the corrected
+        tunneling rate curve against
+        energy. As the occupation curve
+        (shown in grey) falls to 0
+        the rate falls also. The corrected
+        rate is seen to peak at half of the hydrogen
+        energy difference above the fermi
+        energy (grey dashed line).
+    }\label{fig:tunneling rate against energy}
 \end{figure}
 
-
+TODO-No temp dependence seen in
+initial rate data
 \subsection{Investigating Rate Corrections}
+Given the calculated tunneling rates
+it is possible to compare
+the temperature dependence
+with experiment. In (TODO-fig)
+we find that all
 
-% \begin{equation}
-%     \epsilon(N)= k_b T (\mu + \ln{\frac{1 - N}{N}} )
-% \end{equation}
+We do however see much smoother
+behaviour as \(T\rightarrow0\)
+with the choice \(\sqrt{}\),
+suggesting it could be the most
+physically justifies. The tunneling rate
+implied
+by the 2 electron data
+is however slightly larger
+than measured in experiment (TODO-fig)
+
 
 
 \subsection{Tunneling without Self Interaction}
