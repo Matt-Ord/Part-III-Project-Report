@@ -257,22 +257,23 @@ provided \(i = n\)
 If we take \(m=n\)
 \begin{align}
     \bra{m}\dot{\hat{\rho}}(t) \ket{m} & = \begin{aligned}[t]
-        \sum_{i} &
-        [2 \Gamma_{m,m;m, m}(\omega_{m,m})\rho_{m, m}\delta_{i,m}                          \\ &
-        + 2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m}\delta_{m,i} \\
-                 &
+        \sum_{i, n\neq m} &
+        [2 \Gamma_{m,m;m, m}(\omega_{m,m})\rho_{m, m}\delta_{i,m} \\ &
+        + 2\Gamma_{m,n;m, n}(\omega_{m,n})\rho_{n, n}\delta_{m,i} \\
+                          &
                 - 2 \Gamma_{i,m;i, m}(\omega_{i,m})\rho_{m, m}]
-    \end{aligned}                                                 \\
+    \end{aligned} \\
                                        & = \begin{aligned}[t]
-        \sum_{i} &
-        [2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m}\delta_{m,i} \\
-                 &
-                -2 \Gamma_{\neq m,m;\neq m, m}(\omega_{\neq m,m})\rho_{m, m}\delta_{m,i}]
-    \end{aligned}                                                 \\
-                                       & = \begin{aligned}[t]
-        [ & 2\Gamma_{m,\neq m;m, \neq m}(\omega_{m,\neq m})\rho_{\neq m, \neq m} \\
-        - & 2\Gamma_{\neq m,m;\neq m, m}(\omega_{\neq m,m})\rho_{m, m}]
-    \end{aligned}\label{eqn:cross terms density matrix evolution}
+        2\sum_{i,  n\neq m} &
+        [\Gamma_{m,n;m, n}(\omega_{m,n})\rho_{n, n}\delta_{m,i} \\
+                            &
+                - \Gamma_{n,m;n, m}(\omega_{n,m})\rho_{m, m}\delta_{m,i}]
+    \end{aligned} \\
+                                       & =
+    2\sum_{n\neq m}[
+        \Gamma_{m,n;m, n}(\omega_{m,n})\rho_{n, n}
+        - \Gamma_{n,m;n, m}(\omega_{n,m})\rho_{m, m}]
+    \label{eqn:cross terms density matrix evolution}
 \end{align}
 If we take \(m \neq n\)
 \begin{align}
@@ -284,8 +285,8 @@ If we take \(m \neq n\)
                 - \Gamma_{ i,\neq m; i, \neq m}(\omega_{i, \neq m,})\rho_{m, \neq m}]
     \end{aligned}
 \end{align}
-We only have interaction
-between diagonal elements.
+We only have self interaction
+in the diagonal elements.
 If they start 0 they will
 always remain zero at
 later times. If we

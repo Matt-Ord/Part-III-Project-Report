@@ -1,0 +1,81 @@
+A first principles
+approach was used to
+model the incoherent groundstate to
+groundstate tunneling of
+hydrogen on a Ni(111) surface.
+
+Through the application of the
+Lindblad equation the model
+was used to produce a closed form
+of the hydrogen density
+matrix evolution equation
+\begin{equation}
+    \bra{m}\dot{\hat{\rho}}(t) \ket{m}  =
+    2 \sum_{n\neq m}
+    [  \Gamma_{m,n;m, n}(\omega_{m,n})\rho_{n, n}
+        - \Gamma_{n,m;n, m}(\omega_{n,m})\rho_{m, m}]
+\end{equation}
+where
+\begin{equation}
+    \Gamma_{i,j, k,l}(\omega_{k,l})   =
+    \exp{(\frac{\beta \omega_{k,l}}{2})}
+    \mathcal{C}_{i,j} \mathcal{C}_{k,l}
+    \sqrt{\pi} \frac{32 k_f^2 \epsilon_0^2 \hbar^3}{\beta e^4 m_e^2}
+\end{equation}
+\(\omega_{i,j} = E_i - E_j\),
+\(E_i\) is the energy of the hydrogen at
+site \(i\) and \(k_f\) is the fermi wavevector
+of Nickel. Previous DFT calculations
+were used to find the hydrogen
+overlap fraction
+\(\mathcal{C}_{i,j}\) where
+\(i\), \(j\) denotes either
+a low energy FCC or a
+high energy HCP site\cite{Jianding-Zhu}.
+Analysis of the combined FCC and HCP
+occupation gave an expression
+for the tunneling rate \(R\)
+\begin{equation}
+    R   =
+    12\cosh{(\frac{\beta \omega_{k,l}}{2})}
+    \mathcal{C}_{1,0}\mathcal{C}_{0,1}
+    \sqrt{\pi} \frac{32 k_f^2 \epsilon_0^2 \hbar^3}{\beta e^4 m_e^2}
+\end{equation}
+where the FCC-HCP
+overlap of Nickel
+\(\mathcal{C}_{1,0}\)
+was found to be \(\sim 4.4\times{}10^{-3}\).
+Calculations at
+\(150K\) gave a rate of
+\(1.8\times 10^9s^{-1}\),
+which was close to the
+measured value of \(3.3\times 10^9s^{-1}\)\cite{Jianding-Zhu}.
+Further measurements of the
+rate from initial site
+occupation \(2.5\times 10^{9}s^{-1}\), HCP occupation
+\(2.3\times 10^{9}s^{-1}\)
+next FCC occupation
+\(1.5\times 10^{9}s^{-1}\)
+and mean-squared distance
+\(2.0\times{} 10^9s^{-1}\)
+were also shown to be constant
+with experiment.
+
+The full electron-hydrogen
+dynamics were then investigated
+through direct integration
+of the schrodinger equation.
+Data extracted from the simulation
+predicted a tunneling rate of
+\(4.3\pm 0.1\times10^{9}s^{-1}\)
+at 150K,
+which was again
+consistent with
+experiment. Comparison
+between the behaviour
+of simulation
+and Lindblad analysis
+found many similarities
+in the
+form of the predicted
+hydrogen dynamics.

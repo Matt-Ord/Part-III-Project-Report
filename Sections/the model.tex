@@ -1,41 +1,57 @@
-
-\subsection{}
-arranged in a hexagonal
-
-Due to interaction with atoms
-we find \ldots a lower energy
-(FCC) and a higher energy (HCP)
-sites.
-
-
-
+In this report we will
+focus on a model of
+electron-hydrogen
+interaction within
+a Nickel lattice arranged
+in a
+face centred cubic structure.
+Previous calculations
+show that hydrogen
+occupies hollow sites
+within Nickel\cite{doi:10.1063/1.522979},
+which are arranged in a
+honeycomb configuration
+(\cref{sub@fig:hydrogen honeycomb structure}).
+Due to interaction with Nickel
+atoms below the surface
+we find these sites are split
+into alternating low energy
+FCC and high energy HCP
+sites\cite{Jianding-Zhu}.
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.45\linewidth}
         \centering
-        \includegraphics[width =0.9 \linewidth]{Figures/Redfield/Plot of lindblad solution many sites.png}
-        \caption{Individual occupation probability
-        }
+        \includegraphics[width =0.9 \linewidth]{Figures/Model/Hydrogen sites.png}
+        \caption{Arrangement of Hydrogen Sites
+        }\label{sub@fig:hydrogen honeycomb structure}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.45\linewidth}
         \centering
-        \includegraphics[width = 0.9\linewidth]{Figures/Redfield/Plot of redfield solution long time.png}
-        \caption{Combined occupation probability
-        }
+        \includegraphics[width = 0.9\linewidth]{Figures/Model/Hydrogen DFT Potential.png}
+        \caption{DFT Potential surface
+        }\label{sub@fig:Nickel DFT surface}
     \end{subfigure}
-    \caption{}
+    \caption{
+        Diagrams demonstrating
+        the arrangement of hydrogen
+        sites on a Ni(111) surface.
+        Hydrogen sites alternate
+        between low energy FCC and
+        high energy HCP sites arranged
+        in a honeycomb structure.
+        \cref{sub@fig:hydrogen honeycomb structure,sub@fig:Nickel DFT surface}
+        are reproductions of those found in\cite{Jianding-Zhu}
+    }
 \end{figure}
-
-
-
-
-\subsection{}
-To calculate the tunnelling rate we
-need to build a model of the Electron-Hydrogen
-interaction. This system is completely
-described by it's hamiltonian, which can be
-split into free and interaction energy
+To calculate the incoherent
+rate of tunneling between
+the FCC and HCP groundstate
+we need to find a
+hamiltonian describing the combined
+electron-hydrogen system.
+This can be split into free and interaction energy
 \begin{equation}
     \hat{H} = \hat{H}_{free} + \hat{H}_{int}
 \end{equation}
@@ -46,8 +62,6 @@ into an electron and hydrogen component
     \hat{H}_{free} =
     \hat{H}_{e^-} + \hat{H}_{h}\\
 \end{equation}
-
-
 
 \subsection{Electron States}\label{sec:electron states}
 For the purpose of this model we ignore the
@@ -99,27 +113,20 @@ at only
 \(1.24\times{} 10^{-18}J\)~\cite{PhysRev.131.2469}.
 
 \subsection{Hydrogen States}
-The hydrogen states produced
-taking into account interaction with
-the \(Ni\) lattice, with the form
-of the wavefunctions taken
-from previous DFT calculations. TODO-CITE
-
-These calculations gave hydrogen
-states localised at two positions
-within the material, at a lower energy
-`FCC' site and a higher energy
-`HCP' site. We consider two neighbouring
-sites, and expand the hydrogen
-hamiltonian in this basis
+For hydrogen
+we make use of the
+eigenstates found from
+the previous DFT
+analysis\cite{Jianding-Zhu}.
 \begin{equation}
     \hat{H}_{h} =
-    E_0 \hat{a}^\dagger_0 \hat{a}_0
-    + E_1 \hat{a}^\dagger_1 \hat{a}_1
+    E_0 \sum_{i \exists fcc} \hat{a}^\dagger_i \hat{a}_i
+    + E_1 \sum_{i \exists hcp} \hat{a}^\dagger_i \hat{a}_i
 \end{equation}
-where \(0\) denotes the FCC site and \(1\)
-denotes the HCP site,
-with \(\hat{a}^\dagger_i\) the hydrogen creation
+where \(E_0\) is the energy of an FCC site and
+\(E_1\) is the energy of a HCP site.
+\(\hat{a}^\dagger_i\) is
+the hydrogen creation
 operator for the site i
 which satisfies the standard commutation
 relations for a boson
@@ -198,6 +205,23 @@ to give us the expression
     \hat{\psi}_h^{\dagger}\hat{\psi}_h
     \exp(i\vec{q}.\vec{r})}
 \end{align}
+If we expand out the
+hydrogen creation operator
+\begin{equation}
+    \hat{\psi}_h(\vec{r}) =
+    \sum_{i} \psi_{h,i}(\vec{r})
+    \hat{a}_i
+\end{equation}
+we find
+\begin{equation}
+    \hat{H}_{int} = \frac{1}{L^3}
+    \sum_{\substack{ k,s,k',s'\\ i,j}}
+    \hat{b}^\dagger_{k',s'}\hat{b}_{k,s}
+    \hat{a}^\dagger_i \hat{a}_k
+    \tilde{V}(\vec{q})\int{d\vec{r}
+        \psi^*_{h,i}(\vec{r})\psi_{h,j}(\vec{r})
+        \exp(i\vec{q}.\vec{r})}\label{eqn:interaction hamiltonian expanded}
+\end{equation}
 where \(\vec{q} = \vec{k} - \vec{k'}\)
 is the scattering wavevector, and
 \(\tilde{V}(\vec{q})\) is the
@@ -205,7 +229,7 @@ fourier transform of the interaction
 potential.
 
 
-\subsection{The Electron Hydrogen Potential}
+\subsection{The Electron Hydrogen Potential}\label{sec:electron hydrogen potential}
 
 The electrons surrounding the hydrogen
 atom have energies
@@ -216,18 +240,19 @@ than the fermi energy of \(Ni\)
 (\(7.76eV\)~\cite{PhysRev.131.2469}) we can
 make the approximation that the electron surrounding
 the hydrogen lie close to the 1s groundstate.
-
-The potential is then given by the equation TODO-CITE
+The potential can then be found from
+the greens function of the coulomb
+equation~\cite{AQP_Problems}
 \begin{equation}
     V(\vec{r}) = \frac{e^2}{4 \pi \epsilon_0}(
     -\frac{1}{r}
-    + \int{\frac{\abs{\phi(\vec{r}')}^2}{
+    + \int{\frac{\abs{\psi(\vec{r}')}^2}{
             \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
 \end{equation}
 where \(a_0\) is
 the bohr radius and
 \begin{equation}
-    \phi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
+    \psi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
 \end{equation}
 is the 1s hydrogen orbital~\cite{griffiths_schroeter_2018}.
 We then fourier
@@ -255,29 +280,32 @@ of electrons the potential takes a constant
 value \(V(q) \sim -\frac{2e^2}{\epsilon_0 \alpha^2}\).
 
 \subsection{The Hydrogen Wavefunction}
-TODO-
-The form of the hydrogen wavefunctions were
-known from previous \ldots DFT Calculations from Jianding's thesis \ldots
-
-
-\ldots using these
-
-The wavefunctions provided by this software however
-were expressed in terms of bloch wavefunctions spread
+The final term in
+\cref{eqn:interaction hamiltonian expanded}
+involves the integral
+of the product of the two
+hydrogen wavefunctions.
+The form of these wavefunctions
+are known from
+previous DFT Calculations\cite{Jianding-Zhu}
+however the wavefunctions provided
+by these calculations
+are expressed in terms of bloch wavefunctions spread
 through the whole material.
 To recover a localised
 wavepacket several of these states were chosen
 centered about \(q=0\).
-TODO-HOW
-Given these wavefunctions
+Given the localised wavefunction
 it was then possible to calculate the fourier
 transform products directly. As there was a fixed
 distance between the FCC and HCP lattice
 sites however the fourier transform was seen to
-oscillate (\cref{fig:fourier transform oscillation}), with a frequency proportional to
+oscillate (\cref{fig:fourier transform oscillation}),
+with a frequency proportional to
 \(\frac{2\pi}{a}\) where \(a\) is the lattice
-constant of \(Ni\). The value of this constant
-is around \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753}
+constant of Ni. The value of this constant
+is around
+\(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753}
 corresponding to oscillations at
 \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\).
 \begin{figure}[htbp]
@@ -359,7 +387,7 @@ and hydrogen overlap factors
      & =
     \frac{1}{L^3}
     \mathcal{C}_{i,j}
-    \frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m^2}
+    \frac{8 \pi^2 \epsilon_0 \hbar^4}{e^2 m_e^2}
     \label{eqn:simplified interacton potential}
 \end{align}
 where \(\mathcal{C}\) takes

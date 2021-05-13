@@ -11,7 +11,7 @@ integration, however
 if we first decompose
 the initial state
 into eigenstates
-of the complete hamiltonian
+of the complete hamiltonian\cite{conduit}
 \begin{align}
     \ket{\Psi(t)} = \exp{(-i\frac{Ht}{\hbar})} \sum_n C_n \ket{n} \\
     = \sum_n C_n \exp{(-i\frac{E_n t}{\hbar})} \ket{n}
@@ -106,9 +106,14 @@ In this case the number
 of states scales as \(m \times{} \binom{n}{N}\).
 In practise we are able to
 simulate a system with
-around \(2000\) eigenstates,
-or \(12\) half filled electron states
+around \(3500\) eigenstates,
+or \(14\) half filled electron states
 (\cref{tab:number of eigenstates}).
+This was limited more by
+storage than CPU time, and as such it may
+be necessary to investigate
+the use of sparse matrices if a
+larger system is required.
 \begin{table}[htbp]
     \begin{center}
         \begin{tabular}{ *{4}{c} }
@@ -223,10 +228,10 @@ simulations we also need to setup the
 simulation with a somewhat random
 choice of initial states.
 We can start the hydrogen
-in the \(FCC\) site by setting the
-amplitudes of the \(HCP\) sites to zero
-before choosing the \(FCC\) aptitudes according to
-a normal distribution and normalising.
+in the FCC site by setting the
+amplitudes of the HCP sites to zero
+before choosing the FCC aptitudes according to
+a normal distribution.
 
 In simulations for which we choose states
 with a large range of energies however
@@ -244,6 +249,7 @@ associated with each state.
     P_k & = \exp(-\beta{}E_k)     \\
     C_k & = \exp(-\beta{}E_k / 2)
 \end{align}
+where \(C_k\) is the wavefunction amplitude.
 If we plot the resulting
 electron distribution produced
 by this method for fixed N
@@ -277,9 +283,9 @@ as those required for the
 real Nickel system the
 electron distribution is
 seen to diverge, as the approach
-does not take into accounts the
-shift in energies
-caused by the perturbation (\cref{fig:incorrect fermi dirac}).
+does not account for the
+shift in the perturbed
+energies (\cref{fig:incorrect fermi dirac}).
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.45\linewidth}
@@ -303,16 +309,11 @@ caused by the perturbation (\cref{fig:incorrect fermi dirac}).
 \end{figure}
 To overcome this limitation
 the simulation was repeated
-for only small ranges of energy,
+for small energy bands (\cref{sec:small band approach})
 for which the electron distribution
 was uniform.
 
 Full code is available in the appendix TODO-
-
-
-
-
-
 
 \subsection{Initial Investigation}
 To obtain a rough estimate of
@@ -377,9 +378,6 @@ the hydrogen energy is included (\cref{fig:issues with single large band}).
         seen (\cref{fig:large band fermi-dirac}).
         TODO-Plot Title}\label{fig:issues with single large band}
 \end{figure}
-
-In section (TODO- cref) we discuss the methods
-used to overcome these limitations.
 
 \subsection{Small Band Approach}\label{sec:small band approach}
 To limit the effect of the incorrect
@@ -500,47 +498,86 @@ several distinct groups.
 To promote interaction between each group
 we could increase the width of each band,
 however this leads to a reduction in
-the overlap between states.
-
-TODO-FIgure with
--two band grouping
--two band mixing?
--two large band grouping
--two large band mixing
-
+the overlap between states. This is
+caused by different mixing
+within each band which prevents
+the energy degeneracy. To solve this
+we could simply remove the diagonal
+interaction, however in (\cref{sec:tunnelling no diagonal})
+we find this effects the
+measured tunneling times.
+Even when
+working with a small band
+we do not see the desired equilibrium
+behaviour, calculated assuming the rate
+scales as \(N(1-N)\).
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.45\linewidth}
-        \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band eigenstate energies varience.png}
-        \subcaption{Two Band Overlaps}\label{fig:two band minimum mixing}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Large Bands No Mixing.png}
+        \subcaption{Large Band Mixing}\label{fig:two band minimum mixing}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.45\linewidth}
-        \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band electron distribution.png}
-        \subcaption{Two Band Electron Distribution}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Large Bands No Diagonal.png}
+        \subcaption{Large Band No Diagonal}\label{fig:two band no diagonal}
     \end{subfigure}
-    \caption{Investigation into the behaviour of the
-        two band approach \ldots several interesting
-        behaviours.
-        The final state energies no longer exhibited
-        a two band structure, and instead
-        produced several groups with very little
-        mixing between each group. If we increase
-        the spacing of each band the }\label{fig:issue with two band approach}
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Small Bands Large Probability Incorrect Equilibrium.png}
+        \subcaption{Large Initial Occupation}\label{fig:two band incorrect equilibrium above}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Small Bands Small Probability Incorrect Equilibrium.png}
+        \subcaption{Small Initial Occupation}\label{fig:two band incorrect equilibrium below}
+    \end{subfigure}
+    \caption{
+        Plots demonstrating the issues
+        with the two band approach.
+        \cref{fig:two band minimum mixing}
+        demonstrates the issue with
+        using a large band; the diagonal
+        interaction causes mixing within
+        groups of eigenstates which
+        lifts the degeneracy required for
+        the off diagonal interaction.
+        This can be fixed by removing
+        the diagonal interaction
+        (\cref{fig:two band no diagonal})
+        however in
+        \cref{sec:tunnelling no diagonal}
+        we find this is
+        necessary for the correct
+        tunneling behaviour.
+        Even with a small band
+        the
+        predicted equilibrium
+        behaviour is not seen
+        (\cref{fig:two band incorrect equilibrium above,fig:two band incorrect equilibrium below}).
+        There is therefore very
+        little evidence that
+        this method would
+        approximate the true
+        electron-hydrogen dynamics.
+    }\label{fig:issue with two band approach}
 \end{figure}
-Interestingly we also find the material cools
+Interestingly we do see a reduction in
+fluctuations if the system is initially
+prepared with this occupation
+(\cref{fig:two band close to equilibrium}).
+We also find the material cools
 as the hydrogen tunnels, as can be seen
 through the average electron distribution in
 the initial and final state. This is a
 result of energy transfer from the
 electron gas to the hydrogen
+(\cref{fig:two band temperature shift}).
 
-TODO-Figure
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.45\linewidth}
-        \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band eigenstate energies varience.png}
-        \subcaption{Two Band Overlaps}
+        \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Small Bands Probability Clsoe To Equilibrium.png}
+        \subcaption{Evoulution Close To Equilibrium}\label{fig:two band close to equilibrium}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.45\linewidth}
@@ -548,91 +585,22 @@ TODO-Figure
         \subcaption{Two Band Electron Distribution}\label{fig:two band temperature shift}
     \end{subfigure}
     \caption{
-        The temperature of the HCP site was also
-        seen to be significantly lower than the FCC
-        site (\cref{fig:two band temperature shift})
-        as energy is transferred from the electron gas
-        to the Hydrogen
-    }
+        Interesting features of the two
+        band dynamics.
+        In \cref{fig:two band close to equilibrium}
+        we find noise is reduced when the
+        hydrogen is prepared in a state
+        close to the predicted equilibrium
+        occupation. This suggests it is
+        true equilibrium of the
+        system.
+        In \cref{fig:two band temperature shift}
+        the temperature shift can be seen.
+        This is a consequence of energy transfer
+        between the electron gas to the
+        hydrogen. The temperature
+        shift can be reduced by adding
+        more electrons to the
+        simulation.
+    }\label{fig:final notes two band}
 \end{figure}
-
-Unfortunately however the overall
-amount of tunnelling remains small,
-as the forward and backward tunnelling
-rate \ldots are very different.
-
-\subsection{Multi Band Approach}
-To resolve these issues we instead simulated the system
-taking the basis of electrons placed in two bands,
-with each band separated by the hydrogen energy
-difference.
-with
-the states in each band separated by at most \ldots.
-
-
-When applying this approach however very
-little tunnelling of the hydrogen is seen at all timescales.
-Look at the energy distribution almost all
-of the HCP electrons lie in the lowest energy band.
-This corresponds to a system with a much lower
-temperature than the initial condition.
-The lack of tunnelling can therefore be explained
-\ldots and if
-the final states were to lie in a boltzmann  distribution
-this would explain the lack of tunnelling
-
-Running the simulation
-in reverse (from HCP to FCC) the electrons
-distribution \ldots population inversion.
-The heat bath is therefore much to small
-to accommodate the energy difference of
-the two hydrogen sites.
-
-TODO- fermi distribution
-TODO- tunnelling curve
-..It is therefore impossible to measure a tunnelling
-rate.
-
-TODO- The rate of tunnelling might also
-be much different at such a low temperature,
-and as such it is impossible to say if
-any of these results would be valid
-for the real system.
-
-
----
-
----
-
-It was however not possible to
-reduce the electron spacing to
-below \ldots
-TODO -BAndwidth justification.
-however as we decrease the electron
-spacing we also increase the tunnelling
-times, as we choose to sample fewer and
-fewer electrons \ldots so this is not seen.
-
-
-
-
-
-
-We
-therefore `fix' the behaviour by
-ignoring the fact the electron
-has moved to a lower band at all,
-allowing tunnelling of the hydrogen
-which leaves the electron distribution
-untouched. This is exactly what
-we see in a system when we ignore
-the hydrogen energy difference.
-
-
-The Approach used to simulate the system is as follows
-
-
-assuming the states are closely spaced we can find the
-chemical potential using \ldots
-
-\subsection{Correcting for unfixed N}

@@ -1,0 +1,95 @@
+
+
+\subsection{Q Dependance}
+One of the key approximations
+made in the model of the
+Electron-Hydrogen system
+was the q-independence of
+the interaction hamiltonian.
+Although this only contributed
+to a variation of
+\(14.5\% \) to the interaction
+potential
+(\cref{sec:electron hydrogen potential})
+rapid oscillations
+in the hydrogen overlap
+fourier transforms
+could mean that scattering
+between certain wavevectors
+should be excluded entirely.
+It is therefore possible
+that is approximation
+is the cause of
+the largest source of
+error in our analysis.
+
+For the purpose
+of the simulation
+it will always
+be necessary to assume a
+q independent
+matrix element in general,
+as it is not possible
+to include enough
+states to properly
+sample all possible final
+states in 3D.
+We should however be able
+to incorporate the
+effects of a q-dependent
+interaction into the
+Lindblad analysis,
+as it would only effect
+the integral in \cref{eqn:gamma integral form}.
+This analysis could then
+be applied to the simulation,
+producing an effective matrix
+element which would only depend
+on the energy difference between
+two electron states.
+
+
+\subsection{Realistic Treatment of Electrons}
+In the development
+of the Electron-Hydrogen
+model we also assumed
+an ideal electron gas,
+with a fermi energy
+of \(1.91\times{}10^{-18}J\).
+The real fermi energy
+of Nickel actually slightly lower,
+at only \(1.24\times{} 10^{-18}J\),
+possibly since the two
+valence electrons are not
+fully delocalised.
+The fermi surface of Nickel
+is also not entirely
+spherical~\cite{FermiSufaceNickel},
+indeed it is different
+for each spin.
+This is the cause of
+ferromagnetic properties
+within the metal~\cite{PhysRev.49.537}.
+
+This behaviour could
+be included in the
+Lindblad analysis through
+a modification of \cref{eqn:gamma integral form},
+however it is not possible
+to incorporate any
+non-spherical behaviour
+into the simulation
+without the introduction of
+an effective constant.
+Overall we only expect
+this to lead to a small
+correction to the rate,
+especially at finite temperature
+when the surface is `smoothed out'
+as electrons are excited out
+of the groundstate.
+
+
+
+
+

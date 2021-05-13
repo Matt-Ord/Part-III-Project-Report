@@ -14,6 +14,8 @@
 
 \usepackage{booktabs}
 
+\usepackage{placeins}
+
 % vectors bold not underlined
 \renewcommand{\vec}[1]{\mathbf{#1}}
 % abs symbol
@@ -26,61 +28,47 @@
 \begin{document}
 \maketitle
 The main text (excluding appendices and abstract) should be concise (20–30 pages, 5000 words maximum (excluding references))
-4170 out of 5000
+5057 out of 5000
 \begin{abstract}
-    This is the abstract
+    \input{Sections/abstract.tex}
 \end{abstract}
 
 
 
 \pagebreak
 \section{Introduction}
-
-% How does it fit into the bigger picture
 \input{Sections/introduction.tex}
 
-\section{Lit review}
-% Outline the state of the art
+\pagebreak
 
-\section{Theory}\label{sec:the model}
-Explain what the equations mean
+\section{The Model}\label{sec:the model}
 \input{Sections/the model.tex}
 
-\section{Simulation Investigation}\label{sec:simulation}
-how to setup the experiment
-\input{Sections/simulation.tex}
-
-\section{Simulation Results}\label{sec:simulation results}
-% Graphs should show units, and figure captions should explain other variable values such as Temperature, B
-% field etc
-\input{Sections/simulation results.tex}
-
-
-
-\section{The Redfield Equation}\label{sec:redfield}
+\section{Lindblad Equation}\label{sec:redfield}
 \input{Sections/redfield.tex}
 
+\section{Simulation Investigation}\label{sec:simulation}
+\input{Sections/simulation.tex}
+
+\FloatBarrier\
+\section{Simulation Results}\label{sec:simulation results}
+\input{Sections/simulation results.tex}
+
+\section{Lindblad Assumptions}\label{sec:lindblad assumptions}
+\input{Sections/lindblad limitations.tex}
+
 \section{Improvements and Discussion}\label{sec:improvements}
-\input{Sections/improvements.tex}
+\input{Sections/model limitations.tex}
 
-\section{Results}
-Graphs should show units, and figure captions should explain other variable values such as Temperature, B
-field etc
-
-\section{Discussion}
-How do your results fit in with existing knowledge
-
-Improvements
--Electron electron interaction (change \(V(0)\))
-
+\pagebreak
 
 \section{Conclusion}\label{sec:conclusion}
-What did you discover, what does it imply and what would you do next as a result of your work
+\input{Sections/conclusion.tex}
 
+\pagebreak
 \printbibliography{}
-
+\pagebreak
 \begin{appendix}
-    This is the appendix
     \section{Calculating The Potential}\label{app:interaction potential calculation}
     \input{Appendix/interaction potential.tex}
 
@@ -90,10 +78,8 @@ What did you discover, what does it imply and what would you do next as a result
     \section{From Redfield to the Lindblad Equation}\label{app:redfield to lindblad}
     \input{Appendix/lindblad evolution.tex}
 
-    \section{Calculating Gamma For The Lindblad Equation}
+    \section{Calculating the Lindblad Rate Constant}\label{app:calculating gamma}
     \input{Appendix/lindblad gamma.tex}
-
-
 \end{appendix}
 
 \end{document}
