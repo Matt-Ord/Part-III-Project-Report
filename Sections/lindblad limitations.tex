@@ -2,15 +2,9 @@
 Given the results of
 direct simulation it is
 possible to examine
-the limitations
-and success of the
-Lindblad analysis.
-
-\subsection{Separable Density matrix}
-
-\subsection{Diagonal Electron Density Matrix}
-In \ldots we make the approximation
-TODO- How big are the off diagonal elements??
+the approximations
+used to arrive at
+the Lindblad equation.
 
 \subsection{Single State Tunnelling Rate}\label{sec:lindblad corrected tunneling}
 When simulating the
@@ -108,7 +102,7 @@ The problem is then how best to express
 both the statistical and quantum uncertainty
 in the form of a density matrix.
 
-\subsection{Rotating Wave Approximation}
+\subsection{Rotating Wave Approximation}\label{sec:rotating wave approximation}
 The final approximation made in
 \cref{sec:lindblad equation}
 is the rotating wave approximation.
@@ -193,3 +187,168 @@ In this case
 we again see good
 agreement with the
 lindblad equation.
+
+
+\subsection{Separable Density matrix}
+In the analysis of the lindblad
+equation we also assumed that is was possible
+to factorise the density
+matrix
+\begin{equation}
+    \hat{\rho}_t(t) = \hat{\rho}(t) \otimes \hat{\rho}_E(t)
+\end{equation}
+It is clear from the
+initial and final
+state energy distribution that
+in the limit of a large
+number of states the
+diagonal elements are completely
+uncorrelated with the
+hydrogen occupation.
+In the real simulation
+the electron density
+matrix is not diagonal,
+however if we average
+over a small period of time
+the average is seen to
+fall to zero
+(\cref{fig:density matrix analysis}).
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width =0.9 \linewidth]{Figures/Discussion/Off Diagonal Average Matrix Element Decay.png}
+        \caption{Average Off-Diagonal Decay
+        }\label{sub@fig:off diagonal matrix decay}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{Figures/Discussion/Full average matrix 10-6s.png} %ChkTeX 8
+        \caption{Averaged Density Matrix
+        }\label{sub@fig:averaged density matrix}
+    \end{subfigure}
+    \caption{
+    Plot of the average
+    electron density matrix
+    for a system of 5 electrons
+    and 10 states
+    corresponding to a tunneling time
+    of \(\sim 2\times{}10^{-4}s\).
+    The average off diagonal
+    elements can be seen to
+    fall in around
+    \(\sim 2\times{}10^{-8}s\).
+    }\label{fig:density matrix analysis}
+\end{figure}
+The approximation
+therefore holds for the
+same reason we are able
+to ignore the off-diagonal
+terms in the hydrogen density
+matrix
+(\cref{sec:rotating wave approximation}).
+Since
+the off diagonal terms
+oscillate at much shorter
+timescales they have
+no effect on the dynamics
+of the system.
+
+\subsection{Q Dependance}
+When developing a model of
+the electron-hydrogen system
+we assumed the interaction
+hamiltonian was independent
+of \(\vec{q}\).
+If we instead include the full form
+of the interaction potential
+into \cref{eqn:gamma integral form}
+we find a
+lindblad rate constant that
+is \(0.418 \times{}\) that
+previously calculated.
+
+We also expect a
+contribution from the
+\(\vec{q}\) dependance of the hydrogen overlap
+fourier transform, however
+to
+include this we would need to
+convert the discrete
+DFT calculations into a continuous
+function of \(\vec{q}\).
+It is also possible that
+the rapid oscillations
+seen in the fourier transform
+are simply artifacts of the
+discrete DFT analysis.
+
+For the  simulation
+it will always
+be necessary to assume a
+\(\vec{q}\)-independent
+matrix element in general,
+as it is not possible
+to include enough
+states to properly
+sample all possible initial
+and final
+states in 3D.
+The corrections made in
+the Lindblad analysis could
+however be applied to the simulation,
+producing an effective matrix
+element depending only
+on the energy difference between
+two states.
+
+
+\subsection{Realistic Treatment of Electrons}
+In the development
+of the electron-hydrogen
+model we also assumed
+an ideal electron gas,
+with a fermi energy
+of \(1.91\times{}10^{-18}J\).
+The real fermi energy
+of Nickel actually slightly lower,
+at only \(1.24\times{} 10^{-18}J\),
+possibly since the two
+valence electrons are not
+fully delocalised.
+The fermi surface of Nickel
+is also not entirely
+spherical~\cite{FermiSufaceNickel},
+indeed it is different
+for each spin.
+This is the cause of
+ferromagnetic properties
+within the metal~\cite{PhysRev.49.537}.
+
+This behaviour could
+be included in the
+Lindblad analysis through
+a modification of \cref{eqn:gamma integral form},
+however it is not possible
+to incorporate any
+non-spherical behaviour
+into the simulation
+without the introduction of
+an effective constant.
+The complex nature of
+the Nickel band-structure
+means that this
+could favour low or
+high \(\vec{q}\) scattering,
+which would lead to either an increase
+or decrease in the
+overall rate.
+The hope
+is that the surface
+is sufficiently
+`smoothed out' by
+excitations at high
+temperature such that
+this is only a small
+correction.

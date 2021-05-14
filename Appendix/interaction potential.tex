@@ -21,20 +21,22 @@ we arrive at the following potential
             \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
 \end{equation}
 If we make use of two standard results
-\begin{eqnarray}
+\begin{align}
     \int{\frac{1}{r} e^{i\vec{q}.\vec{r}} d^3\vec{r}}
-    &=& \frac{4 \pi}{q^2}\\
+     & = \frac{4 \pi}{q^2}                         \\
     \int{e^{-\alpha r} e^{i\vec{q}.\vec{r}} d^3\vec{r}}
-    &=& \frac{8 \pi \alpha}{{(\alpha^2 + q^2)}^2}\\
-\end{eqnarray}
+     & = \frac{8 \pi \alpha}{{(\alpha^2 + q^2)}^2} \\
+\end{align}
 with \(\alpha = \frac{2}{a_0}\) we end up
 with
-\begin{eqnarray}
-    V(\vec{q}) &=& \frac{e^2}{4 \pi \epsilon_0}(
+\begin{align}
+    V(\vec{q}) & = \frac{e^2}{4 \pi \epsilon_0}(
     - \frac{4\pi}{q^2}
     + \frac{\pi a_0^3}{q^2}
-    \frac{8 \pi \alpha}{{(\alpha^2 + q^2)}^2})\\
-    &=& \frac{e^2}{\epsilon_0 q^2}(
+    \frac{8 \pi \alpha}{{(\alpha^2 + q^2)}^2})   \\
+               & = \frac{e^2}{\epsilon_0 q^2}(
     \frac{ \alpha^4}{{(\alpha^2 + q^2)}^2} - 1
-    )
-\end{eqnarray}
+    )                                            \\
+               & =-\frac{e^2}{\epsilon_0 }
+    \frac{ 2\alpha^2 + q^2 }{{(\alpha^2 + q^2)}^2}
+\end{align}

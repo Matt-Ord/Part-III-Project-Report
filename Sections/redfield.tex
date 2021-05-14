@@ -30,7 +30,7 @@ twice to give
     \frac{d\hat{\rho}_t(t)}{dt} =
     -i [\hat{H}_{int}(t), \hat{\rho}_t(0)]
     - \int_0^t ds
-        [\hat{H}_{int}(s),
+        [\hat{H}_{int}(t),
             [\hat{H}_{int}(s), \hat{\rho}_t(t)]]
     +\mathcal{O}({\hat{H}_{int}}^3)
     \label{eqn:second order eqn of motion}
@@ -43,7 +43,7 @@ a trace over the environment~\cite{Manzano_2020}
     \hat{\rho}(t) =
     -i Tr_e[\hat{H}_{int}(t), \hat{\rho}_t(0)]
     - \int_0^t ds
-    Tr_e[\hat{H}_{int}(s),
+    Tr_e[\hat{H}_{int}(t),
     [\hat{H}_{int}(s), \hat{\rho}_t(t)]]
     \label{eqn:density motion before redfield approximation}
 \end{equation}
@@ -63,7 +63,7 @@ matrix is completely
 decoupled~\cite{theory_open_quantum_systems},
 allowing us to write
 \begin{equation}
-    \hat{\rho}_t(t) = \hat{\rho}(t) \otimes \hat{\rho}_E(t)
+    \hat{\rho}_t(t) = \hat{\rho}(t) \otimes \hat{\rho}_E(0)
 \end{equation}
 where \(\hat{\rho}_E(t)\), the
 density matrix of the environment,
@@ -78,7 +78,7 @@ equation
     - \int_0^{\infty} ds
     Tr_{E}[\hat{H}_{int}(t),
             [\hat{H}_{int}(s-t),
-                    \hat{\rho}(t) \otimes \hat{\rho}_E(t)]]
+                    \hat{\rho}(t) \otimes \hat{\rho}_E(0)]]
 \end{equation}
 Separating out the interaction hamiltonian
 into system and surroundings according
@@ -181,7 +181,7 @@ can be found in
 \subsection{Lindblad Rate Constant}
 Using \cref{eqn:gamma definition}
 we can calculate the value of
-the Lindblad rate constant \(\Gamma \).
+the Lindblad rate constant (\(\Gamma \)).
 If we assume the electrons
 are initially in a purely
 statistical ensemble the
@@ -260,7 +260,8 @@ we find
 The first term is divergent, however
 since we find no terms in the Redfield
 equation with \(\omega = 0\)
-it does not contribute to tunneling.
+it does not contribute to tunneling
+(\cref{sec:omega 0 contribution}).
 We evaluate the second term
 by expanding the integrand about the fermi
 wavevector
@@ -286,7 +287,6 @@ integrand (\cref{fig:expansion about kf})
         \caption{Approximation for Experimental \(\omega \)
         }\label{sub@fig:omega zero expansion}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \centering
         \includegraphics[width = 0.9\linewidth]{Figures/Redfield/zero omega fermi k expansion.png}
@@ -441,14 +441,12 @@ to fall by \(\exp{(-1)}\).
 For the initial
 FCC site we can
 take this equilibrium
-value to be zero,
+value to be either zero,
 or the boltzmann equilibrium.
 We can also
 use the time taken for the
 neighbouring HCP sites to
-reach their maximum occupation,
-and half the time taken for the
-neighbouring FCC to reach equilibrium.
+reach their maximum occupation.
 The corresponding decay times are
 given in \cref{tab:implied decay rates}.
 \begin{table}[htbp]
@@ -471,17 +469,12 @@ given in \cref{tab:implied decay rates}.
         distribution and RMS distance
         analysis at
         \(150K\).
-        Since the individual
-        probabilities undergo an exponential
-        decay we take the decay time as
-        the time for the probability to fall
-        by \(\exp{(-1)}\).
         The RMS decay time corresponds
         to the time for the RMS distance
         to equal \(0.5\).
         The implied decay time taken for
         the next FCC site is taken to
-        be \(4\times \) the time to
+        be \(\frac{1}{4}\times \) the time to
         equilibrium, as the time
         taken grows as distance
         squared.
@@ -524,6 +517,12 @@ for the rms distance to
 reach \(0.5\). This gives
 an overall rate of
 \(1.9 \times 10^{9}s^{-1}\).
+As time grows as distance squared
+the tunneling rate was also
+calculated from
+\(\frac{1}{4}\) the
+neighbouring FCC equilibrium
+time.
 
 \subsection{Comparison with Experiment}
 Given these measures of the
@@ -535,19 +534,27 @@ are plotted against temperature
 alongside the rates extracted
 from the Lindblad analysis.
 \begin{figure}[htbp]
+    \captionsetup[subfigure]{justification=centering}
     \centering
-    \begin{subfigure}{0.45\linewidth}
+    \begin{subfigure}{0.3\linewidth}
         \centering
         \includegraphics[width =0.9 \linewidth]{Figures/Redfield/Plot of redfield temperature dependance FCC points.png}
         \caption{FCC Tunneling Rates
         }\label{sub@fig:fcc tunneling rates temp dependence}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.45\linewidth}
+    \begin{subfigure}{0.3\linewidth}
         \centering
         \includegraphics[width = 0.9\linewidth]{Figures/Redfield/Plot of redfield temperature dependance close points.png}
-        \caption{Other Tunneling Rates
+        \caption{Non-FCC Tunneling Rates
         }\label{sub@fig:other tunneling rates temp dependence}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\linewidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{Figures/Redfield/Plot of redfield temperature dependance close points corrected.png}
+        \caption{Combined Tunneling Rate
+        }\label{sub@fig:rates with activated tunneling}
     \end{subfigure}
     \caption{Plot of the tunneling
         rates against temperature, with comparison
@@ -573,5 +580,9 @@ rates differ by an order of
 magnitude the remaining
 measurements of the rate
 are similar to that measured
-in experiment.
-TODO-Temp dependance discussion
+in experiment. To recover the
+correct temperature dependance
+we must include
+the activated tunneling rates, which
+can be extrapolated from the
+high temperature behaviour ().

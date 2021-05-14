@@ -26,7 +26,6 @@ sites\cite{Jianding-Zhu}.
         \caption{Arrangement of Hydrogen Sites
         }\label{sub@fig:hydrogen honeycomb structure}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \centering
         \includegraphics[width = 0.9\linewidth]{Figures/Model/Hydrogen DFT Potential.png}
@@ -36,7 +35,7 @@ sites\cite{Jianding-Zhu}.
     \caption{
         Diagrams demonstrating
         the arrangement of hydrogen
-        sites on a Ni(111) surface.
+        sites on a Ni(111) surface.% ChkTeX 36
         Hydrogen sites alternate
         between low energy FCC and
         high energy HCP sites arranged
@@ -69,7 +68,7 @@ interaction between the electrons
 and the lattice as well as electron-electron
 interactions. This allows
 us expand the free electron
-hamiltonian using the plane wave
+hamiltonian in the plane wave
 basis
 \begin{equation}
     \hat{H}_{e^-} = \sum_{k, s}
@@ -93,17 +92,14 @@ delocalised in
 the free electron gas we
 find an electron density of
 \(n = 1.87\times{}10^{29} m^{-3}\).
-We then used this value to calculate
+This can then be used to calculate
 the fermi-wavevector and fermi-energy of
 Nickel~\cite{KittelCharles1953Itss}
 \begin{align}
-    \epsilon_f & = \frac{\hbar^2}{2m} {(3\pi^2n)}^{2/3} \\
-    k_f^3      & = 3 \pi^2 n
-\end{align}
-which gives a value of
-\begin{align}
-    \epsilon_f & = 1.91\times{}10^{-18}J                                  \\
-    k_f        & = 1.77\times{}10^{10}m^{-1} \label{eqn:fermi wavevector}
+    \epsilon_f & = \frac{\hbar^2}{2m} {(3\pi^2n)}^{2/3}                   \\
+               & = 1.91\times{}10^{-18}J                                  \\
+    k_f        & = {(3 \pi^2 n)}^{\frac{1}{3}}                            \\
+               & = 1.77\times{}10^{10}m^{-1} \label{eqn:fermi wavevector}
 \end{align}
 From measurements of the optical
 properties of Nickel the
@@ -138,8 +134,9 @@ also provides a theoretical calculation
 of the hydrogen energies, the
 energy used in the
 model were
-taken from direct spin-echo measurements~\cite{Jianding-Zhu}.
-These measurements gave a value of
+taken from direct spin-echo measurements of the
+surface~\cite{Jianding-Zhu}.
+which gave a value of
 \begin{equation}
     \Delta{}E_{hyd} = E_1 - E_0
     = 3.04\pm0.16\times{}10^{-21} J
@@ -259,17 +256,17 @@ We then fourier
 transform this expression
 (see \cref{app:interaction potential calculation})
 to find
-\begin{eqnarray}
-    V(\vec{q}) &=& \frac{e^2}{\epsilon_0 q^2}(
+\begin{equation}
+    V(\vec{q}) = \frac{e^2}{\epsilon_0 q^2}(
     \frac{\alpha^4}{{(\alpha^2 + q^2)}^2} - 1
     )
-\end{eqnarray}
+\end{equation}
 with \(\alpha = \frac{2}{a_0}\). If we expand
 about \(q=0\) we find
-\begin{eqnarray}
-    V(q) &\sim&\frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)\\
-    {} &=& -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
-\end{eqnarray}
+\begin{align}
+    V(q) & \sim \frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)   \\
+    {}   & = -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
+\end{align}
 taking \(q = k_f = 1.77\times{}10^{10}m^{-1}\)
 (see \cref{sec:electron states})
 and \(\alpha = 3.79\times{}10^{10}\) we see the second
@@ -309,6 +306,7 @@ is around
 corresponding to oscillations at
 \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\).
 \begin{figure}[htbp]
+    \captionsetup[subfigure]{justification=centering}
     \centering
     \begin{subfigure}{0.45\linewidth}
         \centering
@@ -325,20 +323,26 @@ corresponding to oscillations at
     FCC-FCC and HCP-HCP calculations
     (\cref{fig:diagonal hydrogen matrix element no oscillation})
     show a smooth curve, with a normalised
-    value of one at \(q=0\).
+    value of \(1\) at \(q=0\).
     The FCC-HCP fourier transform
     (\cref{fig:cross hydrogen matrix element oscillation})
     however show oscillations with a characteristic
     wavevector \(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\),
-    corresponding to the lattice vector of \(Ni\).}\label{fig:fourier transform oscillation}
+    corresponding to the lattice vector of \(Ni\).
+    }\label{fig:fourier transform oscillation}
 \end{figure}
 In theory this should have a noticeable
 effect on the matrix element, with a
 fermi wavevector of
 \(1.177\times{}10^{10} m^{-1}\)~\cref{eqn:fermi wavevector},
-however since the overall wavepacket decays over a region
+however it is unclear if these oscillations
+are fundamental to the model
+or are simply the result
+of the discrete nature of the
+DFT analysis.
+Since the overall wavepacket decays over a region
 of around \(\frac{100\pi}{a}\) we should be
-able to average over the rapid oscillations of
+able to average over the fast oscillations of
 \(V(\vec{q})\) to obtain an effective constant
 potential required for the simulation. For this
 model we therefore simply take the maximum overlap
@@ -364,9 +368,9 @@ of the normalised wavefunction (\cref{tab:hydrogen overlaps}).
 
 \subsection{Simplified Electron-Hydrogen Interaction
 }\label{sec:simplified interaction}
-For simplicity, in the following sections
-we gather the constant terms into
-an effective potential.
+For simplicity we introduce
+an effective potential
+\({\tilde{V}(\vec{q})}_{i,j}\) where
 \begin{equation}
     \hat{H}_{int} = \sum_{k,s,k',s',i,j}
     {\tilde{V}(\vec{q})}_{i,j}

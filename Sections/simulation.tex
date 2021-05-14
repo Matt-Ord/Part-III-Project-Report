@@ -142,13 +142,6 @@ larger system is required.
     }\label{tab:number of eigenstates}
 \end{table}
 
-The process of converting
-between these labels and
-the states used in the hamiltonian
-was handled by
-an ElectronSystem object (TODO reference)
-
-
 When working with
 fermions we need to take
 care over the exchange
@@ -313,8 +306,6 @@ for small energy bands (\cref{sec:small band approach})
 for which the electron distribution
 was uniform.
 
-Full code is available in the appendix TODO-
-
 \subsection{Initial Investigation}
 To obtain a rough estimate of
 the rate the system was setup
@@ -327,12 +318,12 @@ summing the occupation
 of electrons in both the FCC and
 HCP sites.
 \begin{figure}[htbp]
+    \captionsetup[subfigure]{justification=centering}
     \centering
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band simulation decay times.png}
         \subcaption{Tunnelling excluding hydrogen energy}\label{fig:large band degenerate simulation}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band simulation decay times rapid oscillations.png }
         \subcaption{Rapid oscillation of the hydrogen occupation}
@@ -343,7 +334,8 @@ HCP sites.
         Simulation with a degenerate hydrogen
         (\cref{fig:large band degenerate simulation})
         shows tunnelling in around
-        \(10^{-9}s\). TODO-Change title of plot}\label{fig:tunnelling rate single large band}
+        \(10^{-9}s\).
+    }\label{fig:tunnelling rate single large band}
 \end{figure}
 Unfortunately we find that the interaction is
 relatively large. The diagonal terms in
@@ -357,12 +349,12 @@ fermi-dirac distributed states is not valid.
 We also fail to see any tunnelling when
 the hydrogen energy is included (\cref{fig:issues with single large band}).
 \begin{figure}[htbp]
+    \captionsetup[subfigure]{justification=centering}
     \centering
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band simulation with hydrogen energies.png}
         \subcaption{Tunnelling including hydrogen energy}\label{fig:large band non degenerate simulation}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of large band electron distribution.png}
         \subcaption{Electron Distribution}\label{fig:large band fermi-dirac}
@@ -376,7 +368,7 @@ the hydrogen energy is included (\cref{fig:issues with single large band}).
         inclusion of hydrogen energies
         the incorrect electron distribution is
         seen (\cref{fig:large band fermi-dirac}).
-        TODO-Plot Title}\label{fig:issues with single large band}
+    }\label{fig:issues with single large band}
 \end{figure}
 
 \subsection{Small Band Approach}\label{sec:small band approach}
@@ -409,7 +401,6 @@ and the effect of these missing states should be small.
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of single band eigenstate energy range.png}
         \subcaption{Final State Energies}\label{fig:initial and final state energies of single band}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Plot of single band eigenstate energy range closeup.png}
         \subcaption{Detailed view of lower energies}\label{fig:initial and final state energies of single band zoom}
@@ -470,7 +461,6 @@ difference.
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/single band eigenstate energies.png}
         \subcaption{One Band Overlaps}\label{fig:one band overlap}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band eigenstate energies.png}
         \subcaption{Two Band Overlaps}\label{fig:two band overlap}
@@ -526,7 +516,6 @@ scales as \(N(1-N)\).
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Small Bands Large Probability Incorrect Equilibrium.png}
         \subcaption{Large Initial Occupation}\label{fig:two band incorrect equilibrium above}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Small Bands Small Probability Incorrect Equilibrium.png}
         \subcaption{Small Initial Occupation}\label{fig:two band incorrect equilibrium below}
@@ -579,7 +568,6 @@ electron gas to the hydrogen
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Small Bands Probability Clsoe To Equilibrium.png}
         \subcaption{Evoulution Close To Equilibrium}\label{fig:two band close to equilibrium}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/two band electron distribution.png}
         \subcaption{Two Band Electron Distribution}\label{fig:two band temperature shift}
