@@ -106,13 +106,12 @@ If we then integrate over s we find
     \Gamma_{i,j, k,l}(\omega) & =
     \int_0^\infty{}{
         ds \exp{(i\omega{}s)} Tr_{E}[\dots]
-    }                                                      \\
-    {}                        & =\begin{aligned}[t]
-        \sum_{k_1,s^1,k_3,s^3,k_4,s^4 }
-         & V_{i,j} V_{k,l} [ \\
-         & N_1 N_3 \delta(w)
-                + N_1 (1 - N_3)  \delta(w + E_1 -E_3) ]
-    \end{aligned}
+    }                                \\
+    {}                        & =
+    \sum_{\substack{k_1,s^1, k_3,s^3 \\k_4,s^4 }}
+    V_{i,j} V_{k,l} [
+            N_1 N_3 \delta(w)
+            + N_1 (1 - N_3)  \delta(w + E_1 -E_3) ]
 \end{align}
 to convert these delta functions
 into delta function in momentum we
@@ -305,7 +304,7 @@ setting \(k_3 = k_4\)) we would get
 out an extra factor of \(L\). This term
 therefore diverges as \(L \rightarrow \infty \).
 \begin{align}
-    \Gamma_{i,j, k,l}(0) & =
+    \Gamma_{i,j, k,l}(\omega) & =
     L \sum_{s^1,s^3}
     \frac{8k_f^5 \epsilon_0^2 \hbar^5}{3e^4 m_e^3}
     \mathcal{C}_{i,j} \mathcal{C}_{k,l} \delta_{w, 0}

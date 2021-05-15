@@ -17,11 +17,10 @@ in \cref{sec:the redfield assumption}
 where \(S_{i,j}= \hat{a}^\dagger_i \hat{a}_j\),
 \(\omega_{i,j} = E_i - E_j\), the energy of
 the hydrogen atoms excluding the interaction, and
-gamma is as defined in
-\cref{eqn:gamma definition}. To
+\(\Gamma\) is the Lindblad rate constant
+defined in \cref{eqn:gamma definition}. To
 make the following calculation easier we deal
-with a single component of \(\rho \), and
-denote \(\Delta{}E = \omega_{i,j}-\omega_{k,l}\)
+with a single component of \(\rho \)
 \begin{align}
     \bra{m}\dot{\hat{\rho}}(t) \ket{n} = \begin{aligned}[t]
         \sum_{i,j,k, l} &
@@ -35,7 +34,8 @@ denote \(\Delta{}E = \omega_{i,j}-\omega_{k,l}\)
             \hat{\rho}(t) S^\dagger_{i,j}]\ket{n}
     \end{aligned}
 \end{align}
-focusing on the commutators we have
+where \(\Delta{}E = \omega_{i,j}-\omega_{k,l}\).
+Focusing on the commutators we have
 \begin{align}
     \bra{m}[S_{k, l}\hat{\rho}(t),
     S^\dagger_{i, j}] \ket{n} & =
@@ -116,7 +116,7 @@ function
 + \delta_{i,k}\delta_{j,l}
 - \delta_{i,j}\delta_{k,l}
 \delta_{i,k}\)
-this is done on each group of
+applied to each group of
 \(\delta \) functions separately
 \begin{align}
     (1) & =  (\delta_{i,j}\delta_{k,l}
@@ -147,11 +147,7 @@ this is done on each group of
     \delta_{i, k}
     - \delta_{m, \alpha}\delta_{\beta, j,i, k,l, n})
 \end{align}
-applying this to the full expression
-for gamma we find
-
-
-
+applying this to the full expression we find
 \begin{align}
     \bra{m}\dot{\hat{\rho}}(t) \ket{n} & = \begin{aligned}[t]
         \sum_{i,j,k, l, \alpha, \beta} &

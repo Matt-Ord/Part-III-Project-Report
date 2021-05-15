@@ -1,12 +1,19 @@
 
-From the previous investigation it is clear
-that it is not possible to directly
+As the previous investigation
+demonstrates it is
+not possible to directly
 incorporate the hydrogen energy
 into the simulation.
-The only key difference
+We can however ignore the
+difference in hydrogen energies
+for the same reason that
+we are able to assume separability
+of the electron and hydrogen
+density matrices in
+\cref{sec:the redfield assumption}.
+The key difference
 between degenerate and
 non-degenerate tunneling
-however
 is the location of the
 electrons
 immediately after
@@ -35,11 +42,6 @@ the exact electron
 distribution after a
 transition has no effect
 on the hydrogen dynamics.
-This is the same reason that
-we are able to assume separability
-of the electron and hydrogen
-density matrices in
-\cref{sec:the redfield assumption}.
 The electron distribution
 during a transition however
 should have an effect on the
@@ -58,13 +60,13 @@ ourselves to degenerate
 hydrogen, making use of
 the small band approach
 discussed in \cref{sec:small band approach}
-with a bandwidth set to target
-tunneling in \(10^{-9}s\).
+with a bandwidth of
+\(5\times{}10^{-26}J\).
 The hydrogen occupation
 was seen to oscillate
 rapidly inside a wavepacket
 which was fitted to
-\(\exp{(-{ (Rt)}^2)}\).
+\(\exp{(- R^2t^2)}\).
 
 the occupation fraction
 \(N = \frac{n}{s}\) was
@@ -88,23 +90,18 @@ The rate is seen to change
 at constant \(N\) as the
 number of states is
 increased however the asymptotic
-behaviour appeared to follow the
+behaviour follows the
 simple form
 \begin{equation}
     R(N,N) = 4 R_0 N(1-N)\label{eqn:degenerate tunnelling rate}
 \end{equation}
-where \(R_0\) is the
+where \(R_0\) is a
 rate constant to be determined.
 This is exactly the rate curve
 we see in the Lindblad
 analysis when hydrogen tunnelling
 is paired with a single
 electron transition.
-Repeating the measurements at several
-temperatures it was not possible
-to identify any
-temperature dependance of the
-rate constant \(R_0\).
 
 \subsection{Calculating \(R_0\)}\label{sec:calculating R0}
 Since the rate depends only on a single
@@ -167,7 +164,6 @@ or 2 hole data.
         \caption{1 Electron Data
         }\label{sub@fig:one electron rates}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \centering
         \includegraphics[width = 0.9\linewidth]{Figures/Simulation/Decay rate against occupation n=2.png}
@@ -205,6 +201,11 @@ decay rate, as it predicts
 an asymptotic rate at \(N=0.5\)
 well above that measured even
 for \(n=5\) electrons.
+Repeating the measurements at several
+temperatures it was not possible
+to identify any
+temperature dependance of the
+rate constant \(R_0\).
 
 \subsection{Corrected Transition Rate}\label{sec:corrected transition rate}
 In the real hydrogen
@@ -233,7 +234,7 @@ where \(R(N\rightarrow{}N')\), \(R(N'\rightarrow{}N)\)
 are the forward and backwards
 tunneling rates respectively.
 There are
-three obvious ways to modify the tunneling
+two obvious ways to modify the tunneling
 rate
 \begin{align}
     R(N\rightarrow{}N') & = 2R_0N(1-N)           \label{eqn:no correction rate}     \\
@@ -247,9 +248,7 @@ by \cref{eqn:degenerate tunnelling rate}
 \begin{equation}
     R(N\rightarrow{}N) = 2R_0N(1-N)
 \end{equation}
-The interpretation of these
-corrections are
-simple. \cref{eqn:no correction rate}
+\cref{eqn:no correction rate}
 assumes the rate only depends
 on the initial occupation and
 \cref{eqn:target correction rate} assumes the rate
@@ -290,8 +289,21 @@ The rate curve
 (\cref{fig:tunneling rate against energy})
 can then be
 integrated to give an
-overall tunneling rate, the results of
-which are given in \cref{tab:decay rates simulated 150K}.
+overall tunneling rate.
+Similarly to the Lindblad
+analysis we multiply the
+rate by a factor of \(3\)
+for neighbouring sites
+and \(2\) for spin.
+Further investigation into
+the effect of spin supports
+this, however direct
+calculation of R was
+not possible due to
+the increased number of states required.
+The results of this
+analysis are given
+in \cref{tab:decay rates simulated 150K}.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width =0.9 \linewidth]{Figures/Simulation/Corrected Decay Rates.png}
@@ -347,15 +359,11 @@ simulation we use
 the same rate constant calculated
 at \(150K\) at all temperatures.
 The temperature dependence
+seen in \cref{fig:simulation-experiment comparison}
 is therefore entirely
 due to the corrections
 made in
 \cref{sec:corrected transition rate}.
-The tunneling rates
-plotted in
-\cref{fig:simulation-experiment comparison}
-show good agreement with
-those measured in experiment.
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.45\linewidth}
@@ -409,14 +417,14 @@ such low temperatures, the
 choice \(\sqrt{N(1-N)N'(1-N')}\)
 exhibits much smoother
 behaviour as \(T\rightarrow{}0\).
-With comparison to the lindblad
+With comparison to the Lindblad
 equation however
-(\cref{sec:lindblad corrected tunneling})
+(\cref{sec:Lindblad corrected tunneling})
 the \(N(1-N')\)
 correction seems to be the
 most physically justifiable.
 
-
+TODO: with correction
 
 \subsection{Tunneling Without Self Interaction}\label{sec:tunnelling no diagonal}
 In \cref{sec:different hydrogen energy}
@@ -452,26 +460,3 @@ removing such an interaction
 is not a valid approach to
 calculate a non-degenerate
 tunneling rate.
-
-\subsection{Simulation With Multiple Spins}
-
-
-
-\subsection{Simulation With Multiple Hydrogen Sites}
-In the real Nickel lattice the FCC and
-HCP sites are arranged in a regular
-lattice, such that there are \ldots
-neighbouring HCP site of each FCC
-hydrogen. In future investigations
-it should be therefore be
-possible to include the
-effect of a larger number of
-hydrogen sites,
-
-
-
-
-\subsection{Bosons with Constrained Occupation}
-To investigate the effect of fermion spin
-statistics \ldots to calculate the rate
-for bosons.

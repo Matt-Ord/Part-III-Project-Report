@@ -2,7 +2,7 @@ In this report we will
 focus on a model of
 electron-hydrogen
 interaction within
-a Nickel lattice arranged
+a nickel lattice arranged
 in a
 face centred cubic structure.
 Previous calculations
@@ -12,7 +12,7 @@ within Nickel\cite{doi:10.1063/1.522979},
 which are arranged in a
 honeycomb configuration
 (\cref{sub@fig:hydrogen honeycomb structure}).
-Due to interaction with Nickel
+Due to interaction with nickel
 atoms below the surface
 we find these sites are split
 into alternating low energy
@@ -48,7 +48,7 @@ To calculate the incoherent
 rate of tunneling between
 the FCC and HCP groundstate
 we need to find a
-hamiltonian describing the combined
+hamiltonian to describe the combined
 electron-hydrogen system.
 This can be split into free and interaction energy
 \begin{equation}
@@ -82,19 +82,18 @@ fermion anti-commutation relations
 \( \{ \hat{b}_{k, s}, \hat{b}^\dagger_{k', s'} \}
 = \delta_{k k'} \delta_{s s'}\).
 
-Taking the lattice constant of Nickel as
+Taking the lattice constant of nickel as
 \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753},
-we find the density of Nickel as
+we find a density of
 \(9.34\times{}10^{28}m^{-3}\).
-Assuming both of the 2 valence
-electrons on Nickel are completely
-delocalised in
-the free electron gas we
+If both of the 2 valence
+electrons on nickel are completely
+delocalised we
 find an electron density of
 \(n = 1.87\times{}10^{29} m^{-3}\).
-This can then be used to calculate
+This is used to calculate
 the fermi-wavevector and fermi-energy of
-Nickel~\cite{KittelCharles1953Itss}
+nickel~\cite{KittelCharles1953Itss}
 \begin{align}
     \epsilon_f & = \frac{\hbar^2}{2m} {(3\pi^2n)}^{2/3}                   \\
                & = 1.91\times{}10^{-18}J                                  \\
@@ -102,7 +101,7 @@ Nickel~\cite{KittelCharles1953Itss}
                & = 1.77\times{}10^{10}m^{-1} \label{eqn:fermi wavevector}
 \end{align}
 From measurements of the optical
-properties of Nickel the
+properties of nickel the
 fermi energy is found to
 be slightly lower
 at only
@@ -111,7 +110,7 @@ at only
 \subsection{Hydrogen States}
 For hydrogen
 we make use of the
-eigenstates found from
+eigenstates found in
 the previous DFT
 analysis\cite{Jianding-Zhu}.
 \begin{equation}
@@ -130,13 +129,12 @@ relations for a boson
 = \delta_{ij}\).
 
 Although the DFT calculation
-also provides a theoretical calculation
+also provides a theoretical prediction
 of the hydrogen energies, the
 energy used in the
 model were
 taken from direct spin-echo measurements of the
-surface~\cite{Jianding-Zhu}.
-which gave a value of
+surface\cite{Jianding-Zhu}
 \begin{equation}
     \Delta{}E_{hyd} = E_1 - E_0
     = 3.04\pm0.16\times{}10^{-21} J
@@ -145,9 +143,8 @@ which gave a value of
 
 
 \subsection{Electron Hydrogen Interaction}
-The electron hydrogen interaction can
-be described simply by introducing
-the electron and hydrogen field
+To describe the electron-hydrogen
+interaction we introduce field
 operators \(\hat{\psi}_e\) and
 \(\hat{\psi}_h\)~\cite{nazarov_danon_2013}
 \begin{equation}
@@ -161,7 +158,7 @@ operators \(\hat{\psi}_e\) and
 where \(V(\vec{r})\) is
 the electron-hydrogen
 interaction potential.
-We first expand out the
+We expand out the
 electron operator in
 the free electron basis state
 \begin{align}
@@ -202,7 +199,7 @@ to give us the expression
     \hat{\psi}_h^{\dagger}\hat{\psi}_h
     \exp(i\vec{q}.\vec{r})}
 \end{align}
-If we expand out the
+If we also expand the
 hydrogen creation operator
 \begin{equation}
     \hat{\psi}_h(\vec{r}) =
@@ -228,16 +225,10 @@ potential.
 
 \subsection{The Electron Hydrogen Potential}\label{sec:electron hydrogen potential}
 
-The electrons surrounding the hydrogen
-atom have energies
-\(E_n = -\frac{13.6}{n^2} eV\)~\cite{griffiths_schroeter_2018}.
-Since the energy required to excite the electron
-to the \(n=2\) energy level is much greater
-than the fermi energy of \(Ni\)
-(\(7.76eV\)~\cite{PhysRev.131.2469}) we can
-make the approximation that the electron surrounding
-the hydrogen lie close to the 1s groundstate.
-The potential can then be found from
+
+
+
+The interaction potential can be found from
 the greens function of the coulomb
 equation~\cite{AQP_Problems}
 \begin{equation}
@@ -247,7 +238,17 @@ equation~\cite{AQP_Problems}
             \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
 \end{equation}
 where \(a_0\) is
-the bohr radius and
+the bohr radius.
+Electrons surrounding the hydrogen
+atom have energies
+\(E_n = -\frac{13.6}{n^2} eV\)~\cite{griffiths_schroeter_2018}.
+Since the energy required to excite the electron
+to the \(n=2\) energy level is much greater
+than the fermi energy of \(Ni\)
+(\(7.76eV\))~\cite{PhysRev.131.2469} we can
+make the approximation that the electron surrounding
+the hydrogen lie close to the 1s groundstate. This
+corresponds to a wavefunction
 \begin{equation}
     \psi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
 \end{equation}
@@ -257,15 +258,15 @@ transform this expression
 (see \cref{app:interaction potential calculation})
 to find
 \begin{equation}
-    V(\vec{q}) = \frac{e^2}{\epsilon_0 q^2}(
+    \tilde{V}(\vec{q}) = \frac{e^2}{\epsilon_0 q^2}(
     \frac{\alpha^4}{{(\alpha^2 + q^2)}^2} - 1
     )
 \end{equation}
 with \(\alpha = \frac{2}{a_0}\). If we expand
 about \(q=0\) we find
 \begin{align}
-    V(q) & \sim \frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)   \\
-    {}   & = -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
+    \tilde{V}(q) & \sim \frac{e^2}{\epsilon_0 q^2}(1 - 2{(\frac{q}{\alpha})}^2 + 3 {(\frac{q}{\alpha})}^4 - 1)   \\
+    {}           & = -\frac{2e^2}{\epsilon_0 \alpha^2}(1 - \frac{3}{2}{(\frac{q}{\alpha})}^2) + \mathcal{O}(q^4)
 \end{align}
 taking \(q = k_f = 1.77\times{}10^{10}m^{-1}\)
 (see \cref{sec:electron states})
@@ -274,7 +275,7 @@ order correction only contributes to a variation
 of around \(14.5\% \).
 We therefore assume that for the relevant scattering
 of electrons the potential takes a constant
-value \(V(q) \sim -\frac{2e^2}{\epsilon_0 \alpha^2}\).
+value \(\tilde{V}(q) \sim -\frac{2e^2}{\epsilon_0 \alpha^2}\).
 
 \subsection{The Hydrogen Wavefunction}
 The final term in
@@ -294,11 +295,12 @@ wavepacket several of these states were chosen
 centered about \(q=0\).
 Given the localised wavefunction
 it was then possible to calculate the fourier
-transform products directly. As there was a fixed
+transform products directly. The fourier transform was seen to
+oscillate (\cref{fig:fourier transform oscillation})
+As there was a fixed
 distance between the FCC and HCP lattice
-sites however the fourier transform was seen to
-oscillate (\cref{fig:fourier transform oscillation}),
-with a frequency proportional to
+sites.
+This oscillation has a frequency proportional to
 \(\frac{2\pi}{a}\) where \(a\) is the lattice
 constant of Ni. The value of this constant
 is around

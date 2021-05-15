@@ -1,13 +1,11 @@
-The dynamics of the electrons
-discussed in \cref{sec:the model}
+\subsection{Eigenvalue Decomposition}
+The dynamics of the electron-hydrogen
+system discussed in \cref{sec:the model}
 can be investigated by
 directly simulating the system.
-
-\subsection{Eigenvalue Decomposition}
-To simulate the system we must solve
-the Schrödinger equation. This
-can be done through direct
-integration, however
+This can be done through direct
+integration of the
+Schrödinger equation, however
 if we first decompose
 the initial state
 into eigenstates
@@ -67,7 +65,7 @@ decomposition. One
 issue with this method
 is the increased storage
 cost associated with
-storing the complete
+the complete
 hamiltonian. This could
 be prevented by
 working with a sparse
@@ -109,11 +107,6 @@ simulate a system with
 around \(3500\) eigenstates,
 or \(14\) half filled electron states
 (\cref{tab:number of eigenstates}).
-This was limited more by
-storage than CPU time, and as such it may
-be necessary to investigate
-the use of sparse matrices if a
-larger system is required.
 \begin{table}[htbp]
     \begin{center}
         \begin{tabular}{ *{4}{c} }
@@ -158,8 +151,6 @@ between the exchanged energy levels.
     a^\dagger_1a_2 \ket{2,3} & = \ket{1,3}  \\
     a^\dagger_1a_3 \ket{2,3} & = -\ket{1,2}
 \end{align}
-To find the probability
-of finding the hydrogen in site \ldots
 
 \subsection{Choosing the Initial States}
 
@@ -181,7 +172,7 @@ of the noise.
 
 The spacing of electron energies is also
 important for the simulation, as it
-sets the effective volume of the Nickel
+sets the effective volume of the nickel
 lattice. The density of states of a free electron
 gas \(g(E)\) is given by~\cite{KittelCharles1953Itss}
 \begin{equation}
@@ -273,7 +264,7 @@ gas (\cref{fig:correct fermi dirac}).
 However if we were to include
 a large interaction term, such
 as those required for the
-real Nickel system the
+real nickel system the
 electron distribution is
 seen to diverge, as the approach
 does not account for the
@@ -345,9 +336,10 @@ and a cross diagonal value of \(2.73\times{}10^{-23}J\)
 whereas the electron energies were separated
 by only \(9.2\times{}10^{-22}J\). This meant that
 the perturbation approximation required for
-fermi-dirac distributed states is not valid.
-We also fail to see any tunnelling when
-the hydrogen energy is included (\cref{fig:issues with single large band}).
+fermi-dirac distributed states was not valid.
+Once the hydrogen energy was included
+we no longer see any tunneling
+(\cref{fig:issues with single large band}).
 \begin{figure}[htbp]
     \captionsetup[subfigure]{justification=centering}
     \centering
@@ -507,7 +499,6 @@ scales as \(N(1-N)\).
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Large Bands No Mixing.png}
         \subcaption{Large Band Mixing}\label{fig:two band minimum mixing}
     \end{subfigure}
-    \hfill
     \begin{subfigure}{0.45\linewidth}
         \includegraphics[width=0.9\linewidth]{Figures/Simulation/Two Large Bands No Diagonal.png}
         \subcaption{Large Band No Diagonal}\label{fig:two band no diagonal}
@@ -545,8 +536,9 @@ scales as \(N(1-N)\).
         (\cref{fig:two band incorrect equilibrium above,fig:two band incorrect equilibrium below}).
         There is therefore very
         little evidence that
-        this method would
-        approximate the true
+        this method
+        should be used to model
+        the true
         electron-hydrogen dynamics.
     }\label{fig:issue with two band approach}
 \end{figure}

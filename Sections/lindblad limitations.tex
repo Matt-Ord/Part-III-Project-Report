@@ -6,7 +6,7 @@ the approximations
 used to arrive at
 the Lindblad equation.
 
-\subsection{Single State Tunnelling Rate}\label{sec:lindblad corrected tunneling}
+\subsection{Single State Tunnelling Rate}\label{sec:Lindblad corrected tunneling}
 When simulating the
 degenerate hydrogen tunneling in
 \cref{sec:degenerate tunnelling simulaton}
@@ -103,13 +103,10 @@ both the statistical and quantum uncertainty
 in the form of a density matrix.
 
 \subsection{Rotating Wave Approximation}\label{sec:rotating wave approximation}
-The final approximation made in
-\cref{sec:lindblad equation}
-is the rotating wave approximation.
-If we relax this approximation
-we arrive at the expression
-for the full Redfield equation given in
-\cref{sec:redfield equation full solution}.
+If we relax the rotating wave approximation
+made in \cref{sec:Lindblad equation}
+we arrive at the full Redfield equation
+(\cref{sec:redfield equation full solution}).
 \begin{align}
     \bra{m}\dot{\hat{\rho{}}}(t) \ket{n} & = \begin{aligned}[t]
         \sum_{i,j} &
@@ -135,8 +132,8 @@ on top of the Lindblad result, with
 a characteristic timescales of
 \(\frac{2\pi}{\omega_{1,0}} = 2.13\times{}10^{-13}s\). Plotting
 the full solution (\cref{fig:redfield full solution})
-however we see exactly the same behaviour as that
-predicted by the lindblad result.
+we see exactly the same behaviour as that
+predicted by the Lindblad result.
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{0.45\linewidth}
@@ -186,16 +183,16 @@ the HCP site
 In this case
 we again see good
 agreement with the
-lindblad equation.
+Lindblad equation.
 
 
 \subsection{Separable Density matrix}
-In the analysis of the lindblad
+In the analysis of the Lindblad
 equation we also assumed that is was possible
 to factorise the density
 matrix
 \begin{equation}
-    \hat{\rho}_t(t) = \hat{\rho}(t) \otimes \hat{\rho}_E(t)
+    \hat{\rho}_t(t) = \hat{\rho}(t) \otimes \hat{\rho}_E(0)
 \end{equation}
 It is clear from the
 initial and final
@@ -256,16 +253,14 @@ no effect on the dynamics
 of the system.
 
 \subsection{Q Dependance}
-When developing a model of
-the electron-hydrogen system
-we assumed the interaction
-hamiltonian was independent
-of \(\vec{q}\).
+For this report we use a
+q-independent model of the
+electron hydrogen interaction.
 If we instead include the full form
 of the interaction potential
 into \cref{eqn:gamma integral form}
 we find a
-lindblad rate constant that
+Lindblad rate constant that
 is \(0.418 \times{}\) that
 previously calculated.
 
@@ -297,7 +292,7 @@ and final
 states in 3D.
 The corrections made in
 the Lindblad analysis could
-however be applied to the simulation,
+be applied to the simulation,
 producing an effective matrix
 element depending only
 on the energy difference between
@@ -312,12 +307,12 @@ an ideal electron gas,
 with a fermi energy
 of \(1.91\times{}10^{-18}J\).
 The real fermi energy
-of Nickel actually slightly lower,
+of nickel actually slightly lower,
 at only \(1.24\times{} 10^{-18}J\),
 possibly since the two
 valence electrons are not
 fully delocalised.
-The fermi surface of Nickel
+The fermi surface of nickel
 is also not entirely
 spherical~\cite{FermiSufaceNickel},
 indeed it is different
@@ -337,7 +332,7 @@ into the simulation
 without the introduction of
 an effective constant.
 The complex nature of
-the Nickel band-structure
+the nickel band-structure
 means that this
 could favour low or
 high \(\vec{q}\) scattering,

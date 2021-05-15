@@ -1,6 +1,8 @@
 
-% Numerical solver of lindblad/ Redfield
+% Numerical solver of Lindblad/ Redfield
 % equation http://qutip.org/docs/latest/guide/dynamics/dynamics-bloch-redfield.html
+%TODO-Why useful
+% Caldeira and Leggett model
 
 The aim of this report is to
 investigate the extent to which
@@ -8,7 +10,7 @@ a first-principles calculation
 could be used to predict the rate of
 incoherent groundstate to
 groundstate tunneling of hydrogen
-on the surface of Nickel.
+on the surface of nickel.
 
 Hydrogen diffusion has been measured
 on the surface of Ni(111) %ChkTeX 36
@@ -18,31 +20,39 @@ most recently
 using Helium-3 spin-echo
 interferometry\cite{Helium_spin_echo}.
 With the help of first-principle DFT calculations of
-the \(H-Ni(111)\) potential a
+the H-Ni(111) potential a %ChkTeX 36
 quantum version of transition state theory (ASTST)
 was developed to describe these tunneling rates\cite{Jianding-Zhu}.
 The results of this theory
 were found to closely
 match the predicted
 hopping rates, particularly
-when the rate is dominated
+when the rate was dominated
 by activated tunnelling\cite{Jianding-Zhu}.
-The rate however differed at low temperatures,
+There was however a difference
+in the rate at low temperatures,
 where it is thought that interaction with the
-electron-gas leads to incoherent tunnelling.
-To be able to predict the incoherent behaviour
-it necessary to investigate
-the propagation of hydrogen
-without ignoring the electron-hydrogen
+electron gas leads to incoherent tunnelling.
+This type of interaction
+is of particular relevance in
+the development of superconducting interference devices
+(SQUIDs)\cite{QubitIncoherentSaito2004}
+and has been successfully described
+through the introduction
+of effective dissipative models\cite{CALDEIRA1983374}.
+To be able to assess this approach
+however it is first necessary to
+investigate the propagation of hydrogen directly
+by introducing a model of the
+complete electron-hydrogen
 interaction.
 
-
-This problem can be
-simplified by tracing out the
+To find an effective
+theory describing only the system
+we can trace out the
 environmental degrees of
-freedom, an idea which lead to the
-development of quantum master
-equations. Initial
+freedom to produce a quantum master
+equation. Initial
 attempts to find such an
 equation by Redfield\cite{REDFIELD19651}
 and Lamb\cite{PhysRev.134.A1429} produce
@@ -63,7 +73,7 @@ interaction is outlined in
 \cref{sec:the model},
 which is used
 alongside the
-lindblad equation
+Lindblad equation
 to find an analytical prediction
 of the tunnelling rate
 in \cref{sec:redfield}.
@@ -82,7 +92,7 @@ limitations of the two
 methods are discussed
 in \cref{sec:improvements}
 before the conclusions of
-the report is
+the report are
 outlined in \cref{sec:conclusion}.
 
 

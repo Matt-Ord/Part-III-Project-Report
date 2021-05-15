@@ -57,17 +57,15 @@ overall dynamics of the system.
 
 \subsection{The Redfield Assumption}\label{sec:the redfield assumption}
 To arrive at the Redfield equation
-we first make the assumption that the
+we make the assumption that the
 system and surrounding density
 matrix is completely
-decoupled~\cite{theory_open_quantum_systems},
-allowing us to write
+decoupled~\cite{theory_open_quantum_systems}
 \begin{equation}
     \hat{\rho}_t(t) = \hat{\rho}(t) \otimes \hat{\rho}_E(0)
 \end{equation}
-where \(\hat{\rho}_E(t)\), the
-density matrix of the environment,
-is taken as a purely statistical ensemble.
+where \(\hat{\rho}_E(t)\) is the
+density matrix of the environment.
 Under the Markov approximation
 we can extend the upper limit
 of \cref{eqn:density motion before redfield approximation}
@@ -111,13 +109,12 @@ Lindblad rate constant given by
     }\label{eqn:gamma definition}
 \end{equation}
 
-\subsection{The Lindblad Equation}\label{sec:lindblad equation}
+\subsection{The Lindblad Equation}\label{sec:Lindblad equation}
 To obtain the Lindblad equation
 we need to apply the rotating
 wave approximation to
 \cref{eqn:redfield equation gamma form}.
 We first expand out the commutators
-in \cref{eqn:redfield equation gamma form}
 \begin{align}
     \bra{m}[S_{k, l}\hat{\rho}(t),
     S^\dagger_{i, j}] \ket{n}              & =
@@ -174,7 +171,7 @@ terms vanish assuming the
 density matrix is initially
 purely diagonal. A full derivation
 can be found in
-\cref{app:redfield to lindblad}.
+\cref{app:redfield to Lindblad}.
 
 
 
@@ -237,8 +234,9 @@ simplified form of the trace
     \end{aligned}
 \end{equation}
 Integrating over \(s\) we obtain
-an additional constant on the
-wavevectors, and after
+an additional constraint of energy
+conservation on the
+wavevector. After
 converting the sum into
 an integral and re-adsorbing
 the power of \(L^3\) into the
@@ -302,17 +300,16 @@ integrand (\cref{fig:expansion about kf})
         Although the form of the
         integrand is shifted for the
         real value of \(\omega \)
-        if we were to calculate
-        the integrals we find
-        they agree
+        the integration
+        agree
         to within \(3\% \).
     }\label{fig:expansion about kf}
 \end{figure}
-the approximation
-of the integral comes
+the approximate
+integral comes
 to within \(3\% \)
 of the true value.
-If we apply this approximation
+Applying this approximation
 we find
 \begin{equation}
     \Gamma_{i,j, k,l}(\omega_{k,l}) =\begin{aligned}[t]
@@ -320,7 +317,7 @@ we find
         V_{i,j} V_{k,l} \sqrt{\pi} \frac{2m_e}{\beta \hbar^2}
     \end{aligned}
 \end{equation}
-substituting in the expression
+Substituting in the expression
 for \(V_{i,j}\)
 we arrive at the final
 expression for \(\Gamma \)
@@ -356,7 +353,7 @@ where
 This gives a combined rate of
 \begin{equation}
     \gamma_0 + \gamma_1 = 2A\cosh{(\frac{\beta (E_1 - E_0)}{2})}
-    \label{eqn:theoretical rate lindblad equation}
+    \label{eqn:theoretical rate Lindblad equation}
 \end{equation}
 for an energy difference of
 \(3.04\pm0.16\times{}10^{-21} J\)
@@ -375,7 +372,7 @@ tunnelling time of
     \caption{Plot of the Lindblad solution with a characteristic decay
     rate of \(6.1\times{}10^{8}s^{-1}\) at
     \(150K\).
-    }\label{fig:two site lindblad soluton}
+    }\label{fig:two site Lindblad soluton}
 \end{figure}
 
 
@@ -385,13 +382,13 @@ are 3 HCP sites neighbouring
 each FCC Hydrogen, all of which
 are connected to \(3\) HCP sites
 (see \cref{sec:the model}).
-The rate that the FCC
-and HCP
+The rate that the
+combined FCC and HCP
 occupation reaches the
 boltzmann distribution
 is therefore exactly \(3\)
 times the single neighbour rate
-(\cref{fig:multi site lindblad})
+(\cref{fig:multi site Lindblad})
 \begin{equation}
     R = 6A\cosh{(\frac{\beta (E_1 - E_0)}{2})}
 \end{equation}
@@ -401,43 +398,40 @@ where \(R=1.8\times{}10^{9}s^{-1}\) at
     \centering
     \begin{subfigure}{0.45\linewidth}
         \centering
-        \includegraphics[width =0.9 \linewidth]{Figures/Redfield/Plot of lindblad solution many sites.png}
+        \includegraphics[width =0.9 \linewidth]{Figures/Redfield/Plot of Lindblad solution many sites.png}
         \caption{Individual occupation probability
-        }\label{sub@fig:multi site lindblad}
+        }\label{sub@fig:multi site Lindblad}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.45\linewidth}
         \centering
         \includegraphics[width = 0.9\linewidth]{Figures/Redfield/Plot of redfield solution long time.png}
         \caption{Combined occupation probability
-        }\label{sub@fig:multi site combined lindblad}
+        }\label{sub@fig:multi site combined Lindblad}
     \end{subfigure}
     \caption{Plot of the individual and combined
     occupation probabilities against time at
     \(150K\). The combined
     probability
-    (\cref{sub@fig:multi site combined lindblad})
+    (\cref{sub@fig:multi site combined Lindblad})
     follows exactly the same curve as in
-    \cref{fig:two site lindblad soluton}
+    \cref{fig:two site Lindblad soluton}
     with a rate of \(1.8\times{}10^{9}s^{-1}\).
     The plot of the individual occupation
     probabilities
-    (\cref{sub@fig:multi site lindblad})
+    (\cref{sub@fig:multi site Lindblad})
     shows that it takes
     a much longer time for the
     probability of occupation of the
     initial site to reach
-    an equilibrium with the surroundings.}\label{fig:multi site lindblad}
+    an equilibrium with the surroundings.}\label{fig:multi site Lindblad}
 \end{figure}
 It is also possible to infer a
 tunneling rate from the
+time taken for
 individual probability
-distribution
-(\cref{sub@fig:multi site lindblad}),
-where we take the tunneling
-time as the time taken for the
-distance from equilibrium
-to fall by \(\exp{(-1)}\).
+distributions to reach equilibrium
+(\cref{sub@fig:multi site Lindblad}).
 For the initial
 FCC site we can
 take this equilibrium
@@ -474,7 +468,7 @@ given in \cref{tab:implied decay rates}.
         to equal \(0.5\).
         The implied decay time taken for
         the next FCC site is taken to
-        be \(\frac{1}{4}\times \) the time to
+        be \(\frac{1}{4}\) the time to
         equilibrium, as the time
         taken grows as distance
         squared.
@@ -518,8 +512,8 @@ reach \(0.5\). This gives
 an overall rate of
 \(1.9 \times 10^{9}s^{-1}\).
 As time grows as distance squared
-the tunneling rate was also
-calculated from
+a tunneling rate was also
+extracted from
 \(\frac{1}{4}\) the
 neighbouring FCC equilibrium
 time.
@@ -585,4 +579,5 @@ correct temperature dependance
 we must include
 the activated tunneling rates, which
 can be extrapolated from the
-high temperature behaviour ().
+high temperature behaviour of
+(\cref{sub@fig:rates with activated tunneling}).
