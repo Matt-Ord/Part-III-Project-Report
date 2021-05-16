@@ -1,6 +1,10 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 
+\usepackage{moreverb} 
+\immediate\write18{texcount -inc -incbib 
+-sum main.tex > wordcount.tex}
+
 \usepackage{mathtools}
 \usepackage{braket}
 \usepackage{amssymb}
@@ -54,7 +58,7 @@
 \section{Simulation Results}\label{sec:simulation results}
 \input{Sections/simulation results.tex}
 
-\section{Improvements}\label{sec:improvements}
+\section{Further Work}\label{sec:improvements}
 \input{Sections/lindblad limitations.tex}
 
 \pagebreak
@@ -78,5 +82,4 @@
     \section{Calculating the Lindblad Rate Constant}\label{app:calculating gamma}
     \input{Appendix/lindblad gamma.tex}
 \end{appendix}
-
 \end{document}

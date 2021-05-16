@@ -1,13 +1,13 @@
 
 \subsection{General Equation of Motion}
 The state of the electron hydrogen
-system at a given time can be completely
+system can be completely
 characterised by its density
 matrix.
 Working in the interaction
 picture, a general density matrix
 \(\hat{\rho}(t)\) time evolves according
-to the von Neumann equation~\cite{TP2_Notes}.
+to the von Neumann equation\cite{TP2_Notes}
 \begin{equation}
     \frac{d\hat{\rho}_t(t)}{dt} =
     -i [\hat{H}_{int}(t), \hat{\rho}_t(t)]
@@ -35,10 +35,10 @@ twice to give
     +\mathcal{O}({\hat{H}_{int}}^3)
     \label{eqn:second order eqn of motion}
 \end{equation}
-It is possible to reduce this to
-an equation of motion
-describing just the system by taking
-a trace over the environment~\cite{Manzano_2020}
+We reduce this to an equation describing
+the density operator of
+the system \(\hat{\rho}(t) = Tr_e[\hat{\rho}_t(t)]\)
+by taking a trace over the environment\cite{Manzano_2020}
 \begin{equation}
     \hat{\rho}(t) =
     -i Tr_e[\hat{H}_{int}(t), \hat{\rho}_t(0)]
@@ -47,17 +47,14 @@ a trace over the environment~\cite{Manzano_2020}
     [\hat{H}_{int}(s), \hat{\rho}_t(t)]]
     \label{eqn:density motion before redfield approximation}
 \end{equation}
-where \(\hat{\rho}(t) = Tr_e[\hat{\rho}_t(t)]\)
-is the density operator of the system.
 Using a clever re-definition of the interaction
 Hamiltonian~\cite{Manzano_2020} it
 is possible to show that the first
 term gives no contribution to the
-overall dynamics of the system.
+overall dynamics.
 
-\subsection{The Redfield Assumption}\label{sec:the redfield assumption}
-To arrive at the Redfield equation
-we make the assumption that the
+\subsection{The Redfield Equation}\label{sec:the redfield assumption}
+We make the assumption that the
 system and surrounding density
 matrix is completely
 decoupled~\cite{theory_open_quantum_systems}
@@ -67,7 +64,7 @@ decoupled~\cite{theory_open_quantum_systems}
 where \(\hat{\rho}_E(t)\) is the
 density matrix of the environment.
 Under the Markov approximation
-we can extend the upper limit
+we then extend the upper limit
 of \cref{eqn:density motion before redfield approximation}
 to \(\infty \), arriving at the Redfield
 equation
@@ -110,11 +107,7 @@ Lindblad rate constant given by
 \end{equation}
 
 \subsection{The Lindblad Equation}\label{sec:Lindblad equation}
-To obtain the Lindblad equation
-we need to apply the rotating
-wave approximation to
-\cref{eqn:redfield equation gamma form}.
-We first expand out the commutators
+To proceed we first expand out the commutators
 \begin{align}
     \bra{m}[S_{k, l}\hat{\rho}(t),
     S^\dagger_{i, j}] \ket{n}              & =
@@ -145,24 +138,21 @@ form
     \end{aligned}
 \end{equation}
 where \(\Delta{}E = \omega_{i,j}-\omega_{k,l}\).
-The rotating wave approximation
-limits us to two cases
-\begin{itemize}
-    \item \(i=j\), \(k=l\)
-    \item \(i=k\), \(j=l\)
-\end{itemize}
-which is imposed using the expression
+To arrive at the
+Lindblad equation (\cref{eqn:cross terms density matrix evolution})
+we apply the rotating wave approximation
+which is imposed
+using the expression
 \(\delta_{i,j}\delta_{k,l}
 + \delta_{i,k}\delta_{j,l}
 - \delta_{i,j}\delta_{k,l}
-\delta_{i,k}\). This
-leads us to the
-general expression (\cref{eqn:cross terms density matrix evolution})
+\delta_{i,k}\)
 \begin{equation}
     \bra{m}\dot{\hat{\rho}}(t) \ket{m}  =
     2 \sum_{n\neq m}
     [  \Gamma_{m,n;m, n}(\omega_{m,n})\rho_{n, n}
         - \Gamma_{n,m;n, m}(\omega_{n,m})\rho_{m, m}]
+    \label{eqn:lindblad eqn final form}
 \end{equation}
 where we sum over all neighbouring
 sites \(n \neq m\). Note that
@@ -197,16 +187,16 @@ take the trace over the
 environment (see \cref{app:calculating gamma})
 \begin{equation}
     Tr_E[\dots]  = \begin{aligned}[t]
-        \sum_{\substack{\{N(k)\}                             \\
-        k_1,s^1,k_2,s^2                                      \\
+        \sum_{\substack{\{N(k)\}                              \\
+        k_1,s^1,k_2,s^2                                       \\
                 k_3,s^3,k_4,s^4 }}
-         & P(\{N(k)\}) V_{i,j} V_{k,l}                       \\
-         & \exp{(i(E_1 - E_2) t)} \exp{(i(E_3 - E_4) (t-s))} \\
-         & \bra{N(k)}
+        P & (\{N(k)\}) V_{i,j} V_{k,l}                        \\[-28pt]
+          & \exp{(i(E_1 - E_2) t)} \exp{(i(E_3 - E_4) (t-s))} \\
+          & \bra{N(k)}
         \hat{b}_{k_1,s^1}^\dagger{} \hat{b}_{k_2,s^2}
         \hat{b}_{k_3,s^3}^\dagger{} \hat{b}_{k_4,s^4}
         \ket{N(k)}
-    \end{aligned}
+    \end{aligned}\label{eqn:expanded gamma trace}
 \end{equation}
 where \( \{N(k)\} \) is the set of
 all possible occupations, and
@@ -223,8 +213,7 @@ cases
           \(k_3=k_2, s^3=s^2\) but
           \(k_1\neq{}k_2, s^1\neq{}s^2\)
 \end{itemize}
-and we can therefore obtain the
-simplified form of the trace
+which we use to simplify \cref{eqn:expanded gamma trace}
 \begin{equation}
     Tr_E[\dots] = \begin{aligned}[t]
         \sum_{k_1,s^1,k_3,s^3 }
@@ -234,15 +223,14 @@ simplified form of the trace
     \end{aligned}
 \end{equation}
 Integrating over \(s\) we obtain
-an additional constraint of energy
-conservation on the
-wavevector. After
+an additional constraint on \(k_3\)
+in the form of energy conservation. After
 converting the sum into
-an integral and re-adsorbing
+an integral we re-adsorb
 the power of \(L^3\) into the
 definition of \(V_{i,j}\)
 (see \cref{sec:simplified interaction})
-we find
+to give
 \begin{align}
     \Gamma_{i,j, k,l}(\omega) & =\begin{aligned}[t]
         \sum_{s^1,s^3} \int &
@@ -292,16 +280,13 @@ integrand (\cref{fig:expansion about kf})
         }\label{sub@fig:omega not zero expansion}
     \end{subfigure}
     \caption{
-        Plot of the expansion of
-        the integrand for \(\omega = 0\)
+        Plot of the integrand for \(\omega = 0\)
         (\cref{sub@fig:omega zero expansion})
         and the experimental \(\omega \)
         (\cref{sub@fig:omega not zero expansion}).
-        Although the form of the
-        integrand is shifted for the
+        Although the expanded form is shifted for the
         real value of \(\omega \)
-        the integration
-        agree
+        the integral agrees
         to within \(3\% \).
     }\label{fig:expansion about kf}
 \end{figure}
@@ -330,13 +315,13 @@ expression for \(\Gamma \)
 
 
 \subsection{Two Sites}
-Since the form of the rotating
-wave approximation is a simple
-rate equation, for a system
-with one HCP and one FCC site
+Since \cref{eqn:lindblad eqn final form}
+is a simple rate equation
 it is possible to solve it analytically
+for a system
+with one HCP and one FCC site
 (\cref{app:combined tunnelling rates}).
-From the expression above we find the
+We find the
 forward and backward tunnelling rate
 \begin{align}
     \gamma_0 & = 2\Gamma_{1,0;0, 1}(\omega_{1,0})       \\
@@ -352,7 +337,7 @@ where
 \frac{64 k_f^2 \epsilon_0^2 \hbar^3}{\beta e^4 m_e^2}\).
 This gives a combined rate of
 \begin{equation}
-    \gamma_0 + \gamma_1 = 2A\cosh{(\frac{\beta (E_1 - E_0)}{2})}
+    R = \gamma_0 + \gamma_1 = 2A\cosh{(\frac{\beta (E_1 - E_0)}{2})}
     \label{eqn:theoretical rate Lindblad equation}
 \end{equation}
 for an energy difference of
@@ -377,18 +362,14 @@ tunnelling time of
 
 
 \subsection{Multiple Sites}
-In reality there
-are 3 HCP sites neighbouring
-each FCC Hydrogen, all of which
-are connected to \(3\) HCP sites
-(see \cref{sec:the model}).
-The rate that the
-combined FCC and HCP
+In reality as there are 3 HCP sites neighbouring
+each FCC Hydrogen the rate at which the
+combined
 occupation reaches the
 boltzmann distribution
-is therefore exactly \(3\)
+is exactly \(3\)
 times the single neighbour rate
-(\cref{fig:multi site Lindblad})
+(see \cref{sec:the model}).
 \begin{equation}
     R = 6A\cosh{(\frac{\beta (E_1 - E_0)}{2})}
 \end{equation}
@@ -461,8 +442,7 @@ given in \cref{tab:implied decay rates}.
     \caption{Implied decay rates
         from the probability
         distribution and RMS distance
-        analysis at
-        \(150K\).
+        at \(150K\).
         The RMS decay time corresponds
         to the time for the RMS distance
         to equal \(0.5\).
@@ -508,9 +488,7 @@ The tunneling time was
 found to be \(5.25\times{}10^{-10}s\),
 corresponding to the time taken
 for the rms distance to
-reach \(0.5\). This gives
-an overall rate of
-\(1.9 \times 10^{9}s^{-1}\).
+reach \(0.5\)
 As time grows as distance squared
 a tunneling rate was also
 extracted from
@@ -569,15 +547,13 @@ from the Lindblad analysis.
         closest fit to the data.
     }\label{fig:tunneling rate against temperature}
 \end{figure}
-Although the FCC tunneling
-rates differ by an order of
-magnitude the remaining
-measurements of the rate
-are similar to that measured
-in experiment. To recover the
-correct temperature dependance
-we must include
-the activated tunneling rates, which
-can be extrapolated from the
+The FCC time to
+equilibrium is
+an order of magnitude longer however
+it is clearly a poor measurement of
+tunneling rate. Activated
+tunneling rates extrapolated
+from the
 high temperature behaviour of
-(\cref{sub@fig:rates with activated tunneling}).
+\cref{sub@fig:rates with activated tunneling}
+have little effect at low temperatures.

@@ -3,13 +3,13 @@ As the previous investigation
 demonstrates it is
 not possible to directly
 incorporate the hydrogen energy
-into the simulation.
-We can however ignore the
-difference in hydrogen energies
-for the same reason that
-we are able to assume separability
-of the electron and hydrogen
-density matrices in
+into the simulation,
+however we can ignore the
+difference in energy
+for the same reason we
+assume separability
+of the electron-hydrogen
+density matrix in
 \cref{sec:the redfield assumption}.
 The key difference
 between degenerate and
@@ -30,8 +30,8 @@ number of electrons
 this energy
 difference is negligible.
 Since the off diagonal
-interaction is small
-we also find that the
+interaction is small we
+find the
 individual electrons
 transition at a much
 faster rate than
@@ -43,9 +43,9 @@ distribution after a
 transition has no effect
 on the hydrogen dynamics.
 The electron distribution
-during a transition however
+during a transition
 should have an effect on the
-rate, as an electron can
+rate however, as an electron can
 only transition to a state
 which is previously
 empty. The method used to
@@ -68,7 +68,7 @@ rapidly inside a wavepacket
 which was fitted to
 \(\exp{(- R^2t^2)}\).
 
-the occupation fraction
+The occupation fraction
 \(N = \frac{n}{s}\) was
 varied by changing the
 number of electrons (\(n\))
@@ -78,7 +78,7 @@ plotted in
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{Figures/Simulation/Occupation Rate Curve.png}
-    \caption{Plot of the occupation-rate curve
+    \caption{The occupation-rate curve
         at 150K, with the predicted rate from half
         filled data. The rate is seen to
         tend to a constant
@@ -86,12 +86,10 @@ plotted in
         \(s\rightarrow{}\infty{}\).
     }\label{fig:occupation rate curve}
 \end{figure}
-The rate is seen to change
-at constant \(N\) as the
-number of states is
+The rate was seen to change
+at constant \(N\) as \(s\) was
 increased however the asymptotic
-behaviour follows the
-simple form
+behaviour followed a simple form
 \begin{equation}
     R(N,N) = 4 R_0 N(1-N)\label{eqn:degenerate tunnelling rate}
 \end{equation}
@@ -104,11 +102,10 @@ is paired with a single
 electron transition.
 
 \subsection{Calculating \(R_0\)}\label{sec:calculating R0}
-Since the rate depends only on a single
-parameter \(R_0\) we are able to
-extrapolate the rate from
-the asymptotic
-limit at a single
+The rate depends only on a single
+parameter \(R_0\) which we extrapolate
+from the asymptotic
+limit of a single
 occupation fraction. This can
 only be achieved for
 \(N=\frac{1}{2}\), where
@@ -129,7 +126,7 @@ datapoints were collected (\cref{fig:half filled rate}).
         \caption{\(\log{}\) Half Filled Rates
         }\label{sub@fig:log plot of half fileld rates}
     \end{subfigure}
-    \caption{Plot of the decay rates against
+    \caption{Decay rates against
     number of electrons \(n\) for
     \(N=0.5\). The decay rates were
     fitted to
@@ -138,21 +135,17 @@ datapoints were collected (\cref{fig:half filled rate}).
     found to be \(3900\pm 100s^{-1}\).
     }\label{fig:half filled rate}
 \end{figure}
-We are also able to extrapolate
-\(R_0\) from the asymptotic
-rates for states with n electrons.
 As \(N\rightarrow{}0\)
 we find
-\(R(N,N) \sim{} 4 R_0 N = 4R_0 (\frac{n}{s})\).
-We are therefore able to
-use the gradient as the
-number of states \(s\rightarrow{}\infty{}\)
-to find \(R_0\).
+\(R(N,N) \sim{} 4 R_0 N = 4R_0 (\frac{n}{s})\)
+which we use to
+find a second value for \(R_0\).
 Since the rate curve
 is symmetric we expect
 identical behaviour for
-n holes, however
-since the 1 electron
+\(n\) electrons and
+\(n\) holes, however since
+the 1 electron
 data was inconsistent (\cref{sub@fig:one electron rates})
 we limit the analysis to 2 electron
 or 2 hole data.
@@ -170,17 +163,17 @@ or 2 hole data.
         \caption{2 Electron Data
         }\label{sub@fig:two electron rates}
     \end{subfigure}
-    \caption{Plot of the asymptotic
+    \caption{Asymptotic
         form of the decay rates as \(N\rightarrow{}0\)
         at a fixed number of electrons \(n\).
         The single electron and single
         hole data is inconsistent
-        (\cref{sub@fig:one electron rates}),
-        however the two electron data
+        (\cref{sub@fig:one electron rates}).
+        The two electron data
         was fitted to \(R(N) = 4R_0N + AN^2\)
         to give an overall rate constant
         \(R_0 = 8400\pm 600s^{-1}\). This is
-        unlikely to give an accurate
+        not an accurate
         representation of the
         true decay rate, as it predicts
         a rate at \(N=0.5\)
@@ -365,19 +358,27 @@ due to the corrections
 made in
 \cref{sec:corrected transition rate}.
 \begin{figure}[htbp]
+    \captionsetup[subfigure]{justification=centering}
     \centering
-    \begin{subfigure}{0.45\linewidth}
+    \begin{subfigure}{0.3\linewidth}
         \centering
         \includegraphics[width =0.9 \linewidth]{Figures/Simulation/Decay rate against temperature half fill 150K 1 spin.png}
         \caption{Half Filled Data
         }\label{sub@fig:half filled rates with experiment}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.45\linewidth}
+    \begin{subfigure}{0.3\linewidth}
         \centering
         \includegraphics[width = 0.9\linewidth]{Figures/Simulation/Decay rate against temperature half fill 150K 1 spin low temp.png}
         \caption{Large Temperature Range
         }\label{sub@fig:simulation temperature dependence comparison}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\linewidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{Figures/Simulation/Decay rate against temperature half fill 150K 1 spin with correction.png}
+        \caption{Including Activated Tunneling
+        }
     \end{subfigure}
     \caption{Plot of the decay rates
         against temperature with a comparison
@@ -392,7 +393,7 @@ made in
         gave a similar temperature
         dependence, all of which were consistent
         with experimental
-        data. If we look at
+        data. In
         the high temperature
         limit
         \cref{sub@fig:simulation temperature dependence comparison}
@@ -405,7 +406,6 @@ made in
         measured in experiment.
     }\label{fig:simulation-experiment comparison}
 \end{figure}
-
 Outside the experimentally
 relevant range we see that the
 tunneling rates remain
@@ -424,21 +424,19 @@ the \(N(1-N')\)
 correction seems to be the
 most physically justifiable.
 
-TODO: with correction
-
 \subsection{Tunneling Without Self Interaction}\label{sec:tunnelling no diagonal}
 In \cref{sec:different hydrogen energy}
-it was found that the diagonal interaction
+the diagonal interaction
 prevented mixing of the FCC and HCP
-sites once hydrogen energy was introduced
-to the experiment. It is therefore
+sites once hydrogen energy was introduced.
+It is therefore
 useful to investigate the extent
 to which this interaction
 effects the interaction (\cref{fig:non diagonal decay rates}).
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.7\linewidth]{Figures/Simulation/Occupation Rate Curve No Diagonal.png}
-    \caption{Plot of decay rates measured without
+    \caption{Decay rates measured without
         the inclusion of diagonal interaction.
         We see a much larger rate constant (\(R_0 \sim{} 13000 s^{-1}\)),
         and the rates are seen to
@@ -449,10 +447,9 @@ effects the interaction (\cref{fig:non diagonal decay rates}).
 The data gave
 a rate constant
 of \(R_0 \sim{} 13000 s^{-1}\),
-more than \(3\times{}\) that seen in
+more than \(3\times{}\) that of
 the full interaction.
-It is therefore
-clear that this self interaction
+It is clear that this self interaction
 has an important role
 in the simulated
 tunneling rate, and

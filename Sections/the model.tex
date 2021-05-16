@@ -1,18 +1,17 @@
-In this report we will
+We will
 focus on a model of
 electron-hydrogen
 interaction within
 a nickel lattice arranged
 in a
 face centred cubic structure.
-Previous calculations
-show that hydrogen
+The hydrogen atom
 occupies hollow sites
-within Nickel\cite{doi:10.1063/1.522979},
+within nickel\cite{doi:10.1063/1.522979},
 which are arranged in a
 honeycomb configuration
 (\cref{sub@fig:hydrogen honeycomb structure}).
-Due to interaction with nickel
+Due to interaction with
 atoms below the surface
 we find these sites are split
 into alternating low energy
@@ -33,10 +32,9 @@ sites\cite{Jianding-Zhu}.
         }\label{sub@fig:Nickel DFT surface}
     \end{subfigure}
     \caption{
-        Diagrams demonstrating
-        the arrangement of hydrogen
-        sites on a Ni(111) surface.% ChkTeX 36
-        Hydrogen sites alternate
+        Arrangement of hydrogen
+        sites on a Ni(111) surface,% ChkTeX 36
+        alternating
         between low energy FCC and
         high energy HCP sites arranged
         in a honeycomb structure.
@@ -46,11 +44,12 @@ sites\cite{Jianding-Zhu}.
 \end{figure}
 To calculate the incoherent
 rate of tunneling between
-the FCC and HCP groundstate
+the FCC and HCP ground states
 we need to find a
 hamiltonian to describe the combined
 electron-hydrogen system.
-This can be split into free and interaction energy
+The electron-hydrogen system can be described
+by a combination of a free and interaction hamiltonian
 \begin{equation}
     \hat{H} = \hat{H}_{free} + \hat{H}_{int}
 \end{equation}
@@ -63,11 +62,10 @@ into an electron and hydrogen component
 \end{equation}
 
 \subsection{Electron States}\label{sec:electron states}
-For the purpose of this model we ignore the
+Ignoring the
 interaction between the electrons
 and the lattice as well as electron-electron
-interactions. This allows
-us expand the free electron
+interactions we can expand the free electron
 hamiltonian in the plane wave
 basis
 \begin{equation}
@@ -85,7 +83,7 @@ fermion anti-commutation relations
 Taking the lattice constant of nickel as
 \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753},
 we find a density of
-\(9.34\times{}10^{28}m^{-3}\).
+\(9.34 \pm 0.04 \times{}10^{28}m^{-3}\).
 If both of the 2 valence
 electrons on nickel are completely
 delocalised we
@@ -128,8 +126,8 @@ relations for a boson
 \(\left[ \hat{a}_i, \hat{a}^\dagger_j \right]
 = \delta_{ij}\).
 
-Although the DFT calculation
-also provides a theoretical prediction
+Although DFT calculations
+also provide a theoretical prediction
 of the hydrogen energies, the
 energy used in the
 model were
@@ -224,10 +222,6 @@ potential.
 
 
 \subsection{The Electron Hydrogen Potential}\label{sec:electron hydrogen potential}
-
-
-
-
 The interaction potential can be found from
 the greens function of the coulomb
 equation~\cite{AQP_Problems}
@@ -237,22 +231,21 @@ equation~\cite{AQP_Problems}
     + \int{\frac{\abs{\psi(\vec{r}')}^2}{
             \abs{\vec{r} - \vec{r'}}} d\vec{r}'})
 \end{equation}
-where \(a_0\) is
-the bohr radius.
 Electrons surrounding the hydrogen
 atom have energies
 \(E_n = -\frac{13.6}{n^2} eV\)~\cite{griffiths_schroeter_2018}.
 Since the energy required to excite the electron
 to the \(n=2\) energy level is much greater
-than the fermi energy of \(Ni\)
+than the fermi energy of Ni
 (\(7.76eV\))~\cite{PhysRev.131.2469} we can
 make the approximation that the electron surrounding
 the hydrogen lie close to the 1s groundstate. This
-corresponds to a wavefunction
+corresponds to a wavefunction\cite{griffiths_schroeter_2018}
 \begin{equation}
     \psi(\vec{r}) = {(\pi a_0^3)}^{-1/2} e^{-\frac{r}{a_0}}
 \end{equation}
-is the 1s hydrogen orbital~\cite{griffiths_schroeter_2018}.
+where \(a_0\) is
+the bohr radius.
 We then fourier
 transform this expression
 (see \cref{app:interaction potential calculation})
@@ -283,30 +276,28 @@ The final term in
 involves the integral
 of the product of the two
 hydrogen wavefunctions.
-The form of these wavefunctions
-are known from
-previous DFT Calculations\cite{Jianding-Zhu}
-however the wavefunctions provided
-by these calculations
-are expressed in terms of bloch wavefunctions spread
-through the whole material.
-To recover a localised
-wavepacket several of these states were chosen
+Previous DFT calculations
+gave the form of bloch wavefunctions
+spread throughout the whole
+material\cite{Jianding-Zhu}, so
+to recover a localised wavepacket
+several of these states were chosen
 centered about \(q=0\).
 Given the localised wavefunction
-it was then possible to calculate the fourier
+it was possible to calculate the fourier
 transform products directly. The fourier transform was seen to
 oscillate (\cref{fig:fourier transform oscillation})
-As there was a fixed
-distance between the FCC and HCP lattice
-sites.
-This oscillation has a frequency proportional to
+at a frequency proportional to
 \(\frac{2\pi}{a}\) where \(a\) is the lattice
 constant of Ni. The value of this constant
 is around
 \(3.499\pm{}0.005\times{}10^{-10}m\)~\cite{PhysRev.25.753}
 corresponding to oscillations at
-\(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\).
+\(q = 1.79 \pm 0.03 \times{}10^{10}m^{-1}\)
+which in theory should have a noticeable
+effect on the matrix element, with a
+fermi wavevector of
+\(1.177\times{}10^{10} m^{-1}\)~\cref{eqn:fermi wavevector}.
 \begin{figure}[htbp]
     \captionsetup[subfigure]{justification=centering}
     \centering
@@ -333,21 +324,20 @@ corresponding to oscillations at
     corresponding to the lattice vector of \(Ni\).
     }\label{fig:fourier transform oscillation}
 \end{figure}
-In theory this should have a noticeable
-effect on the matrix element, with a
-fermi wavevector of
-\(1.177\times{}10^{10} m^{-1}\)~\cref{eqn:fermi wavevector},
-however it is unclear if these oscillations
-are fundamental to the model
-or are simply the result
-of the discrete nature of the
-DFT analysis.
+In a real material
+we should expect the nickel atoms
+to oscillate which would break
+the fixed distance between FCC and HCP
+sites. The individual peaks
+are therefore simply a side effect
+of the DFT analysis.
+
 Since the overall wavepacket decays over a region
 of around \(\frac{100\pi}{a}\) we should be
-able to average over the fast oscillations of
+able to ignore the oscillations of
 \(V(\vec{q})\) to obtain an effective constant
 potential required for the simulation. For this
-model we therefore simply take the maximum overlap
+model we simply take the maximum overlap
 of the normalised wavefunction (\cref{tab:hydrogen overlaps}).
 \begin{table}[htbp]
     \begin{center}
